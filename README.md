@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://freshpixl.com/vue-toasted.png" target="_blank">
+    <a href="https://github.com/shakee93/vue-toasted" target="_blank">
     <img width="250"src="https://freshpixl.com/vue-toasted.png?new">
     </a>
 </p> 
