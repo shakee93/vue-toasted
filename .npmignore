@@ -7,3 +7,4 @@ src/
 .babelrc
 webpack.config.js
 README.md
+*.map

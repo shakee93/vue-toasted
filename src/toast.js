@@ -1,9 +1,16 @@
+import ToastComponent from './toast.vue';
 import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
 
 let globalOptions = {};
 
-const Toast = {
+export const initPlugin = function(Vue, options) {
+    Toast.setGlobalOptions(options);
+    Vue.component('toasted', ToastComponent);
+    Vue.toasted = Vue.prototype.$toasted = Toast;
+};
+
+export const Toast = {
     show : function (message, options) {
         show(message, options);
     },
@@ -24,7 +31,7 @@ const Toast = {
     },
     setGlobalOptions : function (options) {
         globalOptions = options || {};
-    }
+    },
 };
 
 
@@ -40,7 +47,7 @@ const show = function (message, options) {
     Object.assign(options, globalOptions);
 
     // class name to be added on the toast
-    options.className = options.className || "primary";
+    options.className = options.className || null;
 
     // complete call back of the toast
     options.onComplete = options.onComplete || null;
@@ -52,7 +59,7 @@ const show = function (message, options) {
     options.duration = options.duration || null;
 
     // normal type will allow the basic color
-    options.type = options.type || null;
+    options.type = options.type || "primary";
 
     let completeCallback = options.onComplete;
     let className = options.className;
@@ -199,4 +206,4 @@ const show = function (message, options) {
     }
 };
 
-export default Toast;
+export default {initPlugin, Toast} ;

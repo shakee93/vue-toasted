@@ -1,18 +1,69 @@
-# hello-vue
+<p align="center">
+    <a href="https://freshpixl.com/vue-toasted.png" target="_blank">
+    <img width="250"src="https://freshpixl.com/vue-toasted.png?new">
+    </a>
+</p> 
 
-> A Vue.js project
+## Introduction
 
-## Build Setup
+vue-toasted is a cool material toast plugin with variety of options and styles. it is touch compatible and responsive.
+issues and pr's are always welcome 
 
-``` bash
-# install dependencies
-npm install
+## Usage
 
-# serve with hot reload at localhost:8080
-npm run dev
+It is simple. couple of lines all what you need.
 
-# build for production with minification
-npm run build
+```bash
+# install it via npm
+npm install vue-toasted --save
+```
+```javascript
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+
+Vue.use(Toasted)
+
+// you can also pass options, check options reference below
+Vue.use(Toasted, Options)
+
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+```javascript
+// you can call like this in your component
+this.$toasted.show('hello billo')
+
+// and also
+Vue.toasted.show('hola billo');
+```
+
+All Good Now you have this cool toast in your project.. let's take a look at the api
+
+## API
+
+vue-toasted has methods which makes it much easier to use
+
+### methods
+
+```javascript
+Vue.toasted.success( {string | html } message, {object} options)
+
+// available methods
+Vue.toasted.show(message, options)
+Vue.toasted.success(message, options)
+Vue.toasted.info(message, options)
+Vue.toasted.error(message, options)
+```
+
+### options
+
+below are the available options
+
+| Option    | Description                                    | Values                  | Default  |
+|-----------|------------------------------------------------|-------------------------|----------|
+| position  | location of the toast     | 'top-right', 'top-left', 'bottom-right', 'bottom-left' | 'top-right' | 
+| duration  | display time of the toast                      |    in millisecond        | null     |
+| className | custom css class name of the toast                 |                         |   null       |
+| type | style of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
+| onComplete | class name of the optional icon font          |    a callback function               |   null       |
+
+Enjoy Toasting !!
