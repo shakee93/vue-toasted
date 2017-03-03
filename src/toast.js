@@ -31,6 +31,11 @@ const Toast = {
 const show = function (message, options) {
     options = options || {};
 
+    if(typeof options != "object") {
+        console.error("Options should be a type of object. given : " + options);
+        return
+    }
+
     // merge global options with options
     Object.assign(options, globalOptions);
 
