@@ -1,7 +1,7 @@
 import ToastComponent from './toast.vue';
 import Toast from './toast';
 
-const Toasted = {
+export default {
     install: (Vue, options) => {
 
         Vue.component('toasted', ToastComponent);
@@ -20,5 +20,3 @@ const Toasted = {
         });
     }
 };
-
-export default Toasted;

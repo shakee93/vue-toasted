@@ -1,9 +1,9 @@
 {
   "name": "vue-toasted",
   "description": "Cool Toast plugin for vue",
-  "version": "1.0.1",
+  "version": "1.0.11",
   "author": "Shakeeb Sadikeen <shakee.zats@gmail.com>",
-  "main": "./dist/index.js",
+  "main": "./dist/vue-toasted.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^3.1.1",
     "velocity-animate": "^1.4.3"
   },
   "devDependencies": {

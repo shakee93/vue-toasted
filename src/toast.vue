@@ -95,8 +95,6 @@
         }
     }
 
-
-
     /* Templates*/
 
     /* Primary Style of Toast */
@@ -172,9 +170,4 @@
         color: #3F51B5;
         border-color: #3F51B5;
     }
-
-
 </style>
-<script>
-
-</script>

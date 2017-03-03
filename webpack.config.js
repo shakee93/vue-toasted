@@ -6,7 +6,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'vue-toasted.js'
+    filename: 'vue-toasted.min.js',
+      libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -45,7 +46,7 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -58,19 +59,15 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
+        minimize: true,
       compress: {
         warnings: false
       }
     }),
-      new webpack.ProvidePlugin({
-          $: "jquery",
-          jQuery: "jquery",
-          "window.jQuery": "jquery",
-          "window.$": "jquery",
-      }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
+      new webpack.ProvidePlugin({}),
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        })
   ])
 }
