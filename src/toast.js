@@ -16,17 +16,17 @@ export const Toast = {
     },
     success :  function (message, options) {
         options = options || {};
-        options.type = "success";
+        options.theme = "success";
         show(message, options);
     },
     info :  function (message, options) {
         options = options || {};
-        options.type = "info";
+        options.theme = "info";
         show(message, options);
     },
     error :  function (message, options) {
         options = options || {};
-        options.type = "error";
+        options.theme = "error";
         show(message, options);
     },
     setGlobalOptions : function (options) {
@@ -59,15 +59,16 @@ const show = function (message, options) {
     options.duration = options.duration || null;
 
     // normal type will allow the basic color
-    options.type = options.type || "primary";
+    options.theme = options.theme || "primary";
 
     let completeCallback = options.onComplete;
     let className = options.className;
     let displayLength = options.duration;
 
     // Add Type class to the class name list
-    if(options.type) {
-        className = options.className + " " + options.type.trim()
+    if(options.theme) {
+        className = (options.className) ? options.className : '' + " " + options.theme.trim();
+        className = (className) ? className.trim() : className;
     }
 
     let container = document.getElementById('toast-container');

@@ -63,7 +63,7 @@ below are the available options
 | position  | location of the toast     | 'top-right', 'top-left', 'bottom-right', 'bottom-left' | 'top-right' | 
 | duration  | display time of the toast                      |    in millisecond        | null     |
 | className | custom css class name of the toast                 |                         |   null       |
-| type | style of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
+| theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
 | onComplete | class name of the optional icon font          |    a callback function               |   null       |
 
 Enjoy Toasting !!
