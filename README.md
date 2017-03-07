@@ -1,2 +1,2 @@
 # vue-toasted
-Cool Toast plugin for vue
+Github Page Template

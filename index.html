@@ -1,6 +1,239 @@
 <html>
-    <head></head>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="assets/js/prism.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        header {
+            background: #FAFAFA;
+            padding: 25px 50px;
+        }
+
+        .logo {
+            padding-left: 60px;
+        }
+
+        .theme img {
+            margin-top: -8px;
+        }
+
+        .box {
+            width: 80px;
+            margin-left: 20px;
+        }
+
+        .tile {
+            width: 47%;
+            background: #9aeae3;
+            height: 40px;
+            border: 1px solid #26a69a;
+            float: left;
+            margin: 1px;
+            cursor: pointer;
+            border-radius: 1px;
+        }
+
+        .tile.active {
+            background: #26a69a;
+            border-color: #0d6f66;
+        }
+
+        :not(pre) > code[class*="language-"], pre[class*="language-"] {
+            padding: 1px 2em;
+            border-radius: 6px;
+            background: white;
+        }
+
+        .buffer {
+            padding: 40px 10px 0;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #1d2726;
+            letter-spacing: 0.6px;
+        }
+
+        .input-field {
+            margin-top: 0;
+        }
+
+        code {
+            padding: 3px 9px;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        .theme, .duration {
+            margin-top: 50px;
+        }
+
+        .position {
+            margin-top: -10px;
+        }
+
+        .show-button {
+            margin-top: 25px;
+        }
+
+        .show-button a {
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow: none;
+        }
+
+        .heart::after {
+            content: '❤';
+            font-size: 16px;
+            color: #F44336;
+            margin: 4px;
+        }
+    </style>
+</head>
 <body>
-    hello yo
+<header>
+    <p class="logo">
+        <img src="assets/images/logo.png" alt="" width="250">
+    </p>
+</header>
+<div id="app">
+    <div class="container buffer">
+        <div class="row">
+            <p class="center">
+                Check out <code>vue-toasted</code> in action here, tweak the options and toast it !!
+            </p>
+        </div>
+        <div class="row">
+            <div class="col m6 offset-m3">
+                <p class="label"> Code Preview </p>
+                <pre class="z-depth-2">
+                   <code v-html="highlighted" class="language-javascript"></code>
+               </pre>
+            </div>
+            <div class="col s12 offset-s0 m4 offset-m2">
+                <div class="row theme">
+                    <p class="label"> Theme </p>
+                    <p>
+                        <input name="theme" v-model="theme" type="radio"  id="primary-theme" value="primary" />
+                        <label for="primary-theme">
+                            <img src="assets/images/2.jpg" width="100" alt="">
+                        </label>
+                    </p>
+                    <p>
+                        <input name="theme" v-model="theme" type="radio" id="bubble-theme" value="bubble" />
+                        <label for="bubble-theme">
+                            <img src="assets/images/3.jpg" width="100" alt="">
+                        </label>
+                    </p>
+
+                    <p>
+                        <input name="theme" v-model="theme" type="radio" id="outline-theme" value="outline" />
+                        <label for="outline-theme">
+                            <img src="assets/images/1.jpg" width="110" alt="" style="margin-left: -4px;">
+                        </label>
+                    </p>
+                </div>
+                <div class="row position">
+                    <p class="label"> Container Position </p>
+                    <div class="row">
+                        <div class="box">
+                            <label :class="{'active' : position == 'top-left' }" for="position-top-left" class="tile"> <input v-model="position" id="position-top-left" value="top-left" name="position" type="radio"/> </label>
+                            <label :class="{'active' : position == 'top-right' }" for="position-top-right" class="tile"> <input v-model="position" id="position-top-right"  value="top-right" name="position" type="radio"/> </label>
+                            <label :class="{'active' : position == 'bottom-left' }" for="position-bottom-left" class="tile"> <input v-model="position" id="position-bottom-left"  value="bottom-left" name="position" type="radio"/> </label>
+                            <label :class="{'active' : position == 'bottom-right' }" for="position-bottom-right" class="tile"> <input v-model="position" id="position-bottom-right" value="bottom-right" name="position" type="radio"/> </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 offset-s0 m4">
+                <div class="row duration">
+                    <p  class="label"> Duration</p>
+                    <div class="input-field col s12">
+                        <select id="duration" v-model="duration">
+                            <option value="" disabled selected>Choose your option</option>
+                            <option value="null">Infinity</option>
+                            <option value="500">0.5 Seconds</option>
+                            <option value="1000">1 Second</option>
+                            <option value="2000">2 Seconds</option>
+                            <option value="5000">5 Seconds</option>
+                            <option value="30000">30 Seconds</option>
+                            <option value="60000">1 Minute</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p class="label">Toast Text</p>
+                    <div class="input-field col s12">
+                        <input placeholder="Placeholder" id="first_name" type="text" v-model="text">
+                    </div>
+                </div>
+
+                <div class="row show-button">
+                    <a class="waves-effect waves-light btn" @click="buildToast">Launch Toast</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="row">
+            <p class="center">
+                <a target="_blank" href="https://twitter.com/shakee93">Twitter</a>
+                <span class="heart"></span>
+                <a target="_blank" href="https://github.com/shakee93/vue-toasted">Github</a>
+            </p>
+        </div>
+    </footer>
+</div>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
+<script src="../toast/dist/vue-toasted.min.js"></script>
+<script src="assets/js/prism.js"></script>
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            position: 'top-right',
+            theme: "primary",
+            text: "Toasted !!",
+            duration: 5000
+        },
+        mounted() {
+
+            var self = this;
+            var duration_el = $('#duration');
+
+            duration_el.material_select();
+            duration_el.on('change', function () {
+               self.duration = $(this).val();
+            });
+
+        },
+        methods: {
+            buildToast(){
+                var toast = this.$toasted.show(this.text, {
+                    theme: this.theme,
+                    position: this.position,
+                    duration : this.duration
+                });
+            }
+        },
+        computed : {
+            highlighted : function () {
+                var htext = '\nvar toast = this.$toasted.show("' + this.text + '", { \n\t theme: "' + this.theme + '", \n\t position: "' + this.position + '", \n\t duration : ' + this.duration + '\n});';
+                return Prism.highlight(htext, Prism.languages.javascript) ;
+            }
+        }
+    });
+</script>
 </body>
 </html>
