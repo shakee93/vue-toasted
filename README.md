@@ -9,6 +9,8 @@
 vue-toasted is a cool material toast plugin with variety of options and styles. it is touch compatible and responsive.
 issues and pr's are always welcome 
 
+Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> Interactive Demo </a> here.
+
 ## Usage
 
 It is simple. couple of lines all what you need.
