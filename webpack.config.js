@@ -60,12 +60,12 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
-        minimize: true,
       compress: {
         warnings: false
       }
     }),
       new webpack.ProvidePlugin({}),
+
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })

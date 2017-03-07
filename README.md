@@ -60,7 +60,7 @@ below are the available options
 
 | Option    | Description                                    | Values                  | Default  |
 |-----------|------------------------------------------------|-------------------------|----------|
-| position  | location of the toast     | 'top-right', 'top-left', 'bottom-right', 'bottom-left' | 'top-right' | 
+| position  | position of the toast container    | 'top-right', 'top-left', 'bottom-right', 'bottom-left' | 'top-right' | 
 | duration  | display time of the toast                      |    in millisecond        | null     |
 | className | custom css class name of the toast                 |                         |   null       |
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |

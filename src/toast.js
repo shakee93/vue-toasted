@@ -12,23 +12,24 @@ export const initPlugin = function(Vue, options) {
 
 export const Toast = {
     show : function (message, options) {
-        show(message, options);
+        return show(message, options);
     },
     success :  function (message, options) {
         options = options || {};
-        options.theme = "success";
-        show(message, options);
+        options.type = "success";
+        return show(message, options);
     },
     info :  function (message, options) {
         options = options || {};
-        options.theme = "info";
-        show(message, options);
+        options.type = "info";
+        return show(message, options);
     },
     error :  function (message, options) {
         options = options || {};
-        options.theme = "error";
-        show(message, options);
+        options.type = "error";
+        return show(message, options);
     },
+    el : null,
     setGlobalOptions : function (options) {
         globalOptions = options || {};
     },
@@ -61,29 +62,46 @@ const show = function (message, options) {
     // normal type will allow the basic color
     options.theme = options.theme || "primary";
 
+    // normal type will allow the basic color
+    options.type = options.type || "default";
+
+
+
     let completeCallback = options.onComplete;
     let className = options.className;
     let displayLength = options.duration;
 
-    // Add Type class to the class name list
+    // Add Theme class to the class name list
     if(options.theme) {
         className = (options.className) ? options.className : '' + " " + options.theme.trim();
         className = (className) ? className.trim() : className;
     }
 
-    let container = document.getElementById('toast-container');
+    // Add Type class to the class name list
+    if(options.type) {
+        className = className + " " + options.type.trim();
+    }
+
+    let container = document.getElementById('toasted-container');
 
     // Create toast container if it does not exist
     if (container === null) {
         // create notification container
         container = document.createElement('div');
-        container.id = 'toast-container';
-        container.classList.add(options.position);
+        container.id = 'toasted-container';
+
         document.body.appendChild(container);
+    }
+
+
+    if(container) {
+        container.className = "";
+        container.classList.add(options.position);
     }
 
     // Select and append toast
     let newToast = createToast(message);
+
 
     // only append toast if message is not undefined
     if (message) {
@@ -136,7 +154,7 @@ const show = function (message, options) {
 
         // Create toast
         var toast = document.createElement('div');
-        toast.classList.add('toast');
+        toast.classList.add('toasted');
         if (className) {
             var classes = className.split(' ');
 
@@ -205,6 +223,8 @@ const show = function (message, options) {
 
         return toast;
     }
+
+    return newToast;
 };
 
 export default {initPlugin, Toast} ;
