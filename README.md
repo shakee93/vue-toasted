@@ -45,7 +45,7 @@ All Good Now you have this cool toast in your project.. let's take a look at the
 vue-toasted has methods which makes it much easier to use
 
 ### methods
-
+all the below methods return the `html element` of the toast. you may tweak with it as well..
 ```javascript
 Vue.toasted.success( {string | html } message, {object} options)
 
