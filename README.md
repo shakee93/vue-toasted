@@ -45,7 +45,7 @@ All Good Now you have this cool toast in your project.. let's take a look at the
 vue-toasted has methods which makes it much easier to use
 
 ### methods
-all the below methods return the `html element` of the toast. you may tweak with it as well..
+all the below methods return the `Toasted Object` of the toast.
 ```javascript
 Vue.toasted.success( {string | html } message, {object} options)
 
@@ -54,6 +54,21 @@ Vue.toasted.show(message, options)
 Vue.toasted.success(message, options)
 Vue.toasted.info(message, options)
 Vue.toasted.error(message, options)
+```
+
+####Toast Object
+check the examples to see how to manipulate the object.
+```javascript
+
+// html element of the toast
+el : HtmlElement
+
+// change text or html of the toast
+text : Function(text)
+
+// fadeAway the toast. default delay will be 800ms
+goAway : Function(delay = 800)
+
 ```
 
 ### options
