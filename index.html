@@ -1,9 +1,15 @@
 <html>
 <head>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel="stylesheet" href="assets/js/prism.css">
+
+    <title> vue-toasted by shakee93 </title>
+    <link rel="shortcut icon" type="image/png" href="https://github.com/fluidicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <link rel="stylesheet" href="assets/js/prism.css">
+
+
     <style>
         header {
             background: #FAFAFA;
@@ -105,6 +111,10 @@
             <p class="center">
                 Check out <a target="_blank" href="https://github.com/shakee93/vue-toasted"><code>vue-toasted</code></a> in action here, tweak the options and toast it !!
             </p>
+            <p class="center">
+                <a class="github-button" href="https://github.com/shakee93/vue-toasted" data-icon="octicon-mark-github" data-style="mega"  >View Github</a>
+                <a class="github-button" href="https://github.com/shakee93/vue-toasted" data-icon="octicon-star" data-style="mega" data-count-href="/shakee93/vue-toasted/stargazers" data-count-api="/repos/shakee93/vue-toasted#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star shakee93/vue-toasted on GitHub">Star</a>
+            </p>
         </div>
         <div class="row">
             <div class="col m6 offset-m3">
@@ -182,6 +192,9 @@
     <footer>
         <div class="row">
             <p class="center">
+                <a class="github-button" href="https://github.com/shakee93" data-style="mega" data-count-href="/shakee93/followers" data-count-api="/users/shakee93#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @shakee93 on GitHub">Follow @shakee93</a>
+            </p>
+            <p class="center">
                 <a target="_blank" href="https://twitter.com/shakee93">Twitter</a>
                 <span class="heart"></span>
                 <a target="_blank" href="https://github.com/shakee93/vue-toasted">Github</a>
@@ -229,7 +242,7 @@
         },
         computed : {
             highlighted : function () {
-                var htext = '\nvar toast = this.$toasted.show("' + this.text + '", { \n\t theme: "' + this.theme + '", \n\t position: "' + this.position + '", \n\t duration : ' + this.duration + '\n});';
+                var htext = '\nlet toast = this.$toasted.show("' + this.text + '", { \n\t theme: "' + this.theme + '", \n\t position: "' + this.position + '", \n\t duration : ' + this.duration + '\n});';
                 return Prism.highlight(htext, Prism.languages.javascript) ;
             }
         }
