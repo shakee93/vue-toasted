@@ -25,12 +25,12 @@
         }
 
         .box {
-            width: 80px;
+            width: 120px;
             margin-left: 20px;
         }
 
         .tile {
-            width: 47%;
+            width: 31.5%;
             background: #9aeae3;
             height: 40px;
             border: 1px solid #26a69a;
@@ -151,8 +151,10 @@
                     <div class="row">
                         <div class="box">
                             <label :class="{'active' : position == 'top-left' }" for="position-top-left" class="tile"> <input v-model="position" id="position-top-left" value="top-left" name="position" type="radio"/> </label>
+                            <label :class="{'active' : position == 'top-center' }" for="position-top-center" class="tile"> <input v-model="position" id="position-top-center" value="top-center" name="position" type="radio"/> </label>
                             <label :class="{'active' : position == 'top-right' }" for="position-top-right" class="tile"> <input v-model="position" id="position-top-right"  value="top-right" name="position" type="radio"/> </label>
                             <label :class="{'active' : position == 'bottom-left' }" for="position-bottom-left" class="tile"> <input v-model="position" id="position-bottom-left"  value="bottom-left" name="position" type="radio"/> </label>
+                            <label :class="{'active' : position == 'bottom-center' }" for="position-bottom-center" class="tile"> <input v-model="position" id="position-bottom-center"  value="bottom-center" name="position" type="radio"/> </label>
                             <label :class="{'active' : position == 'bottom-right' }" for="position-bottom-right" class="tile"> <input v-model="position" id="position-bottom-right" value="bottom-right" name="position" type="radio"/> </label>
                         </div>
                     </div>
