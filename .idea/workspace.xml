@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="beff0b98-0b34-4823-b3dc-4cd78e116eca" name="Default" comment="seperated s">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/sass/toast.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
+    <list default="true" id="beff0b98-0b34-4823-b3dc-4cd78e116eca" name="Default" comment="Separated Styles&#10;Added SASS&#10;Updated README with new positions">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.npmignore" afterPath="$PROJECT_DIR$/.npmignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vue-toasted.min.js" afterPath="$PROJECT_DIR$/dist/vue-toasted.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toast.vue" afterPath="$PROJECT_DIR$/src/toast.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,12 +26,12 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="359">
-                <caret line="85" column="17" lean-forward="false" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+              <first_editor relative-caret-position="144">
+                <caret line="6" column="155" lean-forward="false" selection-start-line="6" selection-start-column="155" selection-end-line="6" selection-end-column="155" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -86,11 +79,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toast.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toast.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sass/toast.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+            <state relative-caret-position="336">
+              <caret line="170" column="1" lean-forward="true" selection-start-line="170" selection-start-column="1" selection-end-line="170" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -154,11 +157,11 @@
         <option value="$PROJECT_DIR$/src/toast.js" />
         <option value="$PROJECT_DIR$/examples/toast-object.js" />
         <option value="$PROJECT_DIR$/.npmignore" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/sass/toast.scss" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/toast.vue" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -260,6 +263,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="examples" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toast" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="toast" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vue-toasted.min.js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NestingTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -374,7 +395,7 @@
       <workItem from="1489257817873" duration="6071000" />
       <workItem from="1489319020411" duration="1617000" />
       <workItem from="1489389122782" duration="711000" />
-      <workItem from="1489473572160" duration="3254000" />
+      <workItem from="1489473572160" duration="3973000" />
     </task>
     <task id="LOCAL-00001" summary="es6 compiled">
       <created>1488529756683</created>
@@ -446,11 +467,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489264159480</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Separated Styles&#10;Added SASS&#10;Updated README with new positions">
+      <created>1489479181155</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1489479181155</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69574000" />
+    <option name="totallyTimeSpent" value="70293000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -512,7 +540,8 @@
     <MESSAGE value="added return of the html element note" />
     <MESSAGE value="Added Toast Object Methods" />
     <MESSAGE value="example added" />
-    <option name="LAST_COMMIT_MESSAGE" value="example added" />
+    <MESSAGE value="Separated Styles&#10;Added SASS&#10;Updated README with new positions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Separated Styles&#10;Added SASS&#10;Updated README with new positions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -685,29 +714,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="359">
-            <caret line="85" column="17" lean-forward="false" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-456">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -730,9 +740,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sass/toast.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="163" column="1" lean-forward="true" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="1" />
+        <state relative-caret-position="336">
+          <caret line="170" column="1" lean-forward="true" selection-start-line="170" selection-start-column="1" selection-end-line="170" selection-end-column="1" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="35" column="29" lean-forward="true" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="144">
+            <caret line="6" column="155" lean-forward="false" selection-start-line="6" selection-start-column="155" selection-end-line="6" selection-end-column="155" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
