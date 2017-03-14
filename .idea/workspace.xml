@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="beff0b98-0b34-4823-b3dc-4cd78e116eca" name="Default" comment="Separated Styles&#10;Added SASS&#10;Updated README with new positions">
+    <list default="true" id="beff0b98-0b34-4823-b3dc-4cd78e116eca" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
@@ -30,8 +30,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="144">
-                <caret line="6" column="155" lean-forward="false" selection-start-line="6" selection-start-column="155" selection-end-line="6" selection-end-column="155" />
+              <first_editor relative-caret-position="192">
+                <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -395,7 +395,7 @@
       <workItem from="1489257817873" duration="6071000" />
       <workItem from="1489319020411" duration="1617000" />
       <workItem from="1489389122782" duration="711000" />
-      <workItem from="1489473572160" duration="3973000" />
+      <workItem from="1489473572160" duration="4029000" />
     </task>
     <task id="LOCAL-00001" summary="es6 compiled">
       <created>1488529756683</created>
@@ -474,11 +474,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489479181155</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="awesome badge added">
+      <created>1489479873341</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1489479873341</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70293000" />
+    <option name="totallyTimeSpent" value="70349000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -541,7 +548,8 @@
     <MESSAGE value="Added Toast Object Methods" />
     <MESSAGE value="example added" />
     <MESSAGE value="Separated Styles&#10;Added SASS&#10;Updated README with new positions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Separated Styles&#10;Added SASS&#10;Updated README with new positions" />
+    <MESSAGE value="awesome badge added" />
+    <option name="LAST_COMMIT_MESSAGE" value="awesome badge added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -757,8 +765,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="144">
-            <caret line="6" column="155" lean-forward="false" selection-start-line="6" selection-start-column="155" selection-end-line="6" selection-end-column="155" />
+          <first_editor relative-caret-position="192">
+            <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
