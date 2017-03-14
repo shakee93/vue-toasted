@@ -36,6 +36,12 @@
             left: 7%;
         }
 
+        #toasted-container.top-center {
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         #toasted-container.bottom-right {
             right: 5%;
             bottom: 7%;
@@ -43,6 +49,12 @@
 
         #toasted-container.bottom-left {
             left: 5%;
+            bottom: 7%;
+        }
+
+        #toasted-container.bottom-center {
+            left: 50%;
+            transform: translateX(-50%);
             bottom: 7%;
         }
 
