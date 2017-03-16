@@ -4,10 +4,13 @@
     </a>
 </p> 
 
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/vuejs/awesome-vue)
 ## Introduction
 
 vue-toasted is a cool material toast plugin with variety of options and styles. it is touch compatible and responsive.
 issues and pr's are always welcome 
+
+Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> Interactive Demo </a> here.
 
 ## Usage
 
@@ -43,7 +46,7 @@ All Good Now you have this cool toast in your project.. let's take a look at the
 vue-toasted has methods which makes it much easier to use
 
 ### methods
-
+all the below methods return the `Toasted Object` of the toast.
 ```javascript
 Vue.toasted.success( {string | html } message, {object} options)
 
@@ -54,16 +57,31 @@ Vue.toasted.info(message, options)
 Vue.toasted.error(message, options)
 ```
 
+####Toast Object
+check the examples to see how to manipulate the object.
+```javascript
+
+// html element of the toast
+el : HtmlElement
+
+// change text or html of the toast
+text : Function(text)
+
+// fadeAway the toast. default delay will be 800ms
+goAway : Function(delay = 800)
+
+```
+
 ### options
 
 below are the available options
 
 | Option    | Description                                    | Values                  | Default  |
 |-----------|------------------------------------------------|-------------------------|----------|
-| position  | location of the toast     | 'top-right', 'top-left', 'bottom-right', 'bottom-left' | 'top-right' | 
+| position  | position of the toast container    | 'top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left' | 'top-right' | 
 | duration  | display time of the toast                      |    in millisecond        | null     |
 | className | custom css class name of the toast                 |                         |   null       |
-| type | style of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
+| theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
 | onComplete | class name of the optional icon font          |    a callback function               |   null       |
 
 Enjoy Toasting !!

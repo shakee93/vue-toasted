@@ -1,18 +1,33 @@
 {
   "name": "vue-toasted",
   "description": "Cool Toast plugin for vue",
-  "version": "1.0.14",
+  "version": "1.0.21",
   "author": "Shakeeb Sadikeen <shakee.zats@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shakee93/vue-toasted.git"
+  },
   "main": "./dist/vue-toasted.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build-local-watch": "cross-env NODE_ENV=production webpack --progress --hide-modules --watch",
     "watch": "webpack --progress --hide-modules --watch",
     "prebuild": "cross-env NODE_ENV=production webpack --progress --hide-modules",
     "es": "babel src --presets babel-preset-es2015 --out-dir dist"
   },
+  "keywords": [
+    "toast",
+    "vue",
+    "vue-toasted",
+    "responsive",
+    "touch-compatible",
+    "touch",
+    "vue-toast"
+  ],
   "dependencies": {
     "hammerjs": "^2.0.8",
+    "sass-loader": "^6.0.3",
     "velocity-animate": "^1.4.3"
   },
   "devDependencies": {
@@ -24,6 +39,8 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.3",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",

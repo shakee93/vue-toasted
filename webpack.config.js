@@ -16,6 +16,8 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+              'scss': 'vue-style-loader!css-loader!sass-loader',
+              'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
           }
           // other vue-loader options go here
         }
@@ -60,12 +62,12 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
-        minimize: true,
       compress: {
         warnings: false
       }
     }),
       new webpack.ProvidePlugin({}),
+
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
