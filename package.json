@@ -1,7 +1,7 @@
 {
   "name": "vue-toasted",
-  "description": "Cool Toast plugin for vue",
-  "version": "1.0.21",
+  "description": "Responsive Touch Compatible Toast plugin for VueJS 2+",
+  "version": "1.0.22",
   "author": "Shakeeb Sadikeen <shakee.zats@gmail.com>",
   "repository": {
     "type": "git",
@@ -26,11 +26,10 @@
     "vue-toast"
   ],
   "dependencies": {
-    "hammerjs": "^2.0.8",
-    "sass-loader": "^6.0.3",
-    "velocity-animate": "^1.4.3"
   },
   "devDependencies": {
+    "hammerjs": "^2.0.8",
+    "velocity-animate": "^1.4.3",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
