@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9c2236a-f9f0-4461-af14-f7973748cc99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vue-toasted.min.js" afterPath="$PROJECT_DIR$/dist/vue-toasted.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/toast.js" afterPath="$PROJECT_DIR$/src/toast.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,17 +18,17 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+            <state relative-caret-position="144">
+              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toast.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toast.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/toast.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -53,8 +52,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/toast.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -193,7 +192,7 @@
       <updated>1489697195983</updated>
       <workItem from="1489697197933" duration="1201000" />
       <workItem from="1489743998217" duration="673000" />
-      <workItem from="1489826265278" duration="1801000" />
+      <workItem from="1489826265278" duration="1839000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/shakee93/vue-toasted&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
       <created>1489697304580</created>
@@ -223,11 +222,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489744193644</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Options merge bug fixed">
+      <created>1489828279160</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1489828279160</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3675000" />
+    <option name="totallyTimeSpent" value="3713000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -286,7 +292,8 @@
     <MESSAGE value="Demo Gif Added" />
     <MESSAGE value="Updated Gif" />
     <MESSAGE value="cleaned dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaned dependencies" />
+    <MESSAGE value="Options merge bug fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Options merge bug fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -311,14 +318,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="10" column="14" lean-forward="true" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/toast.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -326,6 +325,14 @@
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
