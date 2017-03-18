@@ -38,41 +38,6 @@ export const Toast = {
     }
 };
 
-const Toasted = function (el) {
-
-    return {
-        el : el,
-        text : function (text) {
-
-            if (typeof HTMLElement === "object" ? text instanceof HTMLElement : text && typeof text === "object" && text !== null && text.nodeType === 1 && typeof text.nodeName === "string"
-            ) {
-                el.appendChild(text);
-            }
-            else {
-                el.innerHTML = text;
-            }
-
-            return this;
-        },
-        goAway : function(delay = 800) {
-            // Animate toast out
-            setTimeout(function () {
-                Velocity(el, {"opacity": 0, marginTop: '-40px'}, {
-                    duration: 375,
-                    easing: 'easeOutExpo',
-                    queue: false,
-                    complete: function () {
-                        this[0].parentNode.removeChild(this[0]);
-                    }
-                });
-            }, delay);
-
-            return this;
-        }
-    }
-};
-
-
 const show = function (message, options) {
     options = options || {};
 
@@ -82,7 +47,8 @@ const show = function (message, options) {
     }
 
     // merge global options with options
-    Object.assign(options, globalOptions);
+    Object.assign(globalOptions, options );
+    options = globalOptions;
 
     // class name to be added on the toast
     options.className = options.className || null;
