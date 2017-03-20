@@ -5,6 +5,7 @@
 </p> 
 
 [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/vuejs/awesome-vue)
+
 ## Introduction
 
 vue-toasted is a cool material toast plugin with variety of options and styles. it is touch compatible and responsive.
@@ -61,6 +62,7 @@ Vue.toasted.info(message, options)
 Vue.toasted.error(message, options)
 ```
 
+
 ####Toast Object
 check the examples to see how to manipulate the object.
 ```javascript
@@ -87,5 +89,12 @@ below are the available options
 | className | custom css class name of the toast                 |                         |   null       |
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
 | onComplete | class name of the optional icon font          |    a callback function               |   null       |
+
+
+### Credits
+
++ Whoever contributes to this project :wink:
++ Inspired and developed from [materialize-css](https://github.com/Dogfalo/materialize) toast.
+
 
 Enjoy Toasting !!

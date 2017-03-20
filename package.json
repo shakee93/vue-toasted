@@ -23,7 +23,9 @@
     "responsive",
     "touch-compatible",
     "touch",
-    "vue-toast"
+    "vue-toast",
+    "vue-toastr",
+    "toastr"
   ],
   "dependencies": {
   },
