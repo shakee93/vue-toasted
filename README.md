@@ -63,7 +63,7 @@ Vue.toasted.error(message, options)
 ```
 
 
-####Toast Object
+#### Toast Object
 check the examples to see how to manipulate the object.
 ```javascript
 
