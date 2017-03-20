@@ -144,7 +144,10 @@ const show = function (message, options) {
                         if (typeof(completeCallback) === "function")
                             completeCallback();
                         // Remove toast after it times out
-                        this[0].parentNode.removeChild(this[0]);
+                        if(this[0].parentNode) {
+                            this[0].parentNode.removeChild(this[0]);
+                        }
+
                     }
                 });
 
@@ -209,7 +212,10 @@ const show = function (message, options) {
                         if (typeof(completeCallback) === "function") {
                             completeCallback();
                         }
-                        toast.parentNode.removeChild(toast);
+
+                        if(toast.parentNode) {
+                            toast.parentNode.removeChild(toast);
+                        }
                     }
                 });
 
@@ -252,7 +258,11 @@ const show = function (message, options) {
                     easing: 'easeOutExpo',
                     queue: false,
                     complete: function () {
-                        this[0].parentNode.removeChild(this[0]);
+
+                        if(this[0].parentNode) {
+                            this[0].parentNode.removeChild(this[0]);
+                        }
+
                     }
                 });
             }, delay);
