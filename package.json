@@ -27,11 +27,8 @@
     "vue-toastr",
     "toastr"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "hammerjs": "^2.0.8",
-    "velocity-animate": "^1.4.3",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -40,11 +37,14 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
+    "hammerjs": "^2.0.8",
     "node-sass": "^4.5.0",
     "sass-loader": "^6.0.3",
+    "velocity-animate": "^1.4.3",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",
+    "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.2.0"
   }
 }
