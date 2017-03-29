@@ -76,7 +76,7 @@ const show = function (message, options) {
 
     // Add Theme class to the class name list
     if(options.theme) {
-        className = (options.className) ? options.className : '' + " " + options.theme.trim();
+        className = ( (options.className) ? options.className : '' ) + " " + options.theme.trim();
         className = (className) ? className.trim() : className;
     }
 
