@@ -20,7 +20,7 @@ Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> 
 <p align="center">
     <img src="https://shakee93.github.io/vue-toasted/assets/images/vue-toasted-demo-x2.gif">
 </p>
-
+ 
 ## Usage
 
 It is simple. couple of lines all what you need.
@@ -96,34 +96,37 @@ below are the available options
 
 ### Reusable Global Toasts
 
-you can register your custom toasts. they will be available globally under `$toasted.global`
+you can register your custom toasts under `globalToasts`. they will be available globally for use in `$toasted.global`. 
+take a look at the detailed example  <a href="/examples/reusable-toast.js"> here </a>
 
 ```javascript
 // Global Plugin Register
 Vue.use(Toasted, {
   globalToasts : {
 
-    // have your toast name as propery name
-    // it should accept 2 parameters 'payload' and 'initiate' callback
-    myCustomError : function(payload, inititate){
+    myCustomError : function(payload, initiate){
 
-        // have your logic here 
         if(payload.someProperty == true) {
-            return inititate(payload.someProperty.message, 'error');
+            return initiate(payload.someProperty.message, 'error');
         }
 
-        // initiate(Message/html, option/string)
-        // error/show/success/info you can pass main function names or an option object
-        return inititate("My Deepest Condolence", 'error');
-    }
+        return initiate("My Deepest Condolence", 'error');
+    },
+    // my another toast...
   }
 });
 ```
 
 viola !! now you can use your toast in anywhere
 
+
 ```javascript
-    $toasted.global.my
+$toasted.global.myCustomError({
+    someProperty : {
+        message : 'a message'
+    },
+    //...
+})
 ```
 
 ### Credits
