@@ -17,10 +17,6 @@ issues and pr's are always welcome
 
 Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> Interactive Demo </a> here.
 
-<p align="center">
-    <img src="https://shakee93.github.io/vue-toasted/assets/images/vue-toasted-demo-x2.gif">
-</p>
-
 ## Usage
 
 It is simple. couple of lines all what you need.
@@ -94,6 +90,40 @@ below are the available options
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
 | onComplete | class name of the optional icon font          |    a callback function               |   null       |
 
+### Reusable Global Toasts
+
+you can register your custom toasts. they will be available globally under `$toasted.global`. 
+take a look at the detailed example  <a href="/examples/reusable-toast.js"> here </a>
+
+```javascript
+// Global Plugin Register
+Vue.use(Toasted, {
+  globalToasts : {
+
+    myCustomError : function(payload, initiate){
+
+        if(payload.someProperty == true) {
+            return initiate(payload.someProperty.message, 'error');
+        }
+
+        return initiate("My Deepest Condolence", 'error');
+    },
+    // my another toast...
+  }
+});
+```
+
+viola !! now you can use your toast in anywhere
+
+
+```javascript
+$toasted.global.myCustomError({
+    someProperty : {
+        message : 'a message'
+    },
+    //...
+})
+```
 
 ### Credits
 

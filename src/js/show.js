@@ -1,54 +1,14 @@
-import ToastComponent from './toast.vue';
 import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
 
-let globalOptions = {};
-
-export const initPlugin = function(Vue, options) {
-    Toast.setGlobalOptions(options);
-    Vue.component('toasted', ToastComponent);
-    Vue.toasted = Vue.prototype.$toasted = Toast;
-};
-
-export const Toast = {
-    el : null,
-    show : function (message, options) {
-        return show(message, options);
-    },
-    success :  function (message, options) {
-        options = options || {};
-        options.type = "success";
-        return show(message, options);
-    },
-    info :  function (message, options) {
-        options = options || {};
-        options.type = "info";
-        return show(message, options);
-    },
-    error :  function (message, options) {
-        options = options || {};
-        options.type = "error";
-        return show(message, options);
-    },
-    setGlobalOptions : function (options) {
-        globalOptions = options || {};
-    },
-    setEl : function (el) {
-        Toast.el = el;
-    }
-};
-
-const show = function (message, options) {
-    options = options || {};
-
-    if(typeof options != "object") {
-        console.error("Options should be a type of object. given : " + options);
-        return
-    }
-
-    // merge global options with options
-    Object.assign(globalOptions, options );
-    options = globalOptions;
+/**
+ * this method will create the toast
+ *
+ * @param message
+ * @param options
+ * @returns {{el: *, text: text, goAway: goAway}}
+ */
+export default function (message, options) {
 
     // class name to be added on the toast
     options.className = options.className || null;
@@ -271,6 +231,3 @@ const show = function (message, options) {
         }
     };
 };
-
-export default {initPlugin, Toast} ;
-

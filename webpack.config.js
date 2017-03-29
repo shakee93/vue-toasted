@@ -68,7 +68,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
       new webpack.ProvidePlugin({}),
-
+     // new BundleAnalyzerPlugin(),
         new webpack.LoaderOptionsPlugin({
             minimize: true
         })
