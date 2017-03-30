@@ -92,7 +92,7 @@ below are the available options
 | duration  | display time of the toast                      |    in millisecond        | null     |
 | className | custom css class name of the toast                 |                         |   null       |
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
-| onComplete | triggers when toasts is completed          |    a callback function               |   null       |
+| onComplete | on complete event of toast          |    a callback function               |   null       |
 
 ### Reusable Global Toasts
 

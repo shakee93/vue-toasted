@@ -4,7 +4,6 @@
     <list default="true" id="e9c2236a-f9f0-4461-af14-f7973748cc99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/toast.js" afterPath="$PROJECT_DIR$/src/js/toast.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,19 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="299">
-                <caret line="94" column="48" lean-forward="false" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+                <caret line="94" column="41" lean-forward="false" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
                 <folding>
-                  <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-                  <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-                  <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-                  <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-                  <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-                  <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+                  <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+                  <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+                  <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+                  <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+                  <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+                  <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -83,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toast.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="toast.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/toast.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="109" column="57" lean-forward="true" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
+            <state relative-caret-position="317">
+              <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -395,7 +394,7 @@
       <workItem from="1490523920481" duration="1724000" />
       <workItem from="1490549890117" duration="487000" />
       <workItem from="1490764629315" duration="18569000" />
-      <workItem from="1490856655931" duration="696000" />
+      <workItem from="1490856655931" duration="839000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/shakee93/vue-toasted&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
       <created>1489697304580</created>
@@ -516,11 +515,18 @@
       <option name="project" value="LOCAL" />
       <updated>1490816650746</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="updated doc and typo fix">
+      <created>1490862180522</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1490862180522</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33475000" />
+    <option name="totallyTimeSpent" value="33618000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -618,7 +624,8 @@
     <MESSAGE value="added Reusable Toasts" />
     <MESSAGE value="updated gif" />
     <MESSAGE value="updated doc" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated doc" />
+    <MESSAGE value="updated doc and typo fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated doc and typo fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -695,12 +702,12 @@
           <first_editor relative-caret-position="2254">
             <caret line="98" column="28" lean-forward="false" selection-start-line="98" selection-start-column="28" selection-end-line="98" selection-end-column="28" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -729,12 +736,12 @@
           <first_editor relative-caret-position="368">
             <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -780,12 +787,12 @@
           <first_editor relative-caret-position="368">
             <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -832,12 +839,12 @@
           <first_editor relative-caret-position="368">
             <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -886,12 +893,12 @@
           <first_editor relative-caret-position="368">
             <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -912,12 +919,12 @@
           <first_editor relative-caret-position="2184">
             <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -948,12 +955,12 @@
           <first_editor relative-caret-position="2184">
             <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -984,12 +991,12 @@
           <first_editor relative-caret-position="0">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
@@ -1105,31 +1112,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/toast.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="111" column="5" lean-forward="true" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
           <first_editor relative-caret-position="299">
-            <caret line="94" column="48" lean-forward="false" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+            <caret line="94" column="41" lean-forward="false" selection-start-line="94" selection-start-column="41" selection-end-line="94" selection-end-column="41" />
             <folding>
-              <marker date="1490862157323" expanded="true" signature="3420:3712" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3439:3710" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3489:3678" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3533:3612" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3857:3928" ph="{...}" />
-              <marker date="1490862157323" expanded="true" signature="3878:3915" ph="{&quot;message&quot;: 'a message'...}" />
+              <marker date="1490862309231" expanded="true" signature="3413:3705" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3432:3703" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3482:3671" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3526:3605" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3850:3921" ph="{...}" />
+              <marker date="1490862309231" expanded="true" signature="3871:3908" ph="{&quot;message&quot;: 'a message'...}" />
             </folding>
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/toast.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="109" column="57" lean-forward="true" selection-start-line="109" selection-start-column="57" selection-end-line="109" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
