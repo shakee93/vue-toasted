@@ -100,7 +100,7 @@ export const initiateCustomToasts = function () {
         Object.keys(customToasts).forEach( key => {
 
             // register the custom toast events to the Toast.custom property
-            Toast.global[key] = payload => {
+            Toast.global[key] = (payload = {}) => {
 
                 // return the it in order to expose the Toast methods
                 return customToasts[key].apply(null, [ payload, initiate ]);

@@ -92,11 +92,11 @@ below are the available options
 | duration  | display time of the toast                      |    in millisecond        | null     |
 | className | custom css class name of the toast                 |                         |   null       |
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
-| onComplete | class name of the optional icon font          |    a callback function               |   null       |
+| onComplete | triggers when toasts is completed          |    a callback function               |   null       |
 
 ### Reusable Global Toasts
 
-you can register your custom toasts under `globalToasts`. they will be available globally for use in `$toasted.global`. 
+you can register your global toasts under `globalToasts`. they will be available globally for use in `$toasted.global`. 
 take a look at the detailed example  <a href="/examples/reusable-toast.js"> here </a>
 
 ```javascript
@@ -121,6 +121,7 @@ viola !! now you can use your toast in anywhere
 
 
 ```javascript
+// $toasted.global.myCustomError(payload);
 $toasted.global.myCustomError({
     someProperty : {
         message : 'a message'
