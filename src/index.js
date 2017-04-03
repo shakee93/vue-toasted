@@ -8,7 +8,7 @@ const Toasted = {
 
 // register plugin if it is used via cdn or directly as a script tag
 if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(Toasted);
+    window.Toasted = Toasted;
 }
 
 export default Toasted
