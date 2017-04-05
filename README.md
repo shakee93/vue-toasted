@@ -1,2 +1,2 @@
 # vue-toasted
-Github Page Template
+Github Page
