@@ -82,6 +82,13 @@ goAway : Function(delay = 800)
 
 ```
 
+using the toast object
+
+```javascript
+let myToast = this.$toasted.show("Holla !!");
+myToast.text("Changing the text !!!").goAway(1500);
+```
+
 ### options
 
 below are the available options
@@ -104,12 +111,11 @@ take a look at the detailed example  <a href="/examples/reusable-toast.js"> here
 Vue.use(Toasted, {
   globalToasts : {
 
-    myCustomError : function(payload, initiate){
-
-        if(payload.someProperty == true) {
-            return initiate(payload.someProperty.message, 'error');
-        }
-
+    myGlobalToast : function(payload, initiate){
+        
+        // your logic using payload here...
+        
+        // this will initiate the toast
         return initiate("My Deepest Condolence", 'error');
     },
     // my another toast...
@@ -121,13 +127,8 @@ viola !! now you can use your toast in anywhere
 
 
 ```javascript
-// $toasted.global.myCustomError(payload);
-$toasted.global.myCustomError({
-    someProperty : {
-        message : 'a message'
-    },
-    //...
-})
+// send your payload to global toast
+$toasted.global.myGlobalToast(payload);
 ```
 
 ### Credits

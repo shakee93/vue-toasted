@@ -9,3 +9,4 @@ webpack.config.js
 README.md
 *.map
 examples
+test/
