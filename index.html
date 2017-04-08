@@ -203,9 +203,6 @@
     <footer>
         <div class="row">
             <p class="center">
-                <a class="github-button" href="https://github.com/shakee93" data-style="mega" data-count-href="/shakee93/followers" data-count-api="/users/shakee93#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @shakee93 on GitHub">Follow @shakee93</a>
-            </p>
-            <p class="center">
                 <a target="_blank" href="https://twitter.com/shakee93">Twitter</a>
                 <span class="heart"></span>
                 <a target="_blank" href="https://github.com/shakee93/vue-toasted">Github</a>
@@ -250,6 +247,17 @@
                     theme: this.theme,
                     position: this.position,
                     duration : this.duration
+                });
+
+                this.notifyGA();
+            },
+            notifyGA(){
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Toast',
+                    eventAction: 'view-toast',
+                    eventLabel: 'Viewed Toast',
+                    eventValue  : this.$data
                 });
             }
         },
