@@ -1,5 +1,6 @@
 import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
+import {toastObject} from './object';
 
 /**
  * this method will create the toast
@@ -29,19 +30,18 @@ export default function (message, options) {
     options.type = options.type || "default";
 
 
-
     let completeCallback = options.onComplete;
     let className = options.className;
     let displayLength = options.duration;
 
     // Add Theme class to the class name list
-    if(options.theme) {
+    if (options.theme) {
         className = ( (options.className) ? options.className : '' ) + " " + options.theme.trim();
         className = (className) ? className.trim() : className;
     }
 
     // Add Type class to the class name list
-    if(options.type) {
+    if (options.type) {
         className = className + " " + options.type.trim();
     }
 
@@ -57,7 +57,7 @@ export default function (message, options) {
     }
 
 
-    if(container) {
+    if (container) {
         container.className = "";
         container.classList.add(options.position);
     }
@@ -104,7 +104,7 @@ export default function (message, options) {
                         if (typeof(completeCallback) === "function")
                             completeCallback();
                         // Remove toast after it times out
-                        if(this[0].parentNode) {
+                        if (this[0].parentNode) {
                             this[0].parentNode.removeChild(this[0]);
                         }
 
@@ -154,7 +154,11 @@ export default function (message, options) {
             if (opacityPercent < 0)
                 opacityPercent = 0;
 
-            Velocity(toast, {left: deltaX, opacity: opacityPercent}, {duration: 50, queue: false, easing: 'easeOutQuad'});
+            Velocity(toast, {left: deltaX, opacity: opacityPercent}, {
+                duration: 50,
+                queue: false,
+                easing: 'easeOutQuad'
+            });
 
         });
 
@@ -173,7 +177,7 @@ export default function (message, options) {
                             completeCallback();
                         }
 
-                        if(toast.parentNode) {
+                        if (toast.parentNode) {
                             toast.parentNode.removeChild(toast);
                         }
                     }
@@ -194,40 +198,5 @@ export default function (message, options) {
         return toast;
     }
 
-    let el = newToast;
-
-    return {
-        el: el,
-        text: function (text) {
-
-            if (typeof HTMLElement === "object" ? text instanceof HTMLElement : text && typeof text === "object" && text !== null && text.nodeType === 1 && typeof text.nodeName === "string"
-            ) {
-                el.appendChild(text);
-            }
-            else {
-                el.innerHTML = text;
-            }
-
-            return this;
-        },
-        goAway: function (delay = 800) {
-            // Animate toast out
-            setTimeout(function () {
-                Velocity(el, {"opacity": 0, marginTop: '-40px'}, {
-                    duration: 375,
-                    easing: 'easeOutExpo',
-                    queue: false,
-                    complete: function () {
-
-                        if(this[0].parentNode) {
-                            this[0].parentNode.removeChild(this[0]);
-                        }
-
-                    }
-                });
-            }, delay);
-
-            return true;
-        }
-    };
+    return toastObject(newToast);
 };
