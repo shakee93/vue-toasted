@@ -40,15 +40,15 @@
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
       &.success {
-        background: #4CAF50;
+        background: #4CAF50 !important;
       }
 
       &.error {
-        background: #F44336;
+        background: #F44336 !important;
       }
 
       &.info {
-        background: #3F51B5;
+        background: #3F51B5 !important;
       }
 
     }
