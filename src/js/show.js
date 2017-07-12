@@ -1,6 +1,6 @@
 import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
-import {toastObject} from './object';
+import {toastObject, addCloseButton} from './object';
 
 /**
  * this method will create the toast
@@ -29,6 +29,8 @@ export default function (message, options) {
     // normal type will allow the basic color
     options.type = options.type || "default";
 
+    // show close button
+    options.closeButton = options.closeButton || false;
 
     let completeCallback = options.onComplete;
     let className = options.className;
@@ -65,6 +67,8 @@ export default function (message, options) {
     // Select and append toast
     let newToast = createToast(message);
 
+    if(options.closeButton)
+        addCloseButton(newToast);
 
     // only append toast if message is not undefined
     if (message) {

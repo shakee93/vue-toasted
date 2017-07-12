@@ -100,6 +100,7 @@ below are the available options
 | className | custom css class name of the toast                 |                         |   null       |
 | theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
 | onComplete | on complete event of toast          |    a callback function               |   null       |
+| closeButton | display a close button | true, false | false |
 
 ### Reusable Global Toasts
 
