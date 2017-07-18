@@ -25,8 +25,8 @@
             padding: 25px 50px;
         }
 
-        .logo {
-            padding-left: 60px;
+        .logo img {
+            width: 100%;
         }
 
         .theme img {
@@ -80,8 +80,12 @@
             border-radius: 4px;
         }
 
-        .theme, .duration {
+        .duration {
             margin-top: 50px;
+        }
+
+        .code-preview {
+            margin-bottom: 50px;
         }
 
         .position {
@@ -106,15 +110,33 @@
             color: #F44336;
             margin: 4px;
         }
+
+        .no-gutter {
+            margin:0;
+        }
+
+        @media only screen and (max-width : 600px){
+            .btn {
+                display: block;
+            }
+
+            .duration {
+                margin-top: 0;
+            }
+
+
+        }
     </style>
 </head>
 <body>
-<header>
-    <p class="logo">
-        <img src="assets/images/logo.png" alt="" width="250">
-    </p>
-</header>
 <div id="app">
+    <header>
+        <div class="row no-gutter">
+            <div class="col m2 s12 logo">
+                <img src="assets/images/logo.png" alt="Vue Toasted">
+            </div>
+        </div>
+    </header>
     <div class="container buffer">
         <div class="row">
             <p class="center">
@@ -126,7 +148,7 @@
             </p>
         </div>
         <div class="row">
-            <div class="col m6 offset-m3">
+            <div class="col m6 offset-m3 hide-on-small-only code-preview">
                 <p class="label"> Code Preview </p>
                 <pre class="z-depth-2">
                    <code v-html="highlighted" class="language-javascript"></code>
@@ -215,7 +237,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
-<script src="https://unpkg.com/vue-toasted@1.0.27"></script>
+<script src="https://unpkg.com/vue-toasted@1.0.28"></script>
 <script src="assets/js/prism.js"></script>
 
 <script>
