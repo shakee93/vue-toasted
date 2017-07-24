@@ -2,14 +2,14 @@ import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
 import {toastObject} from './object';
 
+
 /**
- * this method will create the toast
+ * parse Options
  *
- * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-export default function (message, options) {
+const parseOptions = function (options) {
 
     // class name to be added on the toast
     options.className = options.className || null;
@@ -29,21 +29,54 @@ export default function (message, options) {
     // normal type will allow the basic color
     options.type = options.type || "default";
 
+    // class name to be added on the toast container
+    options.containerClass = options.containerClass || null;
 
-    let completeCallback = options.onComplete;
-    let className = options.className;
-    let displayLength = options.duration;
+    // check if the fullWidth is enabled
+    options.fullWidth = options.fullWidth || false;
 
-    // Add Theme class to the class name list
-    if (options.theme) {
-        className = ( (options.className) ? options.className : '' ) + " " + options.theme.trim();
-        className = (className) ? className.trim() : className;
+
+    /* transform options */
+
+    // toast class
+    if(options.className && typeof(options.className) === "string") {
+        options.className = options.className.split(' ');
     }
 
-    // Add Type class to the class name list
-    if (options.type) {
-        className = className + " " + options.type.trim();
+    if(!options.className) {
+        options.className = [];
     }
+
+    (options.theme) && options.className.push(options.theme.trim());
+    (options.type) && options.className.push(options.type);
+
+
+    // toast container class
+    if(options.containerClass && typeof(options.containerClass) === "string") {
+        options.containerClass = options.containerClass.split(' ');
+    }
+
+    if(!options.containerClass) {
+        options.containerClass = [];
+    }
+
+    (options.position) && options.containerClass.push(options.position.trim());
+    (options.fullWidth) && options.containerClass.push('full-width');
+
+
+    return options;
+};
+
+/**
+ * this method will create the toast
+ *
+ * @param message
+ * @param options
+ * @returns {{el: *, text: text, goAway: goAway}}
+ */
+export default function (message, options) {
+
+    options = parseOptions(options);
 
     let container = document.getElementById('toasted-container');
 
@@ -52,19 +85,19 @@ export default function (message, options) {
         // create notification container
         container = document.createElement('div');
         container.id = 'toasted-container';
-
         document.body.appendChild(container);
     }
 
-
-    if (container) {
+    // check if the container classes has changed if so update it
+    if(container.className !== options.containerClass.join(' ')) {
         container.className = "";
-        container.classList.add(options.position);
+        options.containerClass.forEach((className) => {
+            container.classList.add(className);
+        });
     }
 
     // Select and append toast
     let newToast = createToast(message);
-
 
     // only append toast if message is not undefined
     if (message) {
@@ -81,8 +114,8 @@ export default function (message, options) {
     });
 
     // Allows timer to be pause while being panned
-    var timeLeft = displayLength;
-    var counterInterval;
+    let timeLeft = options.duration;
+    let counterInterval;
     if (timeLeft != null) {
         counterInterval = setInterval(function () {
             if (newToast.parentNode === null)
@@ -101,8 +134,8 @@ export default function (message, options) {
                     queue: false,
                     complete: function () {
                         // Call the optional callback
-                        if (typeof(completeCallback) === "function")
-                            completeCallback();
+                        if (typeof(options.onComplete) === "function")
+                            options.onComplete();
                         // Remove toast after it times out
                         if (this[0].parentNode) {
                             this[0].parentNode.removeChild(this[0]);
@@ -120,15 +153,15 @@ export default function (message, options) {
     function createToast(html) {
 
         // Create toast
-        var toast = document.createElement('div');
+        let toast = document.createElement('div');
         toast.classList.add('toasted');
-        if (className) {
-            var classes = className.split(' ');
 
-            for (var i = 0, count = classes.length; i < count; i++) {
-                toast.classList.add(classes[i]);
-            }
+        if (options.className) {
+            options.className.forEach((className) => {
+                toast.classList.add(className);
+            });
         }
+
         // If type of parameter is HTML Element
         if (typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName === "string"
         ) {
@@ -140,17 +173,17 @@ export default function (message, options) {
         }
 
         // Bind hammer
-        var hammerHandler = new Hammer(toast, {prevent_default: false});
+        let hammerHandler = new Hammer(toast, {prevent_default: false});
         hammerHandler.on('pan', function (e) {
-            var deltaX = e.deltaX;
-            var activationDistance = 80;
+            let deltaX = e.deltaX;
+            let activationDistance = 80;
 
             // Change toast state
             if (!toast.classList.contains('panning')) {
                 toast.classList.add('panning');
             }
 
-            var opacityPercent = 1 - Math.abs(deltaX / activationDistance);
+            let opacityPercent = 1 - Math.abs(deltaX / activationDistance);
             if (opacityPercent < 0)
                 opacityPercent = 0;
 
@@ -163,8 +196,8 @@ export default function (message, options) {
         });
 
         hammerHandler.on('panend', function (e) {
-            var deltaX = e.deltaX;
-            var activationDistance = 80;
+            let deltaX = e.deltaX;
+            let activationDistance = 80;
 
             // If toast dragged past activation point
             if (Math.abs(deltaX) > activationDistance) {
@@ -173,8 +206,8 @@ export default function (message, options) {
                     easing: 'easeOutExpo',
                     queue: false,
                     complete: function () {
-                        if (typeof(completeCallback) === "function") {
-                            completeCallback();
+                        if (typeof(options.onComplete) === "function") {
+                            options.onComplete();
                         }
 
                         if (toast.parentNode) {

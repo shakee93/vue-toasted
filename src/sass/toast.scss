@@ -3,6 +3,12 @@
   position: fixed;
   z-index: 10000;
 
+  &.full-width {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .toasted {
     top: 35px;
     width: auto;
