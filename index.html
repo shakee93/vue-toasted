@@ -70,6 +70,10 @@
             letter-spacing: 0.6px;
         }
 
+        .switch {
+            margin-left: 24px;
+        }
+
         .input-field {
             margin-top: 0;
         }
@@ -215,6 +219,20 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <p class="label"> Full Width </p>
+                    <div class="row">
+                        <div class="switch">
+                            <label>
+                                Off
+                                <input v-model="fullWidth" type="checkbox">
+                                <span class="lever"></span>
+                                On
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row show-button">
                     <a class="waves-effect waves-light btn" @click="buildToast">Launch Toast</a>
                 </div>
@@ -237,7 +255,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
-<script src="https://unpkg.com/vue-toasted@1.0.28"></script>
+<script src="https://unpkg.com/vue-toasted@1.0.3"></script>
 <script src="assets/js/prism.js"></script>
 
 <script>
@@ -250,7 +268,8 @@
             position: 'top-right',
             theme: "primary",
             text: "Toasted !!",
-            duration: 5000
+            duration: 5000,
+            fullWidth : false
         },
         mounted() {
 
@@ -268,7 +287,8 @@
                 var toast = this.$toasted.show(this.text, {
                     theme: this.theme,
                     position: this.position,
-                    duration : this.duration
+                    duration : this.duration,
+                    fullWidth : this.fullWidth
                 });
 
                 this.notifyGA();
