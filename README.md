@@ -93,13 +93,15 @@ myToast.text("Changing the text !!!").goAway(1500);
 
 below are the available options
 
-| Option    | Description                                    | Values                  | Default  |
-|-----------|------------------------------------------------|-------------------------|----------|
-| position  | position of the toast container    | 'top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left' | 'top-right' | 
-| duration  | display time of the toast                      |    in millisecond        | null     |
-| className | custom css class name of the toast                 |                         |   null       |
-| theme | theme of the toast you prefer                       |    'primary', 'outline', 'bubble'                     |   'primary'       |
-| onComplete | on complete event of toast          |    a callback function               |   null       |
+**Option**|**Type's**|**Default**|**Description**
+-----|-----|-----|-----
+position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
+duration|Number|null|Display time of the toast in millisecond
+fullWidth|Boolean|false|Enable Full Width
+className|String, Array|null|Custom css class name of the toast
+containerClass|String, Array|null|Custom css classes for toast container
+theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
+onComplete|Function|null|Trigger when toast is completed
 
 ### Reusable Global Toasts
 
