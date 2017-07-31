@@ -89,6 +89,22 @@ let myToast = this.$toasted.show("Holla !!");
 myToast.text("Changing the text !!!").goAway(1500);
 ```
 
+#### Icon Support
+Now <a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
+
+```javascript
+{
+    // pass the icon name as string
+    icon : 'check'
+    
+    // or you can pass an object
+    icon : {
+        name : 'watch',
+        after : true // this will append the icon to the end of content
+    }
+}
+```
+
 ### options
 
 below are the available options
@@ -100,6 +116,7 @@ duration|Number|null|Display time of the toast in millisecond
 fullWidth|Boolean|false|Enable Full Width
 className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
+Icon|String, Object|null|Material icon name as string.  <br> `{ name : 'check', after : true} `
 theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
 

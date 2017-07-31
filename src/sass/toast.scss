@@ -27,6 +27,16 @@
       margin-left: 3rem;
     }
 
+    .material-icons {
+      margin-right: .5rem;
+      margin-left: -.4rem;
+
+      &.after {
+        margin-left: .5rem;
+        margin-right: -.4rem;
+      }
+    }
+
     // Templates
 
     &.rounded {

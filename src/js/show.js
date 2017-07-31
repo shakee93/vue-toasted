@@ -35,6 +35,8 @@ const parseOptions = function (options) {
     // check if the fullWidth is enabled
     options.fullWidth = options.fullWidth || false;
 
+    // get icon name
+    options.icon = options.icon || null;
 
     /* transform options */
 
@@ -67,6 +69,103 @@ const parseOptions = function (options) {
     return options;
 };
 
+
+const createToast = function (html, options) {
+
+    // Create toast
+    let toast = document.createElement('div');
+    toast.classList.add('toasted');
+
+    if (options.className) {
+        options.className.forEach((className) => {
+            toast.classList.add(className);
+        });
+    }
+
+    // add material icon if available
+    if(options.icon) {
+
+        if(options.icon.after && options.icon.name) {
+            html += `<i class="material-icons after">${options.icon.name}</i>`
+        }
+        else if(options.icon.name) {
+            html = `<i class="material-icons">${options.icon.name}</i>` + html
+        }
+        else {
+            html = `<i class="material-icons">${options.icon}</i>` + html
+        }
+
+    }
+
+    // If type of parameter is HTML Element
+    if (typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName === "string"
+    ) {
+        toast.appendChild(html);
+    }
+    else {
+        // Insert as text;
+        toast.innerHTML = html;
+    }
+
+    // Bind hammer
+    let hammerHandler = new Hammer(toast, {prevent_default: false});
+    hammerHandler.on('pan', function (e) {
+        let deltaX = e.deltaX;
+        let activationDistance = 80;
+
+        // Change toast state
+        if (!toast.classList.contains('panning')) {
+            toast.classList.add('panning');
+        }
+
+        let opacityPercent = 1 - Math.abs(deltaX / activationDistance);
+        if (opacityPercent < 0)
+            opacityPercent = 0;
+
+        Velocity(toast, {left: deltaX, opacity: opacityPercent}, {
+            duration: 50,
+            queue: false,
+            easing: 'easeOutQuad'
+        });
+
+    });
+
+    hammerHandler.on('panend', function (e) {
+        let deltaX = e.deltaX;
+        let activationDistance = 80;
+
+        // If toast dragged past activation point
+        if (Math.abs(deltaX) > activationDistance) {
+            Velocity(toast, {marginTop: '-40px'}, {
+                duration: 375,
+                easing: 'easeOutExpo',
+                queue: false,
+                complete: function () {
+                    if (typeof(options.onComplete) === "function") {
+                        options.onComplete();
+                    }
+
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }
+            });
+
+        } else {
+            toast.classList.remove('panning');
+            // Put toast back into original position
+            Velocity(toast, {left: 0, opacity: 1}, {
+                duration: 300,
+                easing: 'easeOutExpo',
+                queue: false
+            });
+
+        }
+    });
+
+    return toast;
+};
+
 /**
  * this method will create the toast
  *
@@ -97,7 +196,7 @@ export default function (message, options) {
     }
 
     // Select and append toast
-    let newToast = createToast(message);
+    let newToast = createToast(message, options);
 
     // only append toast if message is not undefined
     if (message) {
@@ -147,88 +246,6 @@ export default function (message, options) {
                 window.clearInterval(counterInterval);
             }
         }, 20);
-    }
-
-
-    function createToast(html) {
-
-        // Create toast
-        let toast = document.createElement('div');
-        toast.classList.add('toasted');
-
-        if (options.className) {
-            options.className.forEach((className) => {
-                toast.classList.add(className);
-            });
-        }
-
-        // If type of parameter is HTML Element
-        if (typeof HTMLElement === "object" ? html instanceof HTMLElement : html && typeof html === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName === "string"
-        ) {
-            toast.appendChild(html);
-        }
-        else {
-            // Insert as text;
-            toast.innerHTML = html;
-        }
-
-        // Bind hammer
-        let hammerHandler = new Hammer(toast, {prevent_default: false});
-        hammerHandler.on('pan', function (e) {
-            let deltaX = e.deltaX;
-            let activationDistance = 80;
-
-            // Change toast state
-            if (!toast.classList.contains('panning')) {
-                toast.classList.add('panning');
-            }
-
-            let opacityPercent = 1 - Math.abs(deltaX / activationDistance);
-            if (opacityPercent < 0)
-                opacityPercent = 0;
-
-            Velocity(toast, {left: deltaX, opacity: opacityPercent}, {
-                duration: 50,
-                queue: false,
-                easing: 'easeOutQuad'
-            });
-
-        });
-
-        hammerHandler.on('panend', function (e) {
-            let deltaX = e.deltaX;
-            let activationDistance = 80;
-
-            // If toast dragged past activation point
-            if (Math.abs(deltaX) > activationDistance) {
-                Velocity(toast, {marginTop: '-40px'}, {
-                    duration: 375,
-                    easing: 'easeOutExpo',
-                    queue: false,
-                    complete: function () {
-                        if (typeof(options.onComplete) === "function") {
-                            options.onComplete();
-                        }
-
-                        if (toast.parentNode) {
-                            toast.parentNode.removeChild(toast);
-                        }
-                    }
-                });
-
-            } else {
-                toast.classList.remove('panning');
-                // Put toast back into original position
-                Velocity(toast, {left: 0, opacity: 1}, {
-                    duration: 300,
-                    easing: 'easeOutExpo',
-                    queue: false
-                });
-
-            }
-        });
-
-        return toast;
     }
 
     return toastObject(newToast);
