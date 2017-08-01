@@ -67,7 +67,7 @@ Vue.toasted.error(message, options)
 ```
 
 
-#### Toast Object
+### Toast Object
 check the examples to see how to manipulate the object.
 ```javascript
 
@@ -90,13 +90,13 @@ myToast.text("Changing the text !!!").goAway(1500);
 ```
 
 
-#### Actions
-:zap: You can have single or multiple actions in the toast. take a look at the example below
+### Actions
 <p align="center">
     <a href="https://github.com/shakee93/vue-toasted" target="_blank">
     <img width="300" src="https://shakee93.github.io/vue-toasted/assets/images/action-preview.jpg">
     </a>
 </p> 
+<p>:zap: You can have single or multiple actions in the toast. take a look at the example below</p>
 
 ```javascript
 {
@@ -127,7 +127,7 @@ myToast.text("Changing the text !!!").goAway(1500);
 ```
 
 
-#### Icons
+### Icons
 :sunny: Now <a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
 
 ```javascript

@@ -4,10 +4,6 @@
     <list default="true" id="e9c2236a-f9f0-4461-af14-f7973748cc99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vue-toasted.min.js" afterPath="$PROJECT_DIR$/dist/vue-toasted.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/object.js" afterPath="$PROJECT_DIR$/src/js/object.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/show.js" afterPath="$PROJECT_DIR$/src/js/show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sass/toast.scss" afterPath="$PROJECT_DIR$/src/sass/toast.scss" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,23 +76,23 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="176">
-                <caret line="184" column="47" lean-forward="true" selection-start-line="184" selection-start-column="47" selection-end-line="184" selection-end-column="47" />
+              <first_editor relative-caret-position="498">
+                <caret line="198" column="17" lean-forward="false" selection-start-line="198" selection-start-column="17" selection-end-line="198" selection-end-column="17" />
                 <folding>
-                  <marker date="1501615870360" expanded="true" signature="2731:3254" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="2791:2889" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="2843:2883" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="2967:3252" ph="[...]" />
-                  <marker date="1501615870360" expanded="true" signature="2977:3095" ph="{&quot;text&quot;: 'Cancel'...}" />
-                  <marker date="1501615870360" expanded="true" signature="3037:3085" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="3105:3246" ph="{&quot;text&quot;: 'Undo'...}" />
-                  <marker date="1501615870360" expanded="true" signature="3163:3236" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="3502:3713" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="3608:3711" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="4895:5230" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="4914:5228" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="4964:5196" ph="{...}" />
-                  <marker date="1501615870360" expanded="true" signature="5036:5131" ph="//..." />
+                  <marker date="1501616386421" expanded="true" signature="2736:3259" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="2796:2894" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="2848:2888" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="2972:3257" ph="[...]" />
+                  <marker date="1501616386421" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
+                  <marker date="1501616386421" expanded="true" signature="3042:3090" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
+                  <marker date="1501616386421" expanded="true" signature="3168:3241" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="3506:3717" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="3612:3715" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="4899:5234" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="4918:5232" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="4968:5200" ph="{...}" />
+                  <marker date="1501616386421" expanded="true" signature="5040:5135" ph="//..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -467,7 +463,7 @@
       <workItem from="1500885208760" duration="7134000" />
       <workItem from="1501397389842" duration="5003000" />
       <workItem from="1501485671234" duration="5038000" />
-      <workItem from="1501598829304" duration="3210000" />
+      <workItem from="1501598829304" duration="3624000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/shakee93/vue-toasted&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
       <created>1489697304580</created>
@@ -644,11 +640,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501486274616</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added actions feature to the toast">
+      <created>1501616002952</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1501616002952</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73900000" />
+    <option name="totallyTimeSpent" value="74314000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -754,7 +757,8 @@
     <MESSAGE value="separated options for parse easily&#10;added container class option&#10;added full width option" />
     <MESSAGE value="documentation updated" />
     <MESSAGE value="added material icon support" />
-    <option name="LAST_COMMIT_MESSAGE" value="added material icon support" />
+    <MESSAGE value="added actions feature to the toast" />
+    <option name="LAST_COMMIT_MESSAGE" value="added actions feature to the toast" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1165,23 +1169,23 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="176">
-            <caret line="184" column="47" lean-forward="true" selection-start-line="184" selection-start-column="47" selection-end-line="184" selection-end-column="47" />
+          <first_editor relative-caret-position="498">
+            <caret line="198" column="17" lean-forward="false" selection-start-line="198" selection-start-column="17" selection-end-line="198" selection-end-column="17" />
             <folding>
-              <marker date="1501615870360" expanded="true" signature="2731:3254" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="2791:2889" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="2843:2883" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="2967:3252" ph="[...]" />
-              <marker date="1501615870360" expanded="true" signature="2977:3095" ph="{&quot;text&quot;: 'Cancel'...}" />
-              <marker date="1501615870360" expanded="true" signature="3037:3085" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="3105:3246" ph="{&quot;text&quot;: 'Undo'...}" />
-              <marker date="1501615870360" expanded="true" signature="3163:3236" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="3502:3713" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="3608:3711" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="4895:5230" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="4914:5228" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="4964:5196" ph="{...}" />
-              <marker date="1501615870360" expanded="true" signature="5036:5131" ph="//..." />
+              <marker date="1501616386421" expanded="true" signature="2736:3259" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="2796:2894" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="2848:2888" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="2972:3257" ph="[...]" />
+              <marker date="1501616386421" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
+              <marker date="1501616386421" expanded="true" signature="3042:3090" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
+              <marker date="1501616386421" expanded="true" signature="3168:3241" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="3506:3717" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="3612:3715" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="4899:5234" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="4918:5232" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="4968:5200" ph="{...}" />
+              <marker date="1501616386421" expanded="true" signature="5040:5135" ph="//..." />
             </folding>
           </first_editor>
           <second_editor />
