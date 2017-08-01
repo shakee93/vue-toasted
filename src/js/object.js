@@ -5,7 +5,7 @@ export const goAway = (el, delay) => {
     // Animate toast out
     setTimeout(function () {
         Velocity(el, {"opacity": 0, marginTop: '-40px'}, {
-            duration: 375,
+            duration: 200,
             easing: 'easeOutExpo',
             queue: false,
             complete: function () {

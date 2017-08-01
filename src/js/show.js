@@ -38,6 +38,9 @@ const parseOptions = function (options) {
     // get icon name
     options.icon = options.icon || null;
 
+    // get icon name
+    options.action = options.action || null;
+
     /* transform options */
 
     // toast class
@@ -94,7 +97,17 @@ const createToast = function (html, options) {
         else {
             html = `<i class="material-icons">${options.icon}</i>` + html
         }
+    }
 
+    if(options.action) {
+
+        let elAction = document.createElement('a');
+        elAction.classList.add('action');
+        elAction.classList.add('ripple');
+
+        if(options.action.text) {
+            elAction.text = options.action.text
+        }
     }
 
     // If type of parameter is HTML Element
@@ -106,6 +119,19 @@ const createToast = function (html, options) {
         // Insert as text;
         toast.innerHTML = html;
     }
+
+    // create and append actions
+    if(Array.isArray(options.action)) {
+        options.action.forEach((action) => {
+            let el = createAction(action);
+            if(el) toast.appendChild(el)
+        })
+    }
+    else if (typeof options.action === 'object') {
+        let action = createAction(options.action);
+        if(action) toast.appendChild(action)
+    }
+
 
     // Bind hammer
     let hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -164,6 +190,52 @@ const createToast = function (html, options) {
     });
 
     return toast;
+};
+
+/**
+ * Create Action for the toast
+ *
+ * @param action
+ * @returns {Element}
+ */
+const createAction = (action) => {
+
+    if (!action) {
+        return;
+    }
+
+    let el = document.createElement('a');
+    el.classList.add('action');
+    el.classList.add('ripple');
+
+    el.text = action.text
+
+    if(action.href) {
+        el.href = action.href
+    }
+
+    if(action.class) {
+
+        switch (typeof action.class) {
+            case 'string' :
+                action.class.split(' ').forEach((className) => {
+                    el.classList.add(className)
+                })
+                break;
+            case 'array' :
+                action.class.forEach((className) => {
+                    el.classList.add(className)
+                })
+        }
+    }
+
+    if(action.onClick && typeof action.onClick === 'function') {
+        el.addEventListener('click', (e) => {
+            action.onClick(e)
+        })
+    }
+
+    return el;
 };
 
 /**

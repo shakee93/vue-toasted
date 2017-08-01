@@ -89,8 +89,46 @@ let myToast = this.$toasted.show("Holla !!");
 myToast.text("Changing the text !!!").goAway(1500);
 ```
 
-#### Icon Support
-Now <a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
+
+#### Actions
+:zap: You can have single or multiple actions in the toast. take a look at the example below
+<p align="center">
+    <a href="https://github.com/shakee93/vue-toasted" target="_blank">
+    <img width="300" src="https://shakee93.github.io/vue-toasted/assets/images/action-preview.jpg">
+    </a>
+</p> 
+
+```javascript
+{
+    // you can pass a single action as below
+    action : {
+        text : 'Cancel',
+        onClick : (e) => {
+            toast.goAway(0);
+        }
+    },
+
+    // you can pass a multiple actions as an array of actions
+    action : [
+        {
+            text : 'Cancel',
+            onClick : (e) => {
+                toast.goAway(0);
+            }
+        },
+        {
+            text : 'Undo',
+            onClick : (e) => {
+                this.$router.push({ name : 'somewhere' })
+            }
+        }
+    ]
+}
+```
+
+
+#### Icons
+:sunny: Now <a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
 
 ```javascript
 {
@@ -113,10 +151,11 @@ below are the available options
 -----|-----|-----|-----
 position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
 duration|Number|null|Display time of the toast in millisecond
+action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, onClick : Function } `
 fullWidth|Boolean|false|Enable Full Width
 className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
-Icon|String, Object|null|Material icon name as string.  <br> `{ name : 'check', after : true} `
+Icon|String, Object|null|Material icon name as string.  <br> `{ name : String , after : Boolean } `
 theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
 
@@ -134,7 +173,8 @@ Vue.use(Toasted, {
         
         // your logic using payload here...
         
-        // this will initiate the toast
+        // initiate(Message/html, option/string)
+        // error/show/success/info or an option object
         return initiate("My Deepest Condolence", 'error');
     },
     // my another toast...
