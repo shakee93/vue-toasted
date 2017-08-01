@@ -88,25 +88,21 @@ const createToast = function (html, options) {
     // add material icon if available
     if(options.icon) {
 
+        let iel = document.createElement('i');
+        iel.classList.add('material-icons');
+
         if(options.icon.after && options.icon.name) {
-            html += `<i class="material-icons after">${options.icon.name}</i>`
+            iel.textContent = options.icon.name;
+            iel.classList.add('after');
+            html += iel.outerHTML
         }
         else if(options.icon.name) {
-            html = `<i class="material-icons">${options.icon.name}</i>` + html
+            iel.textContent = options.icon.name;
+            html = iel.outerHTML + html
         }
         else {
-            html = `<i class="material-icons">${options.icon}</i>` + html
-        }
-    }
-
-    if(options.action) {
-
-        let elAction = document.createElement('a');
-        elAction.classList.add('action');
-        elAction.classList.add('ripple');
-
-        if(options.action.text) {
-            elAction.text = options.action.text
+            iel.textContent = options.icon;
+            html = iel.outerHTML + html
         }
     }
 
@@ -208,10 +204,26 @@ const createAction = (action) => {
     el.classList.add('action');
     el.classList.add('ripple');
 
-    el.text = action.text
+    if(action.text) {
+        el.text = action.text
+    }
 
     if(action.href) {
         el.href = action.href
+    }
+
+    if(action.icon) {
+
+        // add icon class to style it
+        el.classList.add('icon');
+
+        // create icon element
+        let iel = document.createElement('i');
+        iel.classList.add('material-icons');
+        iel.textContent = action.icon
+
+        // append it to the button
+        el.appendChild(iel);
     }
 
     if(action.class) {
@@ -231,7 +243,12 @@ const createAction = (action) => {
 
     if(action.onClick && typeof action.onClick === 'function') {
         el.addEventListener('click', (e) => {
-            action.onClick(e)
+
+            if(action.onClick) {
+                e.preventDefault()
+                action.onClick(e)
+            }
+
         })
     }
 

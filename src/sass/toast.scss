@@ -81,6 +81,22 @@
       font-weight: 600;
       cursor: pointer;
 
+      &.icon {
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .material-icons {
+          margin-right : 0;
+          margin-left: 4px;
+        }
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+
       &:hover {
         text-decoration: underline;
       }
