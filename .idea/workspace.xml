@@ -7,7 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/vue-toasted.min.js" afterPath="$PROJECT_DIR$/dist/vue-toasted.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/js/show.js" afterPath="$PROJECT_DIR$/src/js/show.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sass/toast.scss" afterPath="$PROJECT_DIR$/src/sass/toast.scss" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,25 +32,15 @@
     <favorites_list name="toast" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="show.js" pinned="false" current-in-tab="false">
+    <leaf>
+      <file leaf-file-name="show.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/show.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
+            <state relative-caret-position="236">
+              <caret line="177" column="27" lean-forward="true" selection-start-line="177" selection-start-column="27" selection-end-line="177" selection-end-column="27" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -60,23 +49,23 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="268">
-                <caret line="155" column="37" lean-forward="false" selection-start-line="155" selection-start-column="37" selection-end-line="155" selection-end-column="37" />
+              <first_editor relative-caret-position="291">
+                <caret line="156" column="72" lean-forward="true" selection-start-line="156" selection-start-column="72" selection-end-line="156" selection-end-column="72" />
                 <folding>
-                  <marker date="1501618576474" expanded="true" signature="2736:3259" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="2796:2894" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="2848:2888" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="2972:3257" ph="[...]" />
-                  <marker date="1501618576474" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
-                  <marker date="1501618576474" expanded="true" signature="3042:3090" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
-                  <marker date="1501618576474" expanded="true" signature="3168:3241" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="3506:3717" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="3612:3715" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="4914:5249" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="4933:5247" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="4983:5215" ph="{...}" />
-                  <marker date="1501618576474" expanded="true" signature="5055:5150" ph="//..." />
+                  <marker date="1501662333639" expanded="true" signature="2736:3259" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="2796:2894" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="2848:2888" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="2972:3257" ph="[...]" />
+                  <marker date="1501662333639" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
+                  <marker date="1501662333639" expanded="true" signature="3042:3090" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
+                  <marker date="1501662333639" expanded="true" signature="3168:3241" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="3506:3717" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="3612:3715" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="4934:5269" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="4953:5267" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="5003:5235" ph="{...}" />
+                  <marker date="1501662333639" expanded="true" signature="5075:5170" ph="//..." />
                 </folding>
               </first_editor>
               <second_editor />
@@ -84,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="toast.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sass/toast.scss">
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="90" column="27" lean-forward="false" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
+            <state relative-caret-position="138">
+              <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -103,8 +92,10 @@
       <find>setEl</find>
       <find>className</find>
       <find>newToast</find>
-      <find>createAction</find>
       <find>conso</find>
+      <find>createAction</find>
+      <find>createToast</find>
+      <find>toastObject</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -194,6 +185,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -287,7 +279,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -318,7 +309,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.Publish">
+  <component name="RunManager" selected="npm.Build Watch App">
     <configuration default="true" type="CompoundRunConfigurationType" factoryName="Compound Run Configuration">
       <method />
     </configuration>
@@ -448,7 +439,8 @@
       <workItem from="1500885208760" duration="7134000" />
       <workItem from="1501397389842" duration="5003000" />
       <workItem from="1501485671234" duration="5038000" />
-      <workItem from="1501598829304" duration="5919000" />
+      <workItem from="1501598829304" duration="6213000" />
+      <workItem from="1501661924807" duration="462000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/shakee93/vue-toasted&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;">
       <created>1489697304580</created>
@@ -639,11 +631,18 @@
       <option name="project" value="LOCAL" />
       <updated>1501616394653</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added icon support to actions">
+      <created>1501618692874</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1501618692874</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76609000" />
+    <option name="totallyTimeSpent" value="77365000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -658,12 +657,12 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33661118" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3419062" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5030257" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47394958" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3764706" sideWeight="0.4969743" order="2" side_tool="false" content_ui="tabs" />
@@ -725,7 +724,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Merge branch 'master' of https://github.com/shakee93/vue-toasted&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="Demo Gif Added" />
     <MESSAGE value="Updated Gif" />
     <MESSAGE value="cleaned dependencies" />
@@ -750,7 +748,8 @@
     <MESSAGE value="added material icon support" />
     <MESSAGE value="added actions feature to the toast" />
     <MESSAGE value="documentation updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="documentation updated" />
+    <MESSAGE value="added icon support to actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="added icon support to actions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1084,7 +1083,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1092,9 +1090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#22#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1102,9 +1097,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#22#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1120,7 +1112,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1128,7 +1119,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
           <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1136,51 +1126,50 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="90" column="27" lean-forward="false" selection-start-line="90" selection-start-column="27" selection-end-line="90" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="268">
-            <caret line="155" column="37" lean-forward="false" selection-start-line="155" selection-start-column="37" selection-end-line="155" selection-end-column="37" />
+          <first_editor relative-caret-position="291">
+            <caret line="156" column="72" lean-forward="true" selection-start-line="156" selection-start-column="72" selection-end-line="156" selection-end-column="72" />
             <folding>
-              <marker date="1501618576474" expanded="true" signature="2736:3259" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="2796:2894" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="2848:2888" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="2972:3257" ph="[...]" />
-              <marker date="1501618576474" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
-              <marker date="1501618576474" expanded="true" signature="3042:3090" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
-              <marker date="1501618576474" expanded="true" signature="3168:3241" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="3506:3717" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="3612:3715" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="4914:5249" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="4933:5247" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="4983:5215" ph="{...}" />
-              <marker date="1501618576474" expanded="true" signature="5055:5150" ph="//..." />
+              <marker date="1501662333639" expanded="true" signature="2736:3259" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="2796:2894" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="2848:2888" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="2972:3257" ph="[...]" />
+              <marker date="1501662333639" expanded="true" signature="2982:3100" ph="{&quot;text&quot;: 'Cancel'...}" />
+              <marker date="1501662333639" expanded="true" signature="3042:3090" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="3110:3251" ph="{&quot;text&quot;: 'Undo'...}" />
+              <marker date="1501662333639" expanded="true" signature="3168:3241" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="3506:3717" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="3612:3715" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="4934:5269" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="4953:5267" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="5003:5235" ph="{...}" />
+              <marker date="1501662333639" expanded="true" signature="5075:5170" ph="//..." />
             </folding>
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/show.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="224" column="34" lean-forward="true" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="138">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/src/js/show.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding />
+        <state relative-caret-position="236">
+          <caret line="177" column="27" lean-forward="true" selection-start-line="177" selection-start-column="27" selection-end-line="177" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

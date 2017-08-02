@@ -116,18 +116,6 @@ const createToast = function (html, options) {
         toast.innerHTML = html;
     }
 
-    // create and append actions
-    if(Array.isArray(options.action)) {
-        options.action.forEach((action) => {
-            let el = createAction(action);
-            if(el) toast.appendChild(el)
-        })
-    }
-    else if (typeof options.action === 'object') {
-        let action = createAction(options.action);
-        if(action) toast.appendChild(action)
-    }
-
 
     // Bind hammer
     let hammerHandler = new Hammer(toast, {prevent_default: false});
@@ -185,6 +173,18 @@ const createToast = function (html, options) {
         }
     });
 
+    // create and append actions
+    if(Array.isArray(options.action)) {
+        options.action.forEach((action) => {
+            let el = createAction(action, toastObject(toast));
+            if(el) toast.appendChild(el)
+        })
+    }
+    else if (typeof options.action === 'object') {
+        let action = createAction(options.action, toastObject(toast));
+        if(action) toast.appendChild(action)
+    }
+
     return toast;
 };
 
@@ -194,7 +194,7 @@ const createToast = function (html, options) {
  * @param action
  * @returns {Element}
  */
-const createAction = (action) => {
+const createAction = (action, toastObject) => {
 
     if (!action) {
         return;
@@ -246,7 +246,7 @@ const createAction = (action) => {
 
             if(action.onClick) {
                 e.preventDefault()
-                action.onClick(e)
+                action.onClick(e, toastObject)
             }
 
         })

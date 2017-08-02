@@ -151,7 +151,7 @@ below are the available options
 -----|-----|-----|-----
 position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
 duration|Number|null|Display time of the toast in millisecond
-action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function } `
+action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function(event, toastObject) } `
 fullWidth|Boolean|false|Enable Full Width
 className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
