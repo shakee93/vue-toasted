@@ -5,9 +5,12 @@
     <link rel="shortcut icon" type="image/png" href="https://github.com/fluidicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <link rel="stylesheet" href="assets/js/prism.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -20,6 +23,12 @@
 
     </script>
     <style>
+
+        #app, body {
+            font-family: 'Roboto', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
         header {
             background: #FAFAFA;
             padding: 25px 50px;
@@ -85,7 +94,7 @@
         }
 
         .duration {
-            margin-top: 50px;
+            margin-top: 15px;
         }
 
         .code-preview {
@@ -117,6 +126,35 @@
 
         .no-gutter {
             margin:0;
+        }
+
+        .autocomplete-content li img {
+            opacity: .4;
+            height: 30px;
+            width: 30px;
+            margin: 10px 15px;
+        }
+
+        .toasted.primary {
+            font-weight: 500 !important;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .label.flex i {
+            margin-left: 9px;
+            margin-top: -2px;
+        }
+
+        .actions .input-field.inline {
+            width: 160px;
+        }
+
+        .seperator {
+            border-right: 1px solid #e8e8e8;
+            margin-right: 29px;
         }
 
         @media only screen and (max-width : 600px){
@@ -158,7 +196,7 @@
                    <code v-html="highlighted" class="language-javascript"></code>
                </pre>
             </div>
-            <div class="col s12 offset-s0 m4 offset-m2">
+            <div class="col s12 offset-s0 m4 offset-m2 seperator">
                 <div class="row theme">
                     <p class="label"> Theme </p>
                     <p>
@@ -181,6 +219,27 @@
                         </label>
                     </p>
                 </div>
+
+                <div class="row actions">
+                    <p class="label">Actions</p>
+
+                    <div class="col s11">
+                        <ul class="collection with-header">
+                            <li class="collection-header">
+                                <div class="input-field inline">
+                                    <input  type="text" v-model="new_action" @keyup.enter="addAction()">
+                                </div>
+                                <a class="btn-floating waves-effect waves-light green" @click="addAction()"><i class="material-icons">add</i></a>
+
+                            </li>
+                            <li class="collection-item" v-for="(action, index) in actions">
+                                {{ action.text }}
+                                <a href="#!" class="secondary-content"  @click="actions.splice(index, 1)"><i class="material-icons">close</i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
                 <div class="row position">
                     <p class="label"> Container Position </p>
                     <div class="row">
@@ -194,6 +253,9 @@
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
             <div class="col s12 offset-s0 m4">
                 <div class="row duration">
@@ -220,6 +282,22 @@
                 </div>
 
                 <div class="row">
+                    <p class="label flex">
+                        Pick Icon
+                        <i class="material-icons" v-text="icon"></i>
+
+                    </p>
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input type="text" id="autocomplete-input" v-model="icon" class="autocomplete">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <p class="label"> Full Width </p>
                     <div class="row">
                         <div class="switch">
@@ -234,7 +312,8 @@
                 </div>
 
                 <div class="row show-button">
-                    <a class="waves-effect waves-light btn" @click="buildToast">Launch Toast</a>
+                    <a class="waves-effect waves-light btn" @click="buildToast">
+                        Launch Toast</a>
                 </div>
             </div>
         </div>
@@ -253,14 +332,193 @@
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
-<script src="https://unpkg.com/vue-toasted@1.0.3"></script>
+<script src="https://unpkg.com/vue-toasted@1.0.33-alpha.1"></script>
 <script src="assets/js/prism.js"></script>
 
 <script>
 
     Vue.use(Toasted);
+
+    var icons = [
+        "3d_rotation",
+        "accessibility",
+        "accessible",
+        "account_balance",
+        "account_balance_wallet",
+        "account_box",
+        "account_circle",
+        "add_shopping_cart",
+        "alarm",
+        "alarm_add",
+        "alarm_off",
+        "alarm_on",
+        "all_out",
+        "android",
+        "announcement",
+        "aspect_ratio",
+        "assessment",
+        "assignment",
+        "assignment_ind",
+        "assignment_late",
+        "assignment_return",
+        "assignment_returned",
+        "assignment_turned_in",
+        "backup",
+        "book",
+        "bookmark",
+        "bookmark_border",
+        "bug_report",
+        "build",
+        "cached",
+        "camera_enhance",
+        "card_giftcard",
+        "card_membership",
+        "card_travel",
+        "change_history",
+        "check_circle",
+        "chrome_reader_mode",
+        "class",
+        "code",
+        "compare_arrows",
+        "copyright",
+        "credit_card",
+        "dashboard",
+        "date_range",
+        "delete",
+        "delete_forever",
+        "description",
+        "dns",
+        "done",
+        "done_all",
+        "donut_large",
+        "donut_small",
+        "eject",
+        "euro_symbol",
+        "event",
+        "event_seat",
+        "exit_to_app",
+        "explore",
+        "extension",
+        "face",
+        "favorite",
+        "favorite_border",
+        "feedback",
+        "find_in_page",
+        "find_replace",
+        "fingerprint",
+        "flight_land",
+        "flight_takeoff",
+        "flip_to_back",
+        "flip_to_front",
+        "g_translate",
+        "gavel",
+        "get_app",
+        "gif",
+        "grade",
+        "group_work",
+        "help",
+        "help_outline",
+        "highlight_off",
+        "history",
+        "home",
+        "hourglass_empty",
+        "hourglass_full",
+        "http",
+        "https",
+        "important_devices",
+        "info",
+        "info_outline",
+        "input",
+        "invert_colors",
+        "label",
+        "label_outline",
+        "language",
+        "launch",
+        "lightbulb_outline",
+        "line_style",
+        "line_weight",
+        "list",
+        "lock",
+        "lock_open",
+        "lock_outline",
+        "loyalty",
+        "markunread_mailbox",
+        "motorcycle",
+        "note_add",
+        "offline_pin",
+        "opacity",
+        "open_in_browser",
+        "open",
+        "open_with",
+        "pageview",
+        "pan_tool",
+        "payment",
+        "perm_camera_mic",
+        "perm_contact_calendar",
+        "perm_data_setting",
+        "play_for_work",
+        "picture_in_picture_alt",
+        "picture_in_picture",
+        "pets",
+        "perm_scan_wifi",
+        "perm_phone_msg",
+        "perm_media",
+        "perm_identity",
+        "perm_device_information",
+        "redeem",
+        "record_voice_over",
+        "receipt",
+        "question_answer",
+        "query_builder",
+        "print",
+        "pregnant_woman",
+        "power",
+        "polymer",
+        "remove_shopping_cart",
+        "reorder",
+        "report_problem",
+        "restore",
+        "restore_page",
+        "room",
+        "rounded_corner",
+        "rowing",
+        "schedule",
+        "search",
+        "settings",
+        "settings_applications",
+        "settings_backup_restore",
+        "settings_bluetooth",
+        "settings_brightness",
+        "settings_cell",
+        "settings_ethernet",
+        "settings_input_antenna",
+        "settings_input_component",
+        "settings_input_composite",
+        "settings_input_hdmi",
+        "settings_input_svideo",
+        "settings_overscan",
+        "settings_phone",
+        "settings_power",
+        "settings_remote",
+        "settings_voice",
+        "shop",
+        "shop_two",
+        "shopping_basket",
+        "shopping_cart",
+        "speaker_notes",
+        "speaker_notes_off",
+        "spellcheck",
+        "star_rate",
+        "stars"
+    ];
+
+    var mappedIcons = {};
+
+    icons.forEach(function (icon) {
+        mappedIcons[icon] = 'https://storage.googleapis.com/material-icons/external-assets/v4/icons/svg/ic_' + icon + '_black_18px.svg';
+    });
 
     new Vue({
         el: '#app',
@@ -269,18 +527,33 @@
             theme: "primary",
             text: "Toasted !!",
             duration: 5000,
-            fullWidth : false
+            icon : 'hourglass_empty',
+            fullWidth : false,
+            actions : [],
+            new_action: null
         },
         mounted() {
 
             var self = this;
             var duration_el = $('#duration');
+            var autocomplete = $('input.autocomplete');
 
             duration_el.material_select();
             duration_el.on('change', function () {
                self.duration = $(this).val();
             });
 
+            $(document).ready(function () {
+
+                autocomplete.autocomplete({
+                    data: mappedIcons,
+                    limit: 10, // The max amount of results that can be shown at once. Default: Infinity.
+                    onAutocomplete: function(val) {
+                        self.icon = val;
+                    },
+                    minLength: 1, // The minimum length of the input for the autocomplete to start. Default: 1.
+                });
+            })
         },
         methods: {
             buildToast(){
@@ -288,7 +561,9 @@
                     theme: this.theme,
                     position: this.position,
                     duration : this.duration,
-                    fullWidth : this.fullWidth
+                    fullWidth : this.fullWidth,
+                    icon : this.icon,
+                    action : this.actions
                 });
 
                 this.notifyGA();
@@ -301,6 +576,20 @@
                     eventLabel: 'Viewed Toast',
                     eventValue  : this.$data
                 });
+            },
+            addAction(){
+
+                if(!this.new_action) {
+                    return;
+                }
+
+                this.actions.push({
+                    text : this.new_action,
+                    onClick : function (e, t) {
+                        t.goAway(0);
+                    }
+                });
+                this.new_action = null;
             }
         },
         computed : {

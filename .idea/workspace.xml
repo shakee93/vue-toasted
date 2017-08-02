@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="beff0b98-0b34-4823-b3dc-4cd78e116eca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/images/action-preview.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,10 +21,11 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+            <state relative-caret-position="183">
+              <caret line="594" column="20" lean-forward="true" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#12718#16659#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -48,6 +49,14 @@
       <find>Vel</find>
       <find>jQuery</find>
       <find>latest</find>
+      <find>container posi</find>
+      <find>face</find>
+      <find>action</find>
+      <find>inlin</find>
+      <find>duration</find>
+      <find>.duration</find>
+      <find>full</find>
+      <find>vue-toasted</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -119,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -167,6 +175,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,7 +301,8 @@
       <workItem from="1500363605938" duration="2406000" />
       <workItem from="1500893187142" duration="28000" />
       <workItem from="1500896009153" duration="919000" />
-      <workItem from="1501601072263" duration="60000" />
+      <workItem from="1501601072263" duration="5284000" />
+      <workItem from="1501658041480" duration="5169000" />
     </task>
     <task id="LOCAL-00001" summary="es6 compiled">
       <created>1488529756683</created>
@@ -420,17 +430,24 @@
       <option name="project" value="LOCAL" />
       <updated>1500896326614</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="action preview image added">
+      <created>1501601140082</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1501601140082</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78297000" />
+    <option name="totallyTimeSpent" value="88690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3464448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3517398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -473,7 +490,8 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="responsiveness on mobile layout fixed" />
     <MESSAGE value="Full Width Option added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Full Width Option added" />
+    <MESSAGE value="action preview image added" />
+    <option name="LAST_COMMIT_MESSAGE" value="action preview image added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -579,10 +597,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+        <state relative-caret-position="183">
+          <caret line="594" column="20" lean-forward="true" selection-start-line="594" selection-start-column="20" selection-end-line="594" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#12718#16659#0" expanded="false" />
           </folding>
         </state>
       </provider>
