@@ -217,6 +217,14 @@
   #toasted-container {
     max-width: 86%;
 
+    &:not(.full-width) {
+      &.top-center, &.bottom-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
     &.top-right {
       top: 10%;
       right: 7%;
