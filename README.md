@@ -18,7 +18,7 @@ issues and pr's are always welcome
 Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> Interactive Demo </a> here.
 
 <p align="center">
-    <img src="https://shakee93.github.io/vue-toasted/assets/images/vue-toasted-demo-x2.gif">
+    <img src="https://shakee93.github.io/vue-toasted/assets/images/vue-toasted-demo-x3.gif">
 </p>
  
 ## Usage
