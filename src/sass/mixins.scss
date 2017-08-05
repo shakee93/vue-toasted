@@ -1,0 +1,72 @@
+@mixin fit-to-screen() {
+  min-width: 100%;
+
+  .toasted:first-child {
+    margin-top: 0;
+  }
+
+  &.top-right {
+    top: 0;
+    right: 0;
+  }
+
+  &.top-left {
+    top: 0;
+    left: 0;
+  }
+
+  &.top-center {
+    top: 0;
+    left: 0;
+    transform: translateX(0);
+  }
+
+  &.bottom-right {
+    right: 0;
+    bottom: 0;
+  }
+
+  &.bottom-left {
+    left: 0;
+    bottom: 0;
+  }
+
+  &.bottom-center {
+    left: 0;
+    bottom: 0;
+    transform: translateX(0);
+  }
+}
+
+@mixin ripple(){
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+
+  &.dark:after {
+    background-image: radial-gradient(circle, #040405 10%, transparent 10.01%);
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, #d0e3ec 10%, transparent 10.01%);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    transform: scale(10, 10);
+    opacity: 0;
+    transition: transform .5s, opacity 1s;
+  }
+
+  &:active:after {
+    transform: scale(0, 0);
+    opacity: .2;
+    transition: 0s;
+  }
+}

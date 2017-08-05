@@ -1,47 +1,74 @@
+@import "mixins";
+@import "themes";
+
 #toasted-container {
   display: block;
   position: fixed;
   z-index: 10000;
 
-  .ripple {
-    position: relative;
-    overflow: hidden;
-    transform: translate3d(0, 0, 0);
-
-    &.dark:after {
-      background-image: radial-gradient(circle, #040405 10%, transparent 10.01%);
-    }
-
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      background-image: radial-gradient(circle, #d0e3ec 10%, transparent 10.01%);
-      background-repeat: no-repeat;
-      background-position: 50%;
-      transform: scale(10,10);
-      opacity: 0;
-      transition: transform .5s, opacity 1s;
-    }
-
-    &:active:after {
-      transform: scale(0,0);
-      opacity: .2;
-      transition: 0s;
-    }
-  }
-
   &.full-width {
     display: flex;
     flex-direction: column;
+    max-width: 86%;
     width: 100%;
+
+    // check if user needs this to be fitted into screen
+    &.fit-to-screen {
+      @include fit-to-screen
+    }
   }
 
+  // Positioning
+  &:not(.full-width) {
+    &.top-center, &.bottom-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &.top-right {
+    top: 10%;
+    right: 7%;
+  }
+
+  &.top-left {
+    top: 10%;
+    left: 7%;
+  }
+
+  &.top-center {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.bottom-right {
+    right: 5%;
+    bottom: 7%;
+  }
+
+  &.bottom-left {
+    left: 5%;
+    bottom: 7%;
+  }
+
+  &.bottom-center {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 7%;
+  }
+
+  // fix positioning floating
+  &.top-left .toasted, &.bottom-left .toasted {
+    float: left;
+  }
+
+  &.top-right .toasted, &.bottom-right .toasted {
+    float: right;
+  }
+
+  // toast element styling
   .toasted {
     top: 35px;
     width: auto;
@@ -54,11 +81,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    .btn, .btn-flat {
-      margin: 0;
-      margin-left: 3rem;
-    }
+    box-sizing: inherit;
 
     .material-icons {
       margin-right: .5rem;
@@ -70,6 +93,7 @@
       }
     }
 
+    // Toast Action Styling
     .action {
       text-decoration: none;
       font-size: 0.8rem;
@@ -88,7 +112,7 @@
         justify-content: center;
 
         .material-icons {
-          margin-right : 0;
+          margin-right: 0;
           margin-left: 4px;
         }
 
@@ -101,183 +125,17 @@
         text-decoration: underline;
       }
     }
-
-    // Templates
-
-    &.rounded {
-      border-radius: 24px;
-    }
-
-    // Primary
-    &.primary {
-      border-radius: 2px;
-      min-height: 38px;
-      line-height: 1.1em;
-      background-color: #353535;
-      padding: 0 20px;
-      font-size: 15px;
-      font-weight: 300;
-      color: #fff;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-      &.success {
-        background: #4CAF50;
-      }
-
-      &.error {
-        background: #F44336;
-      }
-
-      &.info {
-        background: #3F51B5;
-      }
-
-      .action {
-        color: #a1c2fa;
-      }
-    }
-
-    // Bubble
-    &.bubble {
-      border-radius: 30px;
-      min-height: 38px;
-      line-height: 1.1em;
-      background-color: #FF7043;
-      padding: 0 20px;
-      font-size: 15px;
-      font-weight: 300;
-      color: #fff;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-      &.success {
-        background: #4CAF50;
-      }
-
-      &.error {
-        background: #F44336;
-      }
-
-      &.info {
-        background: #3F51B5;
-      }
-
-      .action {
-        color: #8e2b0c;
-      }
-    }
-
-    &.outline {
-      border-radius: 30px;
-      min-height: 38px;
-      line-height: 1.1em;
-      background-color: white;
-      border: 1px solid #676767;
-      padding: 0 20px;
-      font-size: 15px;
-      color: #676767;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      font-weight: bold;
-
-      &.success {
-        color: #4CAF50;
-        border-color: #4CAF50;
-      }
-
-      &.error {
-        color: #F44336;
-        border-color: #F44336;
-      }
-
-      &.info {
-        color: #3F51B5;
-        border-color: #3F51B5;
-      }
-
-      .action {
-        color: #607d8b;
-      }
-    }
   }
 }
 
 @media only screen and (max-width: 600px) {
   #toasted-container {
-    min-width: 100%;
-    bottom: 0%;
-  }
-}
+    @include fit-to-screen;
 
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-  #toasted-container {
-    max-width: 90%;
-  }
-}
-
-@media only screen and (min-width: 601px) {
-  #toasted-container {
-    max-width: 86%;
-
-    &:not(.full-width) {
-      &.top-center, &.bottom-center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    .toasted {
+      // 40px is padding of a basic toast theme
+      min-width: calc(100% - 40px);
+      border-radius: 0;
     }
-
-    &.top-right {
-      top: 10%;
-      right: 7%;
-    }
-
-    &.top-left {
-      top: 10%;
-      left: 7%;
-    }
-
-    &.top-center {
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &.bottom-right {
-      right: 5%;
-      bottom: 7%;
-    }
-
-    &.bottom-left {
-      left: 5%;
-      bottom: 7%;
-    }
-
-    &.bottom-center {
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 7%;
-    }
-
-    &.top-left .toasted, &.bottom-left .toasted {
-      float: left;
-    }
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .toasted {
-    width: 100%;
-    border-radius: 0;
-  }
-}
-
-@media only screen and (min-width: 601px) and (max-width: 992px) {
-  .toasted {
-    float: left;
-  }
-}
-
-@media only screen and (min-width: 993px) {
-  .toasted {
-    float: right;
   }
 }
