@@ -103,7 +103,7 @@ myToast.text("Changing the text !!!").goAway(1500);
     // you can pass a single action as below
     action : {
         text : 'Cancel',
-        onClick : (e) => {
+        onClick : (e, toastObject) => {
             toast.goAway(0);
         }
     },
@@ -112,13 +112,13 @@ myToast.text("Changing the text !!!").goAway(1500);
     action : [
         {
             text : 'Cancel',
-            onClick : (e) => {
+            onClick : (e, toastObject) => {
                 toast.goAway(0);
             }
         },
         {
             text : 'Undo',
-            onClick : (e) => {
+            onClick : (e, toastObject) => {
                 this.$router.push({ name : 'somewhere' })
             }
         }
@@ -153,41 +153,84 @@ position|String|'top-right'|Position of the toast container <br> **['top-right',
 duration|Number|null|Display time of the toast in millisecond
 action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function(event, toastObject) } `
 fullWidth|Boolean|false|Enable Full Width
+fitToScreen|Boolean|false|Fits to Screen on Full Width
 className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
 Icon|String, Object|null|Material icon name as string.  <br> `{ name : String , after : Boolean } `
+type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
 theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
 
-### Reusable Global Toasts
+### Custom Toast Registration
 
-you can register your global toasts under `globalToasts`. they will be available globally for use in `$toasted.global`. 
-take a look at the detailed example  <a href="/examples/reusable-toast.js"> here </a>
+You can register your own toasts like below and it will be available all over the application.
 
+Api of Toast Registration 
+
+**Option**|**Type's**|**Default**|**Description**
+-----|-----|-----|-----
+name*|String|-| name of your toast
+message*|String/Function(payload) |-|  Toast Body Content
+options|String/Object| {} | Toast Options as Object or either of these strings **['success', 'info', 'error']**
+
+Take a look at the below examples
+
+##### Simple Example 
 ```javascript
-// Global Plugin Register
-Vue.use(Toasted, {
-  globalToasts : {
+import Toasted from 'vue-toasted';
+Vue.use(Toasted);
 
-    myGlobalToast : function(payload, initiate){
-        
-        // your logic using payload here...
-        
-        // initiate(Message/html, option/string)
-        // error/show/success/info or an option object
-        return initiate("My Deepest Condolence", 'error');
-    },
-    // my another toast...
-  }
-});
+// Lets Register a Global Error Notification Toast.
+Vue.toasted.register('my_app_error', 'Oops.. Something Went Wrong..', {
+		type : 'error',
+		icon : 'error_outline'
+})
 ```
 
-viola !! now you can use your toast in anywhere
-
+After Registering your toast you can easily access it in the vue component like below
 
 ```javascript
-// send your payload to global toast
-$toasted.global.myGlobalToast(payload);
+// this will show a toast with message 'Oops.. Something Went Wrong..'
+// all the custom toasts will be available under `toasted.global`
+this.$toasted.global.my_app_error();
+```
+
+##### Advanced Example 
+
+You can also pass message as a function. which will give you more power.
+Lets think you need to pass a custom message to the error notification we built above.
+
+```javascript
+this.$toasted.global.my_app_error({
+	message : 'Not Authorized to Access'
+});
+```
+you can register a toast with payload like below on the example.
+
+```javascript
+import Toasted from 'vue-toasted';
+Vue.use(Toasted);
+
+// options to the toast
+let options = {
+		type : 'error',
+		icon : 'error_outline'
+};
+
+// register the toast with the custom message
+Vue.toasted.register('my_app_error',
+	(payload) => {
+		
+		// if there is no message passed show default message
+		if(! payload.message) {
+			return "Oops.. Something Went Wrong.."
+		}
+		
+		// if there is a message show it with the message
+		return "Oops.. " + payload.message;
+	},
+	options
+)
 ```
 
 ### Credits

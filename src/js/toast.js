@@ -27,6 +27,10 @@ export const Toast = {
     init: () => {
         initiateCustomToasts();
     },
+	register : (name, payload, options) => {
+		options = options || {};
+		return register(name, payload, options);
+	},
     show: (message, options) => {
         return _show(message, options);
     },
@@ -97,6 +101,8 @@ export const initiateCustomToasts = function () {
 
     if(customToasts) {
 
+	    Toast.global = {};
+
         Object.keys(customToasts).forEach( key => {
 
             // register the custom toast events to the Toast.custom property
@@ -111,6 +117,22 @@ export const initiateCustomToasts = function () {
         delete globalOptions.customToasts;
     }
 };
+
+const register = function (name, message, options) {
+
+	(!globalOptions.globalToasts) ? globalOptions.globalToasts = {} : null;
+
+	globalOptions.globalToasts[name] = function (payload, initiate) {
+
+		if(typeof message === 'function') {
+			message = message(payload);
+		}
+
+		return initiate(message, options);
+	};
+
+	initiateCustomToasts();
+}
 
 export default {initPlugin, Toast} ;
 
