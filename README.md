@@ -182,8 +182,8 @@ Vue.use(Toasted);
 
 // Lets Register a Global Error Notification Toast.
 Vue.toasted.register('my_app_error', 'Oops.. Something Went Wrong..', {
-		type : 'error',
-		icon : 'error_outline'
+    type : 'error',
+    icon : 'error_outline'
 })
 ```
 
@@ -202,7 +202,7 @@ Lets think you need to pass a custom message to the error notification we built 
 
 ```javascript
 this.$toasted.global.my_app_error({
-	message : 'Not Authorized to Access'
+    message : 'Not Authorized to Access'
 });
 ```
 you can register a toast with payload like below on the example.
@@ -213,23 +213,23 @@ Vue.use(Toasted);
 
 // options to the toast
 let options = {
-		type : 'error',
-		icon : 'error_outline'
+    type : 'error',
+    icon : 'error_outline'
 };
 
 // register the toast with the custom message
 Vue.toasted.register('my_app_error',
-	(payload) => {
+    (payload) => {
 		
-		// if there is no message passed show default message
-		if(! payload.message) {
-			return "Oops.. Something Went Wrong.."
-		}
+        // if there is no message passed show default message
+        if(! payload.message) {
+    	    return "Oops.. Something Went Wrong.."
+        }
 		
-		// if there is a message show it with the message
-		return "Oops.. " + payload.message;
-	},
-	options
+        // if there is a message show it with the message
+        return "Oops.. " + payload.message;
+    },
+    options
 )
 ```
 
