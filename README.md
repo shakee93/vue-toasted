@@ -165,9 +165,9 @@ onComplete|Function|null|Trigger when toast is completed
 
 You can register your own toasts like below and it will be available all over the application.
 
-Api of Toast Registration 
+`Toasted.register` methods api details...
 
-**Option**|**Type's**|**Default**|**Description**
+**Parameters**|**Type's**|**Default**|**Description**
 -----|-----|-----|-----
 name*|String|-| name of your toast
 message*|String/Function(payload) |-|  Toast Body Content
