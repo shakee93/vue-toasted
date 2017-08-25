@@ -132,8 +132,8 @@
   #toasted-container {
     @include fit-to-screen;
 
-    .toasted {
-      border-radius: 0;
+    &.top-center, &.bottom-center {
+      align-items: stretch !important;
     }
 
     &.top-right, &.top-left, &.bottom-left, &.bottom-right {
@@ -142,9 +142,13 @@
       }
     }
 
-    &.top-center, &.bottom-center {
-      align-items: stretch;
+    .toasted {
+      border-radius: 0;
     }
+
+
+
+
 
 
   }
