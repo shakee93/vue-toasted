@@ -133,9 +133,16 @@
     @include fit-to-screen;
 
     .toasted {
-      // 40px is padding of a basic toast theme
-      min-width: calc(100% - 40px);
       border-radius: 0;
     }
+
+    // removes content float on mobile
+    &.top-right, &.top-left, &.bottom-left, &.bottom-right {
+      .toasted {
+        float: none;
+      }
+    }
+
+
   }
 }

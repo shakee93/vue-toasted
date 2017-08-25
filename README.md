@@ -233,6 +233,11 @@ Vue.toasted.register('my_app_error',
 )
 ```
 
+### Mobile Responsiveness
+
+On Mobile Toasts will be on full width. according to the position the toast will either be on top or bottom.
+
+
 ### Credits
 
 + Whoever contributes to this project :wink:
