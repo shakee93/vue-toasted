@@ -136,11 +136,14 @@
       border-radius: 0;
     }
 
-    // removes content float on mobile
     &.top-right, &.top-left, &.bottom-left, &.bottom-right {
       .toasted {
         float: none;
       }
+    }
+
+    &.top-center, &.bottom-center {
+      align-items: stretch;
     }
 
 
