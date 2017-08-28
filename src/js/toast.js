@@ -1,6 +1,9 @@
 import ToastComponent from '../toast.vue';
 import show from './show';
 
+// add Object.assign Polyfill
+require('es6-object-assign').polyfill();
+
 /**
  * Global Options
  * @type Object

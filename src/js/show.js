@@ -196,6 +196,7 @@ const createToast = function (html, options) {
  * Create Action for the toast
  *
  * @param action
+ * @param toastObject
  * @returns {Element}
  */
 const createAction = (action, toastObject) => {

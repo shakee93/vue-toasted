@@ -2,7 +2,9 @@
 @import "themes";
 
 #toasted-container {
-  display: block;
+  // fix for min-height bug in IE
+  display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 10000;
 
@@ -19,13 +21,6 @@
   }
 
   // Positioning
-  &:not(.full-width) {
-    &.top-center, &.bottom-center {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
 
   &.top-right {
     top: 10%;
@@ -145,11 +140,6 @@
     .toasted {
       border-radius: 0;
     }
-
-
-
-
-
 
   }
 }

@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var autoprefixer = require('autoprefixer')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -17,8 +18,8 @@ module.exports = {
 				loader: 'vue-loader',
 				options: {
 					loaders: {
-						'scss': 'vue-style-loader!css-loader!sass-loader',
-						'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+						'scss': 'vue-style-loader!css-loader!postcss-loader!sass-loader',
+						'sass': 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax'
 					}
 					// other vue-loader options go here
 				}
