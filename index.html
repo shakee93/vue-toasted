@@ -534,7 +534,7 @@
             actions : [],
             new_action: null
         },
-        mounted() {
+        mounted : function() {
 
             var self = this;
             var duration_el = $('#duration');
@@ -558,7 +558,7 @@
             })
         },
         methods: {
-            buildToast(){
+            buildToast : function(){
                 var toast = this.$toasted.show(this.text, {
                     theme: this.theme,
                     position: this.position,
@@ -570,7 +570,7 @@
 
                 this.notifyGA();
             },
-            notifyGA(){
+            notifyGA : function(){
                 ga('send', {
                     hitType: 'event',
                     eventCategory: 'Toast',
@@ -579,7 +579,7 @@
                     eventValue  : this.$data
                 });
             },
-            addAction(){
+            addAction : function(){
 
                 if(!this.new_action) {
                     return;
