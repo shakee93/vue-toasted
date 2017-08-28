@@ -61,9 +61,28 @@ All Good Now you have this cool toast in your project.. let's take a look at the
 
 ## API
 
-vue-toasted has methods which makes it much easier to use
+vue-toasted has a very fluent api.
 
-### methods
+### Options
+
+below are the available options
+
+**Option**|**Type's**|**Default**|**Description**
+-----|-----|-----|-----
+position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
+duration|Number|null|Display time of the toast in millisecond
+action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function(event, toastObject) } `
+fullWidth|Boolean|false|Enable Full Width
+fitToScreen|Boolean|false|Fits to Screen on Full Width
+className|String, Array|null|Custom css class name of the toast
+containerClass|String, Array|null|Custom css classes for toast container
+Icon|String, Object|null|Material icon name as string.  <br> `{ name : String , after : Boolean } `
+type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
+theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
+onComplete|Function|null|Trigger when toast is completed
+
+
+### Methods
 all the below methods return the `Toasted Object` of the toast.
 ```javascript
 Vue.toasted.success( {string | html } message, {object} options)
@@ -77,7 +96,8 @@ Vue.toasted.error(message, options)
 
 
 ### Toast Object
-check the examples to see how to manipulate the object.
+Each Toast Returns a Toast Object where you can manipulate the toast.
+
 ```javascript
 
 // html element of the toast
@@ -99,13 +119,29 @@ myToast.text("Changing the text !!!").goAway(1500);
 ```
 
 
-### Actions
+### Icons :fire:
+<a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
+
+```javascript
+{
+    // pass the icon name as string
+    icon : 'check'
+    
+    // or you can pass an object
+    icon : {
+        name : 'watch',
+        after : true // this will append the icon to the end of content
+    }
+}
+```
+
+### Actions  :fire:
 <p align="center">
     <a href="https://github.com/shakee93/vue-toasted" target="_blank">
     <img width="300" src="https://shakee93.github.io/vue-toasted/assets/images/action-preview.jpg">
     </a>
 </p> 
-<p>:zap: You can have single or multiple actions in the toast. take a look at the example below</p>
+<p>You can have single or multiple actions in the toast. take a look at the example below</p>
 
 ```javascript
 {
@@ -135,40 +171,6 @@ myToast.text("Changing the text !!!").goAway(1500);
 }
 ```
 
-
-### Icons
-:sunny: Now <a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
-
-```javascript
-{
-    // pass the icon name as string
-    icon : 'check'
-    
-    // or you can pass an object
-    icon : {
-        name : 'watch',
-        after : true // this will append the icon to the end of content
-    }
-}
-```
-
-### options
-
-below are the available options
-
-**Option**|**Type's**|**Default**|**Description**
------|-----|-----|-----
-position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
-duration|Number|null|Display time of the toast in millisecond
-action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function(event, toastObject) } `
-fullWidth|Boolean|false|Enable Full Width
-fitToScreen|Boolean|false|Fits to Screen on Full Width
-className|String, Array|null|Custom css class name of the toast
-containerClass|String, Array|null|Custom css classes for toast container
-Icon|String, Object|null|Material icon name as string.  <br> `{ name : String , after : Boolean } `
-type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
-theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
-onComplete|Function|null|Trigger when toast is completed
 
 ### Custom Toast Registration
 
