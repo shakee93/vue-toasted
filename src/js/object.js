@@ -1,21 +1,12 @@
-import Velocity from 'velocity-animate';
+import animations from './animations.js'
 
 // fade the toast away
 export const goAway = (el, delay) => {
     // Animate toast out
     setTimeout(function () {
-        Velocity(el, {"opacity": 0, marginTop: '-40px'}, {
-            duration: 200,
-            easing: 'easeOutExpo',
-            queue: false,
-            complete: function () {
-
-                if (this[0].parentNode) {
-                    this[0].parentNode.removeChild(this[0]);
-                }
-
-            }
-        });
+        animations.animateOut(el, () => {
+            if (el.parentNode) el.parentNode.removeChild(el)
+        })
     }, delay);
 
     return true;

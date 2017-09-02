@@ -1,7 +1,6 @@
-import Velocity from 'velocity-animate';
 import Hammer from 'hammerjs';
-import {toastObject} from './object';
-
+import animations from './animations.js'
+import {toastObject} from './object'
 
 /**
  * parse Options
@@ -120,7 +119,6 @@ const createToast = function (html, options) {
 		toast.innerHTML = html;
 	}
 
-
 	// Bind hammer
 	let hammerHandler = new Hammer(toast, {prevent_default: false});
 	hammerHandler.on('pan', function (e) {
@@ -136,11 +134,7 @@ const createToast = function (html, options) {
 		if (opacityPercent < 0)
 			opacityPercent = 0;
 
-		Velocity(toast, {left: deltaX, opacity: opacityPercent}, {
-			duration: 50,
-			queue: false,
-			easing: 'easeOutQuad'
-		});
+		animations.animatePanning(toast, deltaX, opacityPercent)
 
 	});
 
@@ -150,29 +144,21 @@ const createToast = function (html, options) {
 
 		// If toast dragged past activation point
 		if (Math.abs(deltaX) > activationDistance) {
-			Velocity(toast, {marginTop: '-40px'}, {
-				duration: 375,
-				easing: 'easeOutExpo',
-				queue: false,
-				complete: function () {
-					if (typeof(options.onComplete) === "function") {
-						options.onComplete();
-					}
 
-					if (toast.parentNode) {
-						toast.parentNode.removeChild(toast);
-					}
+			animations.animatePanEnd(toast, function () {
+				if (typeof(options.onComplete) === "function") {
+					options.onComplete();
 				}
-			});
+
+				if (toast.parentNode) {
+					toast.parentNode.removeChild(toast);
+				}
+			})
 
 		} else {
 			toast.classList.remove('panning');
 			// Put toast back into original position
-			Velocity(toast, {left: 0, opacity: 1}, {
-				duration: 300,
-				easing: 'easeOutExpo',
-				queue: false
-			});
+			animations.animateReset(toast)
 
 		}
 	});
@@ -300,11 +286,8 @@ export default function (message, options) {
 	newToast.style.opacity = 0;
 
 	// Animate toast in
-	Velocity(newToast, {translateY: '-35px', opacity: 1}, {
-		duration: 300,
-		easing: 'easeOutCubic',
-		queue: false
-	});
+	animations.animateIn(newToast)
+
 
 	// Allows timer to be pause while being panned
 	let timeLeft = options.duration;
@@ -321,21 +304,17 @@ export default function (message, options) {
 
 			if (timeLeft <= 0) {
 				// Animate toast out
-				Velocity(newToast, {"opacity": 0, marginTop: '-40px'}, {
-					duration: 375,
-					easing: 'easeOutExpo',
-					queue: false,
-					complete: function () {
-						// Call the optional callback
-						if (typeof(options.onComplete) === "function")
-							options.onComplete();
-						// Remove toast after it times out
-						if (this[0].parentNode) {
-							this[0].parentNode.removeChild(this[0]);
-						}
 
+				animations.animateOut(newToast, function () {
+					// Call the optional callback
+					if (typeof(options.onComplete) === "function")
+						options.onComplete();
+					// Remove toast after it times out
+					if (newToast.parentNode) {
+						newToast.parentNode.removeChild(newToast);
 					}
-				});
+
+				})
 
 				window.clearInterval(counterInterval);
 			}
