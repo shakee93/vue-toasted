@@ -252,10 +252,9 @@ On Mobile Toasts will be on full width. according to the position the toast will
 
 ### Credits
 
++ Inspired and developed from [materialize-css](https://github.com/Dogfalo/materialize) toast.
 + Uses [hammerjs](http://hammerjs.github.io/) for touch events
 + Uses lightweight and fast [animejs](http://animejs.com/) for animations.
 + Whoever contributes to this project :wink:
-+ Inspired and developed from [materialize-css](https://github.com/Dogfalo/materialize) toast.
-
 
 Enjoy Toasting !!
