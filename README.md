@@ -8,6 +8,7 @@
   <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg"/></a>
   <a href="https://github.com/vuejs/awesome-vue"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/></a>
   <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg"/></a>
+  <a href="https://github.com/shakee93/vue-toasted/"><img src="http://img.badgesize.io/shakee93/vue-toasted/master/dist/vue-toasted.min.js?compression=gzip"/></a>
 </p>
 
 ## Introduction
@@ -251,6 +252,8 @@ On Mobile Toasts will be on full width. according to the position the toast will
 
 ### Credits
 
++ Uses [hammerjs](http://hammerjs.github.io/) for touch events
++ Uses lightweight and fast [animejs](http://animejs.com/) for animations.
 + Whoever contributes to this project :wink:
 + Inspired and developed from [materialize-css](https://github.com/Dogfalo/materialize) toast.
 
