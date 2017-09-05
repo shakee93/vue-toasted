@@ -5,11 +5,12 @@
 </p> 
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg"/></a>
+  <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg"/></a>
   <a href="https://github.com/vuejs/awesome-vue"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/></a>
-  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg"/></a>
-  <a href="https://github.com/shakee93/vue-toasted/"><img src="http://img.badgesize.io/shakee93/vue-toasted/master/dist/vue-toasted.min.js?compression=gzip"/></a>
-</p>
+  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
+  <a href="https://github.com/shakee93/vue-toasted/"><img src="http://img.badgesize.io/shakee93/vue-toasted/master/dist/vue-toasted.min.js?compression=gzip&style=flat-square"/></a>
+  <a href="http://packagequality.com/#?package=vue-toasted"><img src="http://npm.packagequality.com/shield/vue-toasted.svg"/></a>
+ </p>
 
 ## Introduction
 
@@ -31,6 +32,35 @@ Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> 
 
 Please Report If You have Found any Issues.
 
+## Installation
+
+#### Install using npm
+```bash
+# install it via npm
+npm install vue-toasted --save
+```
+
+#### Install using yarn
+```bash
+# install it via yarn
+yarn add vue-toasted
+```
+
+#### Direct usage with html
+```html
+<!-- Insert the vue core before vue-toasted -->
+<script src="https://unpkg.com/vue-toasted"></script>
+
+<script>
+    Vue.use(Toasted)
+</script>
+```
+
+<hr>
+
+#### [Nuxt](https://github.com/nuxt/nuxt.js) 💓 Officially uses `vue-toasted` for their toast module.
+
+installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modules/tree/master/modules/toast)
 ## Usage
 
 It is simple. couple of lines all what you need.
