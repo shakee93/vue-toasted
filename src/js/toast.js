@@ -74,10 +74,12 @@ export const _show = function (message, options) {
         return null;
     }
 
-    // merge global options with options
-    // JSON.parse is to protect globalOptions from overriding.
-    let _cachedGlobalOptions = JSON.parse(JSON.stringify(globalOptions));
-    Object.assign(_cachedGlobalOptions, options);
+
+    // clone the global options
+    let _cachedGlobalOptions = Object.assign({}, globalOptions);
+
+	// merge the cached global options with options
+	Object.assign(_cachedGlobalOptions, options);
     options = _cachedGlobalOptions;
 
     return show(message, options);

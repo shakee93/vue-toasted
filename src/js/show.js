@@ -2,6 +2,7 @@ import Hammer from 'hammerjs';
 import animations from './animations.js'
 import {toastObject} from './object'
 
+let _options = {};
 /**
  * parse Options
  *
@@ -72,6 +73,7 @@ const parseOptions = function (options) {
 	(options.fullWidth) && options.containerClass.push('full-width');
 	(options.fitToScreen) && options.containerClass.push('fit-to-screen');
 
+	_options = options;
 	return options;
 };
 
@@ -187,6 +189,7 @@ const createToast = function (html, options) {
  */
 const createAction = (action, toastObject) => {
 
+
 	if (!action) {
 		return;
 	}
@@ -230,6 +233,28 @@ const createAction = (action, toastObject) => {
 					el.classList.add(className)
 				})
 		}
+	}
+
+	// initiate push with ready
+	if(action.push) {
+
+		el.addEventListener('click', (e) => {
+			e.preventDefault();
+
+			// check if vue router passed through global options
+			if(!_options.router && _options.router.constructor.name !== "VueRouter") {
+				console.warn('[vue-toasted] : Vue Router instance is not attached. please check the docs');
+				return;
+			}
+
+			_options.router.push(action.push);
+
+			// fade away toast after action.
+			if(!action.push.dontClose) {
+				toastObject.goAway(0);
+			}
+		})
+
 	}
 
 	if (action.onClick && typeof action.onClick === 'function') {

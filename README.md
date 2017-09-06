@@ -5,11 +5,11 @@
 </p> 
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg"/></a>
+  <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg?style=flat-square"/></a>
   <a href="https://github.com/vuejs/awesome-vue"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"/></a>
   <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
   <a href="https://github.com/shakee93/vue-toasted/"><img src="http://img.badgesize.io/shakee93/vue-toasted/master/dist/vue-toasted.min.js?compression=gzip&style=flat-square"/></a>
-  <a href="http://packagequality.com/#?package=vue-toasted"><img src="http://npm.packagequality.com/shield/vue-toasted.svg"/></a>
+  <a href="http://packagequality.com/#?package=vue-toasted"><img src="http://npm.packagequality.com/shield/vue-toasted.svg?style=flat-square"/></a>
  </p>
 
 ## Introduction
@@ -173,7 +173,17 @@ myToast.text("Changing the text !!!").goAway(1500);
     </a>
 </p> 
 <p>You can have single or multiple actions in the toast. take a look at the example below</p>
+<p>Check below Vue Router section for router integration</p>
 
+**Parameters**|**Type's**|**Default**|**Description**
+-----|-----|-----|-----
+text*|String|-| name of action
+href|String|`null`| url of action
+icon|String|`null`| name of material for action
+push|Object |`null`|  Vue Router push parameters
+onClick|Function(e,toastObject) |`null`|  onClick Function of action
+
+##### Examples
 ```javascript
 {
     // you can pass a single action as below
@@ -194,14 +204,38 @@ myToast.text("Changing the text !!!").goAway(1500);
         },
         {
             text : 'Undo',
-            onClick : (e, toastObject) => {
-                this.$router.push({ name : 'somewhere' })
-            }
+            // router navigation
+            push : { 
+            	name : 'somewhere',
+            	// thise will prevent toast from closing
+            	dontClose : true
+             }
         }
     ]
 }
 ```
 
+### Vue Router
+
+Adding vue-router to vue-toasted where you can use it on toast actions.
+
+```javascript
+
+// your app router instance
+var router = new VueRouter({
+	mode: 'history',
+	routes: [{
+		path: '/foo',
+		name : 'foo-name'
+	}],
+	linkActiveClass: "active"
+});
+
+// pass it to vue toasted as below..
+Vue.use(Toasted, {
+	router
+});
+```
 
 ### Custom Toast Registration
 
