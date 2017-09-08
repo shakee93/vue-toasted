@@ -354,7 +354,6 @@ b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.compl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(0);
 /* unused harmony export goAway */
 /* unused harmony export changeText */
-/* unused harmony export addCloseButton */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toastObject; });
 var _this = this;
 
@@ -384,23 +383,6 @@ var changeText = function changeText(el, text) {
     }
 
     return _this;
-};
-
-// add a close button to toast
-var addCloseButton = function addCloseButton(el) {
-
-    // create a close button
-    var close = document.createElement('button');
-    close.innerText = "x";
-    close.className = 'toasted-close';
-
-    // add eventListener to close the toast
-    close.addEventListener('click', function () {
-        _goAway(el, 0);
-    });
-
-    // append the close button to the toast
-    el.appendChild(close);
 };
 
 var toastObject = function toastObject(el) {

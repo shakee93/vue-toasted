@@ -24,13 +24,28 @@ Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> 
     <img src="https://shakee93.github.io/vue-toasted/assets/images/vue-toasted-demo-x3.gif">
 </p>
 
-#### Browsers support
+#### Menu
 
-| [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/opera.png" alt="Opera" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari-ios.png" alt="iOS Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome-android.png" alt="Chrome for Android" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome for Android |
-| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
-| IE10, IE11, Edge| last 7 versions| last 7 versions| last 7 versions| last 7 versions| last 3 versions| last 3 versions
+- [Installation](#installation)
+    - [Npm](#install-using-npm)
+    - [Yarn](#install-using-yarn)
+    - [Direct Usage](#direct-usage-with-html)
+    - [Nuxt](#nuxt--officially-uses-vue-toasted-for-their-toast-module)
+- [Usage](#usage)
+    - [Basic Usage](#usage)
+    - [Actions](#actions--fire)
+    - [Icons](#icons-fire)
+    - [Standalone Usage](#browsers-support)
+- [Api](#api)
+    - [Options](#options)
+    - [Methods](#methods)
+    - [Toast Object](#toast-object)
+    - [Custom Toast Registration](#custom-toast-registration)
+    - [Vue Router](#vue-router)
+- [Browser Support](#browsers-support)
+- [Mobile Responsiveness](#mobile-responsiveness)
+- [Credits](#credits)
 
-Please Report If You have Found any Issues.
 
 ## Installation
 
@@ -61,14 +76,11 @@ yarn add vue-toasted
 #### [Nuxt](https://github.com/nuxt/nuxt.js) 💓 Officially uses `vue-toasted` for their toast module.
 
 installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modules/tree/master/modules/toast)
+
 ## Usage
 
 It is simple. couple of lines all what you need.
 
-```bash
-# install it via npm
-npm install vue-toasted --save
-```
 ```javascript
 // register the plugin on vue
 import Toasted from 'vue-toasted';
@@ -88,66 +100,7 @@ this.$toasted.show('hello billo')
 Vue.toasted.show('hola billo');
 ```
 
-All Good Now you have this cool toast in your project.. let's take a look at the api
-
-## API
-
-vue-toasted has a very fluent api.
-
-### Options
-
-below are the available options
-
-**Option**|**Type's**|**Default**|**Description**
------|-----|-----|-----
-position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
-duration|Number|null|Display time of the toast in millisecond
-action|Object, Array|null|Add single or multiple actions to toast  <br> `{ text : String, icon : String, onClick : Function(event, toastObject) } `
-fullWidth|Boolean|false|Enable Full Width
-fitToScreen|Boolean|false|Fits to Screen on Full Width
-className|String, Array|null|Custom css class name of the toast
-containerClass|String, Array|null|Custom css classes for toast container
-Icon|String, Object|null|Material icon name as string.  <br> `{ name : String , after : Boolean } `
-type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
-theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
-onComplete|Function|null|Trigger when toast is completed
-
-
-### Methods
-all the below methods return the `Toasted Object` of the toast.
-```javascript
-Vue.toasted.success( {string | html } message, {object} options)
-
-// available methods
-Vue.toasted.show(message, options)
-Vue.toasted.success(message, options)
-Vue.toasted.info(message, options)
-Vue.toasted.error(message, options)
-```
-
-
-### Toast Object
-Each Toast Returns a Toast Object where you can manipulate the toast.
-
-```javascript
-
-// html element of the toast
-el : HtmlElement
-
-// change text or html of the toast
-text : Function(text)
-
-// fadeAway the toast. default delay will be 800ms
-goAway : Function(delay = 800)
-
-```
-
-using the toast object
-
-```javascript
-let myToast = this.$toasted.show("Holla !!");
-myToast.text("Changing the text !!!").goAway(1500);
-```
+All Good Now you have this cool toast in your project..
 
 
 ### Icons :fire:
@@ -214,6 +167,73 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
     ]
 }
 ```
+
+### Standalone Usage
+
+Docs coming soon..
+
+
+## API
+
+### Options
+
+below are the options you can pass to create a toast
+
+**Option**|**Type's**|**Default**|**Description**
+-----|-----|-----|-----
+position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
+duration|Number|null|Display time of the toast in millisecond
+action|Object, Array|null|Add single or multiple actions to toast  [explained here](#actions)
+fullWidth|Boolean|false|Enable Full Width
+fitToScreen|Boolean|false|Fits to Screen on Full Width
+className|String, Array|null|Custom css class name of the toast
+containerClass|String, Array|null|Custom css classes for toast container
+Icon|String, Object|null|Material icon name as string.  [explained here](#icons)
+type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
+theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
+onComplete|Function|null|Trigger when toast is completed
+
+
+### Methods
+
+Methods available on Toasted...
+
+```javascript
+// you can pass string or html to message
+Vue.toasted.show( 'my message', { /* some option */ })
+```
+
+**Method**|**Parameter's**|**Description**
+-----|-----|-----
+show|message, options| show a toast with default style
+success|message, options| show a toast with success style
+info|message, options| show a toast with info style
+error|message, options | show a toast with error style
+register | name, message, options | register your own toast with options [explained here](#custom-toast-registration) 
+
+### Toast Object
+Each Toast Returns a Toast Object where you can manipulate the toast.
+
+```javascript
+
+// html element of the toast
+el : HtmlElement
+
+// change text or html of the toast
+text : Function(text)
+
+// fadeAway the toast. default delay will be 800ms
+goAway : Function(delay = 800)
+
+```
+
+using the toast object
+
+```javascript
+let myToast = this.$toasted.show("Holla !!");
+myToast.text("Changing the text !!!").goAway(1500);
+```
+
 
 ### Vue Router
 
@@ -308,6 +328,15 @@ Vue.toasted.register('my_app_error',
     options
 )
 ```
+
+
+#### Browsers support
+
+| [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>IE / Edge | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/opera.png" alt="Opera" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari-ios.png" alt="iOS Safari" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>iOS Safari | [<img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome-android.png" alt="Chrome for Android" width="16px" height="16px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome for Android |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| IE10, IE11, Edge| last 7 versions| last 7 versions| last 7 versions| last 7 versions| last 3 versions| last 3 versions
+
+Please Report If You have Found any Issues.
 
 ### Mobile Responsiveness
 
