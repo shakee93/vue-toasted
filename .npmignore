@@ -4,6 +4,7 @@ npm-debug.log
 yarn-error.log
 .idea/
 .vscode/
+build/
 src/
 .babelrc
 webpack.config.js

@@ -1,4 +1,4 @@
-import ToastComponent from '../toast.vue';
+
 import show from './show';
 
 // add Object.assign Polyfill
@@ -12,14 +12,12 @@ let globalOptions = {};
 
 /**
  * Initiate the Plugin
- * @param Vue
  * @param options
  */
-export const initPlugin = function (Vue, options) {
+export const Toasted = function (options) {
     Toast.setGlobalOptions(options);
     Toast.init();
-    Vue.component('toasted', ToastComponent);
-    Vue.toasted = Vue.prototype.$toasted = Toast;
+    return Toast;
 };
 
 /**
@@ -139,5 +137,5 @@ const register = function (name, message, options) {
 	initiateCustomToasts();
 }
 
-export default {initPlugin, Toast} ;
+export default {Toasted, Toast} ;
 

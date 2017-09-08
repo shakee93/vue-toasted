@@ -1,8 +1,11 @@
-import { initPlugin } from './js/toast';
+import { Toasted as t } from './js/toast';
+import ToastComponent from './toast.vue';
 
 const Toasted = {
     install: (Vue, options) => {
-        initPlugin(Vue, options)
+        let Toast = new t(options)
+	    Vue.component('toasted', ToastComponent);
+	    Vue.toasted = Vue.prototype.$toasted = Toast;
     }
 };
 

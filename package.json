@@ -10,10 +10,11 @@
   "main": "./dist/vue-toasted.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "build-local-watch": "cross-env NODE_ENV=production webpack --progress --hide-modules --watch",
-    "watch": "webpack --progress --hide-modules --watch",
-    "prebuild": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules",
+    "build-local-watch": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules --watch",
+    "release": "npm run build && npm run core && npm run css",
+    "css": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.css.js --progress --hide-modules ",
+    "core": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.core.js --progress --hide-modules",
     "es": "babel src --presets babel-preset-es2015 --out-dir dist"
   },
   "keywords": [
@@ -40,6 +41,7 @@
     "cross-env": "^3.0.0",
     "css-loader": "^0.25.0",
     "es6-object-assign": "^1.1.0",
+    "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "hammerjs": "^2.0.8",
     "jasmine": "^2.5.3",
@@ -54,6 +56,7 @@
     "postcss-loader": "^2.0.6",
     "requirejs": "^2.3.3",
     "sass-loader": "^6.0.3",
+    "style-loader": "^0.18.2",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",
