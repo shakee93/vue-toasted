@@ -73,15 +73,120 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 17);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var randomFromSeed = __webpack_require__(15);
+
+var ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+var alphabet;
+var previousSeed;
+
+var shuffled;
+
+function reset() {
+    shuffled = false;
+}
+
+function setCharacters(_alphabet_) {
+    if (!_alphabet_) {
+        if (alphabet !== ORIGINAL) {
+            alphabet = ORIGINAL;
+            reset();
+        }
+        return;
+    }
+
+    if (_alphabet_ === alphabet) {
+        return;
+    }
+
+    if (_alphabet_.length !== ORIGINAL.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. You submitted ' + _alphabet_.length + ' characters: ' + _alphabet_);
+    }
+
+    var unique = _alphabet_.split('').filter(function(item, ind, arr){
+       return ind !== arr.lastIndexOf(item);
+    });
+
+    if (unique.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. These characters were not unique: ' + unique.join(', '));
+    }
+
+    alphabet = _alphabet_;
+    reset();
+}
+
+function characters(_alphabet_) {
+    setCharacters(_alphabet_);
+    return alphabet;
+}
+
+function setSeed(seed) {
+    randomFromSeed.seed(seed);
+    if (previousSeed !== seed) {
+        reset();
+        previousSeed = seed;
+    }
+}
+
+function shuffle() {
+    if (!alphabet) {
+        setCharacters(ORIGINAL);
+    }
+
+    var sourceArray = alphabet.split('');
+    var targetArray = [];
+    var r = randomFromSeed.nextValue();
+    var characterIndex;
+
+    while (sourceArray.length > 0) {
+        r = randomFromSeed.nextValue();
+        characterIndex = Math.floor(r * sourceArray.length);
+        targetArray.push(sourceArray.splice(characterIndex, 1)[0]);
+    }
+    return targetArray.join('');
+}
+
+function getShuffled() {
+    if (shuffled) {
+        return shuffled;
+    }
+    shuffled = shuffle();
+    return shuffled;
+}
+
+/**
+ * lookup shuffled letter
+ * @param index
+ * @returns {string}
+ */
+function lookup(index) {
+    var alphabetShuffled = getShuffled();
+    return alphabetShuffled[index];
+}
+
+module.exports = {
+    characters: characters,
+    seed: setSeed,
+    lookup: lookup,
+    shuffled: getShuffled
+};
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
 
 
@@ -137,11 +242,37 @@ var duration = 300;
 };
 
 /***/ }),
-/* 1 */
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var randomByte = __webpack_require__(14);
+
+function encode(lookup, number) {
+    var loopCounter = 0;
+    var done;
+
+    var str = '';
+
+    while (!done) {
+        str = str + lookup( ( (number >> (4 * loopCounter)) & 0x0f ) | randomByte() );
+        done = number < (Math.pow(16, loopCounter + 1 ) );
+        loopCounter++;
+    }
+    return str;
+}
+
+module.exports = encode;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(6);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Toasted; });
 /* unused harmony export Toast */
 /* unused harmony export _show */
@@ -149,148 +280,207 @@ var duration = 300;
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
+var uuid = __webpack_require__(9);
 
 // add Object.assign Polyfill
-__webpack_require__(5).polyfill();
-
-/**
- * Global Options
- * @type Object
- */
-var globalOptions = {};
+__webpack_require__(7).polyfill();
 
 /**
  * Initiate the Plugin
  * @param options
  */
 var Toasted = function Toasted(options) {
-    Toast.setGlobalOptions(options);
-    Toast.init();
-    return Toast;
+	return new Toast(options);
 };
 
 /**
- * Toast Object
+ * Toast
+ * core instance of toast
+ *
+ * @param _options
+ * @returns {Toast}
+ * @constructor
  */
-var Toast = {
-    el: null,
-    init: function init() {
-        initiateCustomToasts();
-    },
-    register: function register(name, payload, options) {
-        options = options || {};
-        return _register(name, payload, options);
-    },
-    show: function show(message, options) {
-        return _show(message, options);
-    },
-    success: function success(message, options) {
-        options = options || {};
-        options.type = "success";
-        return _show(message, options);
-    },
-    info: function info(message, options) {
-        options = options || {};
-        options.type = "info";
-        return _show(message, options);
-    },
-    error: function error(message, options) {
-        options = options || {};
-        options.type = "error";
-        return _show(message, options);
-    },
-    global: {},
-    setGlobalOptions: function setGlobalOptions(options) {
-        globalOptions = options || {};
-    }
+var Toast = function Toast(_options) {
+	var _this = this;
+
+	/**
+  * Unique id of the toast
+  */
+	this.id = uuid.generate();
+
+	/**
+  * Shared Options of the Toast
+  */
+	this.options = _options;
+
+	/**
+  * Shared Toasts list
+  */
+	this.global = {};
+
+	/**
+  * Initiate custom toasts
+  */
+	initiateCustomToasts(this);
+
+	/**
+  * Create New Instance of the Toast
+  * @param o
+  */
+	this.instance = function (o) {
+		return Toasted(o);
+	};
+
+	/**
+  * Register a Global Toast
+  *
+  * @param name
+  * @param payload
+  * @param options
+  */
+	this.register = function (name, payload, options) {
+		options = options || {};
+		return register(_this, name, payload, options);
+	};
+
+	/**
+  * Show a Simple Toast
+  *
+  * @param message
+  * @param options
+  * @returns {*}
+  */
+	this.show = function (message, options) {
+		return _show(_this, message, options);
+	};
+
+	/**
+  * Show a Toast with Success Style
+  *
+  * @param message
+  * @param options
+  * @returns {*}
+  */
+	this.success = function (message, options) {
+		options = options || {};
+		options.type = "success";
+		return _show(_this, message, options);
+	};
+
+	/**
+  * Show a Toast with Info Style
+  *
+  * @param message
+  * @param options
+  * @returns {*}
+  */
+	this.info = function (message, options) {
+		options = options || {};
+		options.type = "info";
+		return _show(_this, message, options);
+	};
+
+	/**
+  * Show a Toast with Error Style
+  *
+  * @param message
+  * @param options
+  * @returns {*}
+  */
+	this.error = function (message, options) {
+		options = options || {};
+		options.type = "error";
+		return _show(_this, message, options);
+	};
+
+	return this;
 };
 
 /**
  * Wrapper for show method in order to manipulate options
  *
+ * @param instance
  * @param message
  * @param options
  * @returns {*}
  * @private
  */
-var _show = function _show(message, options) {
-    options = options || {};
+var _show = function _show(instance, message, options) {
+	options = options || {};
 
-    if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) !== "object") {
-        console.error("Options should be a type of object. given : " + options);
-        return null;
-    }
+	if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) !== "object") {
+		console.error("Options should be a type of object. given : " + options);
+		return null;
+	}
 
-    // clone the global options
-    var _cachedGlobalOptions = Object.assign({}, globalOptions);
+	// clone the global options
+	var _cachedGlobalOptions = Object.assign({}, instance.options);
 
-    // merge the cached global options with options
-    Object.assign(_cachedGlobalOptions, options);
-    options = _cachedGlobalOptions;
+	// merge the cached global options with options
+	Object.assign(_cachedGlobalOptions, options);
+	options = _cachedGlobalOptions;
 
-    return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(message, options);
+	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance.id, message, options);
 };
 
 /**
  * Register the Custom Toasts
  */
-var initiateCustomToasts = function initiateCustomToasts() {
+var initiateCustomToasts = function initiateCustomToasts(instance) {
 
-    var customToasts = globalOptions.globalToasts;
+	var customToasts = instance.options.globalToasts;
 
-    // this will initiate toast for the custom toast.
-    var initiate = function initiate(message, options) {
+	// this will initiate toast for the custom toast.
+	var initiate = function initiate(message, options) {
 
-        // check if passed option is a available method if so call it.
-        if (typeof options === 'string' && Toast[options]) {
-            return Toast[options].apply(Toast, [message, {}]);
-        }
+		// check if passed option is a available method if so call it.
+		if (typeof options === 'string' && instance[options]) {
+			return instance[options].apply(instance, [message, {}]);
+		}
 
-        // or else create a new toast with passed options.
-        return _show(message, options);
-    };
+		// or else create a new toast with passed options.
+		return _show(instance.id, message, options);
+	};
 
-    if (customToasts) {
+	if (customToasts) {
 
-        Toast.global = {};
+		instance.global = {};
 
-        Object.keys(customToasts).forEach(function (key) {
+		Object.keys(customToasts).forEach(function (key) {
 
-            // register the custom toast events to the Toast.custom property
-            Toast.global[key] = function () {
-                var payload = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+			// register the custom toast events to the Toast.custom property
+			instance.global[key] = function () {
+				var payload = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
-                // return the it in order to expose the Toast methods
-                return customToasts[key].apply(null, [payload, initiate]);
-            };
-        });
-
-        // remove customToasts after mocking the methods.
-        delete globalOptions.customToasts;
-    }
+				// return the it in order to expose the Toast methods
+				return customToasts[key].apply(null, [payload, initiate]);
+			};
+		});
+	}
 };
 
-var _register = function _register(name, message, options) {
+var register = function register(instance, name, message, options) {
 
-    !globalOptions.globalToasts ? globalOptions.globalToasts = {} : null;
+	!instance.options.globalToasts ? instance.options.globalToasts = {} : null;
 
-    globalOptions.globalToasts[name] = function (payload, initiate) {
+	instance.options.globalToasts[name] = function (payload, initiate) {
 
-        if (typeof message === 'function') {
-            message = message(payload);
-        }
+		if (typeof message === 'function') {
+			message = message(payload);
+		}
 
-        return initiate(message, options);
-    };
+		return initiate(message, options);
+	};
 
-    initiateCustomToasts();
+	initiateCustomToasts(instance);
 };
 
 /* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted, Toast: Toast };
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -325,14 +515,13 @@ n.speed=1;n.running=q;n.remove=function(a){a=M(a);for(var b=q.length;b--;)for(va
 b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.completed=!0});w(a).forEach(function(a){var c=b.duration,d=a.offset;a.autoplay=!1;a.offset=g.und(d)?c:K(d,c);b.seek(a.offset);a=n(a);a.duration>c&&(b.duration=a.duration);a.began=!0;b.children.push(a)});b.reset();b.seek(0);b.autoplay&&b.restart();return b};return b};n.random=function(a,b){return Math.floor(Math.random()*(b-a+1))+a};return n});
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(1);
 /* unused harmony export goAway */
 /* unused harmony export changeText */
-/* unused harmony export addCloseButton */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toastObject; });
 var _this = this;
 
@@ -364,23 +553,6 @@ var changeText = function changeText(el, text) {
     return _this;
 };
 
-// add a close button to toast
-var addCloseButton = function addCloseButton(el) {
-
-    // create a close button
-    var close = document.createElement('button');
-    close.innerText = "x";
-    close.className = 'toasted-close';
-
-    // add eventListener to close the toast
-    close.addEventListener('click', function () {
-        _goAway(el, 0);
-    });
-
-    // append the close button to the toast
-    el.appendChild(close);
-};
-
 var toastObject = function toastObject(el) {
     return {
         el: el,
@@ -401,14 +573,14 @@ var toastObject = function toastObject(el) {
 };
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hammerjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(5);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -416,6 +588,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 var _options = {};
+
 /**
  * parse Options
  *
@@ -541,7 +714,7 @@ var createToast = function createToast(html, options) {
 		var opacityPercent = 1 - Math.abs(deltaX / activationDistance);
 		if (opacityPercent < 0) opacityPercent = 0;
 
-		__WEBPACK_IMPORTED_MODULE_1__animations_js__["a" /* default */].animatePanning(toast, deltaX, opacityPercent);
+		__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanning(toast, deltaX, opacityPercent);
 	});
 
 	hammerHandler.on('panend', function (e) {
@@ -551,7 +724,7 @@ var createToast = function createToast(html, options) {
 		// If toast dragged past activation point
 		if (Math.abs(deltaX) > activationDistance) {
 
-			__WEBPACK_IMPORTED_MODULE_1__animations_js__["a" /* default */].animatePanEnd(toast, function () {
+			__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanEnd(toast, function () {
 				if (typeof options.onComplete === "function") {
 					options.onComplete();
 				}
@@ -563,7 +736,7 @@ var createToast = function createToast(html, options) {
 		} else {
 			toast.classList.remove('panning');
 			// Put toast back into original position
-			__WEBPACK_IMPORTED_MODULE_1__animations_js__["a" /* default */].animateReset(toast);
+			__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animateReset(toast);
 		}
 	});
 
@@ -591,7 +764,7 @@ var createToast = function createToast(html, options) {
 var createAction = function createAction(action, toastObject) {
 
 	if (!action) {
-		return;
+		return null;
 	}
 
 	var el = document.createElement('a');
@@ -672,23 +845,26 @@ var createAction = function createAction(action, toastObject) {
 /**
  * this method will create the toast
  *
+ * @param id
  * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-/* harmony default export */ __webpack_exports__["a"] = function (message, options) {
+/* harmony default export */ __webpack_exports__["a"] = function (id, message, options) {
 
 	options = parseOptions(options);
-
-	var container = document.getElementById('toasted-container');
+	var container = document.getElementById(id);
 
 	// Create toast container if it does not exist
 	if (container === null) {
 		// create notification container
 		container = document.createElement('div');
-		container.id = 'toasted-container';
+		container.id = id;
+
 		document.body.appendChild(container);
 	}
+
+	options.containerClass.unshift('toasted-container');
 
 	// check if the container classes has changed if so update it
 	if (container.className !== options.containerClass.join(' ')) {
@@ -709,7 +885,7 @@ var createAction = function createAction(action, toastObject) {
 	newToast.style.opacity = 0;
 
 	// Animate toast in
-	__WEBPACK_IMPORTED_MODULE_1__animations_js__["a" /* default */].animateIn(newToast);
+	__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animateIn(newToast);
 
 	// Allows timer to be pause while being panned
 	var timeLeft = options.duration;
@@ -726,7 +902,7 @@ var createAction = function createAction(action, toastObject) {
 			if (timeLeft <= 0) {
 				// Animate toast out
 
-				__WEBPACK_IMPORTED_MODULE_1__animations_js__["a" /* default */].animateOut(newToast, function () {
+				__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animateOut(newToast, function () {
 					// Call the optional callback
 					if (typeof options.onComplete === "function") options.onComplete();
 					// Remove toast after it times out
@@ -744,7 +920,7 @@ var createAction = function createAction(action, toastObject) {
 };;
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -797,7 +973,7 @@ module.exports = {
 
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -3447,12 +3623,261 @@ if (true) {
 
 
 /***/ }),
-/* 7 */
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = __webpack_require__(12);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var encode = __webpack_require__(2);
+var alphabet = __webpack_require__(0);
+
+// Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
+// This number should be updated every year or so to keep the generated id short.
+// To regenerate `new Date() - 0` and bump the version. Always bump the version!
+var REDUCE_TIME = 1459707606518;
+
+// don't change unless we change the algos or REDUCE_TIME
+// must be an integer and less than 16
+var version = 6;
+
+// Counter is used when shortid is called multiple times in one second.
+var counter;
+
+// Remember the last time shortid was called in case counter is needed.
+var previousSeconds;
+
+/**
+ * Generate unique id
+ * Returns string id
+ */
+function build(clusterWorkerId) {
+
+    var str = '';
+
+    var seconds = Math.floor((Date.now() - REDUCE_TIME) * 0.001);
+
+    if (seconds === previousSeconds) {
+        counter++;
+    } else {
+        counter = 0;
+        previousSeconds = seconds;
+    }
+
+    str = str + encode(alphabet.lookup, version);
+    str = str + encode(alphabet.lookup, clusterWorkerId);
+    if (counter > 0) {
+        str = str + encode(alphabet.lookup, counter);
+    }
+    str = str + encode(alphabet.lookup, seconds);
+
+    return str;
+}
+
+module.exports = build;
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var alphabet = __webpack_require__(0);
+
+/**
+ * Decode the id to get the version and worker
+ * Mainly for debugging and testing.
+ * @param id - the shortid-generated id.
+ */
+function decode(id) {
+    var characters = alphabet.shuffled();
+    return {
+        version: characters.indexOf(id.substr(0, 1)) & 0x0f,
+        worker: characters.indexOf(id.substr(1, 1)) & 0x0f
+    };
+}
+
+module.exports = decode;
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var alphabet = __webpack_require__(0);
+var encode = __webpack_require__(2);
+var decode = __webpack_require__(11);
+var build = __webpack_require__(10);
+var isValid = __webpack_require__(13);
+
+// if you are using cluster or multiple servers use this to make each instance
+// has a unique value for worker
+// Note: I don't know if this is automatically set when using third
+// party cluster solutions such as pm2.
+var clusterWorkerId = __webpack_require__(16) || 0;
+
+/**
+ * Set the seed.
+ * Highly recommended if you don't want people to try to figure out your id schema.
+ * exposed as shortid.seed(int)
+ * @param seed Integer value to seed the random alphabet.  ALWAYS USE THE SAME SEED or you might get overlaps.
+ */
+function seed(seedValue) {
+    alphabet.seed(seedValue);
+    return module.exports;
+}
+
+/**
+ * Set the cluster worker or machine id
+ * exposed as shortid.worker(int)
+ * @param workerId worker must be positive integer.  Number less than 16 is recommended.
+ * returns shortid module so it can be chained.
+ */
+function worker(workerId) {
+    clusterWorkerId = workerId;
+    return module.exports;
+}
+
+/**
+ *
+ * sets new characters to use in the alphabet
+ * returns the shuffled alphabet
+ */
+function characters(newCharacters) {
+    if (newCharacters !== undefined) {
+        alphabet.characters(newCharacters);
+    }
+
+    return alphabet.shuffled();
+}
+
+/**
+ * Generate unique id
+ * Returns string id
+ */
+function generate() {
+  return build(clusterWorkerId);
+}
+
+// Export all other functions as properties of the generate function
+module.exports = generate;
+module.exports.generate = generate;
+module.exports.seed = seed;
+module.exports.worker = worker;
+module.exports.characters = characters;
+module.exports.decode = decode;
+module.exports.isValid = isValid;
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var alphabet = __webpack_require__(0);
+
+function isShortId(id) {
+    if (!id || typeof id !== 'string' || id.length < 6 ) {
+        return false;
+    }
+
+    var characters = alphabet.characters();
+    var len = id.length;
+    for(var i = 0; i < len;i++) {
+        if (characters.indexOf(id[i]) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+module.exports = isShortId;
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var crypto = typeof window === 'object' && (window.crypto || window.msCrypto); // IE 11 uses window.msCrypto
+
+function randomByte() {
+    if (!crypto || !crypto.getRandomValues) {
+        return Math.floor(Math.random() * 256) & 0x30;
+    }
+    var dest = new Uint8Array(1);
+    crypto.getRandomValues(dest);
+    return dest[0] & 0x30;
+}
+
+module.exports = randomByte;
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// Found this seed-based random generator somewhere
+// Based on The Central Randomizer 1.3 (C) 1997 by Paul Houle (houle@msc.cornell.edu)
+
+var seed = 1;
+
+/**
+ * return a random number based on a seed
+ * @param seed
+ * @returns {number}
+ */
+function getNextValue() {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed/(233280.0);
+}
+
+function setSeed(_seed_) {
+    seed = _seed_;
+}
+
+module.exports = {
+    nextValue: getNextValue,
+    seed: setSeed
+};
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = 0;
+
+
+/***/ }),
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(3);
 
 
 // register plugin if it is used via cdn or directly as a script tag

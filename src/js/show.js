@@ -1,8 +1,10 @@
 import Hammer from 'hammerjs';
-import animations from './animations.js'
+import animations from './animations'
 import {toastObject} from './object'
 
+
 let _options = {};
+
 /**
  * parse Options
  *
@@ -191,7 +193,7 @@ const createAction = (action, toastObject) => {
 
 
 	if (!action) {
-		return;
+		return null;
 	}
 
 	let el = document.createElement('a');
@@ -274,23 +276,26 @@ const createAction = (action, toastObject) => {
 /**
  * this method will create the toast
  *
+ * @param id
  * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-export default function (message, options) {
+export default function (id, message, options) {
 
 	options = parseOptions(options);
-
-	let container = document.getElementById('toasted-container');
+	let container = document.getElementById(id);
 
 	// Create toast container if it does not exist
 	if (container === null) {
 		// create notification container
 		container = document.createElement('div');
-		container.id = 'toasted-container';
+		container.id = id;
+
 		document.body.appendChild(container);
 	}
+
+	options.containerClass.unshift('toasted-container');
 
 	// check if the container classes has changed if so update it
 	if (container.className !== options.containerClass.join(' ')) {

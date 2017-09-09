@@ -1,7 +1,7 @@
 @import "mixins";
 @import "themes";
 
-#toasted-container {
+.toasted-container {
   // fix for min-height bug in IE
   display: flex;
   flex-direction: column;
