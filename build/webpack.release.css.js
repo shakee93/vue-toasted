@@ -6,7 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
 	entry: {
-		'vue-toasted.min' : './src/sass/toast.scss'
+		'toasted.min' : './src/sass/toast.scss'
 	},
 	output: {
 		path: './dist',

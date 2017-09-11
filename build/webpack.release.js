@@ -5,8 +5,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
 	entry: {
-		'toasted' : './src/index-core.js',
-		'toasted.min' : './src/index-core.js'
+		'toasted' : './src/index.js',
+		'toasted.min' : './src/index.js'
 	},
 	output: {
 		path: './dist',

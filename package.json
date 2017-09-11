@@ -1,18 +1,18 @@
 {
-  "name": "vue-toasted",
-  "description": "Responsive Touch Compatible Toast plugin for VueJS 2+",
-  "version": "1.1.17",
+  "name": "toastedjs",
+  "description": "Vanilla Javascript Toast Plugin, Responsive and Touch Compatible",
+  "version": "0.0.1",
   "author": "Shakeeb Sadikeen <shakee.zats@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shakee93/vue-toasted.git"
+    "url": "https://github.com/shakee93/toasted.git"
   },
-  "main": "./dist/vue-toasted.min.js",
+  "main": "./src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules",
-    "build-local-watch": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules --watch",
-    "release": "npm run build && npm run core && npm run css",
+    "build-watch": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules --watch",
+    "release": "npm run build && npm run css",
     "css": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.css.js --progress --hide-modules ",
     "es": "babel src --presets babel-preset-es2015 --out-dir dist"
   },
@@ -29,10 +29,11 @@
     "toastr"
   ],
   "dependencies": {
-    "hammerjs": "^2.0.8"
+    "animejs": "^2.0.2",
+    "hammerjs": "^2.0.8",
+    "shortid": "^2.2.8"
   },
   "devDependencies": {
-    "animejs": "^2.0.2",
     "autoprefixer": "^7.1.3",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.0.0",
@@ -44,22 +45,11 @@
     "es6-object-assign": "^1.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
-
-    "jasmine": "^2.5.3",
-    "jasmine-core": "^2.5.2",
-    "karma": "^1.5.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-mocha": "^1.3.0",
-    "karma-requirejs": "^1.1.0",
-    "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "postcss-loader": "^2.0.6",
     "requirejs": "^2.3.3",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.18.2",
-    "vue-loader": "^11.0.0",
-    "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.3.1",
     "webpack-dev-server": "^2.2.0"

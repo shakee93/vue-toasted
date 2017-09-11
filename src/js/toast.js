@@ -14,6 +14,8 @@ require('es6-object-assign').polyfill();
  */
 export const Toasted = function (_options) {
 
+	if(!_options) _options = {};
+
 	/**
 	 * Unique id of the toast
 	 */
