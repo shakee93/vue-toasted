@@ -5,22 +5,14 @@ const uuid = require('shortid');
 require('es6-object-assign').polyfill();
 
 /**
- * Initiate the Plugin
- * @param options
- */
-export const Toasted = function (options) {
-    return new Toast(options);
-};
-
-/**
  * Toast
  * core instance of toast
  *
  * @param _options
- * @returns {Toast}
+ * @returns {Toasted}
  * @constructor
  */
-export const Toast = function (_options) {
+export const Toasted = function (_options) {
 
 	/**
 	 * Unique id of the toast
@@ -40,17 +32,38 @@ export const Toast = function (_options) {
 
 
 	/**
+	 * All Registered Groups
+	 */
+	this.groups = [];
+
+
+	/**
 	 * Initiate custom toasts
 	 */
 	initiateCustomToasts(this);
 
 
 	/**
-	 * Create New Instance of the Toast
+	 * Create New Group of Toasts
+	 *
 	 * @param o
 	 */
-	this.instance = (o) => {
-		return Toasted(o);
+	this.group = (o) => {
+
+		if(!o) o = {};
+
+		if(!o.globalToasts) {
+			o.globalToasts = {};
+		}
+
+		// share parents global toasts
+		Object.assign(o.globalToasts, this.global);
+
+		// tell parent about the group
+		let group = new Toasted(o);
+		this.groups.push(group);
+
+		return group;
 	}
 
 
@@ -142,13 +155,12 @@ export const _show = function (instance, message, options) {
     }
 
     // clone the global options
-    let _cachedGlobalOptions = Object.assign({}, instance.options);
+    let _options = Object.assign({}, instance.options);
 
 	// merge the cached global options with options
-	Object.assign(_cachedGlobalOptions, options);
-    options = _cachedGlobalOptions;
+	Object.assign(_options, options);
 
-    return show(instance.id, message, options);
+    return show(instance, message, _options);
 };
 
 /**
@@ -204,5 +216,4 @@ const register = function (instance, name, message, options) {
 	initiateCustomToasts(instance);
 }
 
-export default {Toasted, Toast} ;
-
+export default {Toasted};

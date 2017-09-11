@@ -33,9 +33,5 @@ export const toastObject = (el) => ({
     },
     goAway: function (delay = 800) {
         return goAway(el, delay);
-    },
-    addClose: function () {
-        addCloseButton(el);
-        return this;
     }
 });

@@ -4,7 +4,7 @@ import {toastObject} from './object'
 
 
 let _options = {};
-
+let _instance = null;
 /**
  * parse Options
  *
@@ -276,21 +276,24 @@ const createAction = (action, toastObject) => {
 /**
  * this method will create the toast
  *
- * @param id
+ * @param instance
  * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-export default function (id, message, options) {
+export default function (instance, message, options) {
+
+	// share the instance across
+	_instance = instance;
 
 	options = parseOptions(options);
-	let container = document.getElementById(id);
+	let container = document.getElementById(_instance.id);
 
 	// Create toast container if it does not exist
 	if (container === null) {
 		// create notification container
 		container = document.createElement('div');
-		container.id = id;
+		container.id = _instance.id;
 
 		document.body.appendChild(container);
 	}
@@ -322,7 +325,7 @@ export default function (id, message, options) {
 	// Allows timer to be pause while being panned
 	let timeLeft = options.duration;
 	let counterInterval;
-	if (timeLeft != null) {
+	if (timeLeft !== null) {
 		counterInterval = setInterval(function () {
 			if (newToast.parentNode === null)
 				window.clearInterval(counterInterval);

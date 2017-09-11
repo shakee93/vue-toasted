@@ -274,7 +274,6 @@ module.exports = encode;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(7);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Toasted; });
-/* unused harmony export Toast */
 /* unused harmony export _show */
 /* unused harmony export initiateCustomToasts */
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -286,22 +285,14 @@ var uuid = __webpack_require__(12);
 __webpack_require__(10).polyfill();
 
 /**
- * Initiate the Plugin
- * @param options
- */
-var Toasted = function Toasted(options) {
-	return new Toast(options);
-};
-
-/**
  * Toast
  * core instance of toast
  *
  * @param _options
- * @returns {Toast}
+ * @returns {Toasted}
  * @constructor
  */
-var Toast = function Toast(_options) {
+var Toasted = function Toasted(_options) {
 	var _this = this;
 
 	/**
@@ -320,16 +311,36 @@ var Toast = function Toast(_options) {
 	this.global = {};
 
 	/**
+  * All Registered Groups
+  */
+	this.groups = [];
+
+	/**
   * Initiate custom toasts
   */
 	initiateCustomToasts(this);
 
 	/**
-  * Create New Instance of the Toast
+  * Create New Group of Toasts
+  *
   * @param o
   */
-	this.instance = function (o) {
-		return Toasted(o);
+	this.group = function (o) {
+
+		if (!o) o = {};
+
+		if (!o.globalToasts) {
+			o.globalToasts = {};
+		}
+
+		// share parents global toasts
+		Object.assign(o.globalToasts, _this.global);
+
+		// tell parent about the group
+		var group = new Toasted(o);
+		_this.groups.push(group);
+
+		return group;
 	};
 
 	/**
@@ -415,13 +426,12 @@ var _show = function _show(instance, message, options) {
 	}
 
 	// clone the global options
-	var _cachedGlobalOptions = Object.assign({}, instance.options);
+	var _options = Object.assign({}, instance.options);
 
 	// merge the cached global options with options
-	Object.assign(_cachedGlobalOptions, options);
-	options = _cachedGlobalOptions;
+	Object.assign(_options, options);
 
-	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance.id, message, options);
+	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance, message, _options);
 };
 
 /**
@@ -477,7 +487,7 @@ var register = function register(instance, name, message, options) {
 	initiateCustomToasts(instance);
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted, Toast: Toast };
+/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted };
 
 /***/ }),
 /* 4 */
@@ -586,10 +596,6 @@ var toastObject = function toastObject(el) {
             var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
 
             return _goAway(el, delay);
-        },
-        addClose: function addClose() {
-            addCloseButton(el);
-            return this;
         }
     };
 };
@@ -610,7 +616,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 var _options = {};
-
+var _instance = null;
 /**
  * parse Options
  *
@@ -867,21 +873,24 @@ var createAction = function createAction(action, toastObject) {
 /**
  * this method will create the toast
  *
- * @param id
+ * @param instance
  * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-/* harmony default export */ __webpack_exports__["a"] = function (id, message, options) {
+/* harmony default export */ __webpack_exports__["a"] = function (instance, message, options) {
+
+	// share the instance across
+	_instance = instance;
 
 	options = parseOptions(options);
-	var container = document.getElementById(id);
+	var container = document.getElementById(_instance.id);
 
 	// Create toast container if it does not exist
 	if (container === null) {
 		// create notification container
 		container = document.createElement('div');
-		container.id = id;
+		container.id = _instance.id;
 
 		document.body.appendChild(container);
 	}
@@ -912,7 +921,7 @@ var createAction = function createAction(action, toastObject) {
 	// Allows timer to be pause while being panned
 	var timeLeft = options.duration;
 	var counterInterval = void 0;
-	if (timeLeft != null) {
+	if (timeLeft !== null) {
 		counterInterval = setInterval(function () {
 			if (newToast.parentNode === null) window.clearInterval(counterInterval);
 
