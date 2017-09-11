@@ -4,6 +4,22 @@ const uuid = require('shortid');
 // add Object.assign Polyfill
 require('es6-object-assign').polyfill();
 
+
+
+/**
+ * Allows Toasted to be Extended
+ *
+ * @type {{hook: {}, verifyHook: Extender.verifyHook}}
+ */
+export let Extender = {
+	hook : {},
+	verifyHook : function (hook) {
+		return !!(hook && typeof hook === 'function');
+	}
+};
+
+
+
 /**
  * Toast
  * core instance of toast
@@ -218,4 +234,4 @@ const register = function (instance, name, message, options) {
 	initiateCustomToasts(instance);
 }
 
-export default {Toasted};
+export default {Toasted, Extender};

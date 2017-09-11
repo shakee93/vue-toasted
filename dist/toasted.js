@@ -186,93 +186,8 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
-
-
-var duration = 300;
-
-/* harmony default export */ __webpack_exports__["a"] = {
-    animateIn: function animateIn(el) {
-        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-            targets: el,
-            translateY: '-35px',
-            opacity: 1,
-            duration: duration,
-            easing: 'easeOutCubic'
-        });
-    },
-    animateOut: function animateOut(el, onComplete) {
-        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-            targets: el,
-            opacity: 0,
-            marginTop: '-40px',
-            duration: duration,
-            easing: 'easeOutExpo',
-            complete: onComplete
-        });
-    },
-    animateReset: function animateReset(el) {
-        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-            targets: el,
-            left: 0,
-            opacity: 1,
-            duration: duration,
-            easing: 'easeOutExpo'
-        });
-    },
-    animatePanning: function animatePanning(el, left, opacity) {
-        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-            targets: el,
-            duration: 10,
-            easing: 'easeOutQuad',
-            left: left,
-            opacity: opacity
-        });
-    },
-    animatePanEnd: function animatePanEnd(el, onComplete) {
-        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
-            targets: el,
-            opacity: 0,
-            duration: duration,
-            easing: 'easeOutExpo',
-            complete: onComplete
-        });
-    }
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var randomByte = __webpack_require__(14);
-
-function encode(lookup, number) {
-    var loopCounter = 0;
-    var done;
-
-    var str = '';
-
-    while (!done) {
-        str = str + lookup( ( (number >> (4 * loopCounter)) & 0x0f ) | randomByte() );
-        done = number < (Math.pow(16, loopCounter + 1 ) );
-        loopCounter++;
-    }
-    return str;
-}
-
-module.exports = encode;
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(6);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Extender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Toasted; });
 /* unused harmony export _show */
 /* unused harmony export initiateCustomToasts */
@@ -283,6 +198,18 @@ var uuid = __webpack_require__(9);
 
 // add Object.assign Polyfill
 __webpack_require__(7).polyfill();
+
+/**
+ * Allows Toasted to be Extended
+ *
+ * @type {{hook: {}, verifyHook: Extender.verifyHook}}
+ */
+var Extender = {
+	hook: {},
+	verifyHook: function verifyHook(hook) {
+		return !!(hook && typeof hook === 'function');
+	}
+};
 
 /**
  * Toast
@@ -489,7 +416,93 @@ var register = function register(instance, name, message, options) {
 	initiateCustomToasts(instance);
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted };
+/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted, Extender: Extender };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
+
+
+var duration = 300;
+
+/* harmony default export */ __webpack_exports__["a"] = {
+    animateIn: function animateIn(el) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            translateY: '-35px',
+            opacity: 1,
+            duration: duration,
+            easing: 'easeOutCubic'
+        });
+    },
+    animateOut: function animateOut(el, onComplete) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            opacity: 0,
+            marginTop: '-40px',
+            duration: duration,
+            easing: 'easeOutExpo',
+            complete: onComplete
+        });
+    },
+    animateReset: function animateReset(el) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            left: 0,
+            opacity: 1,
+            duration: duration,
+            easing: 'easeOutExpo'
+        });
+    },
+    animatePanning: function animatePanning(el, left, opacity) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            duration: 10,
+            easing: 'easeOutQuad',
+            left: left,
+            opacity: opacity
+        });
+    },
+    animatePanEnd: function animatePanEnd(el, onComplete) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            opacity: 0,
+            duration: duration,
+            easing: 'easeOutExpo',
+            complete: onComplete
+        });
+    }
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var randomByte = __webpack_require__(14);
+
+function encode(lookup, number) {
+    var loopCounter = 0;
+    var done;
+
+    var str = '';
+
+    while (!done) {
+        str = str + lookup( ( (number >> (4 * loopCounter)) & 0x0f ) | randomByte() );
+        done = number < (Math.pow(16, loopCounter + 1 ) );
+        loopCounter++;
+    }
+    return str;
+}
+
+module.exports = encode;
+
 
 /***/ }),
 /* 4 */
@@ -531,7 +544,7 @@ b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.compl
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(2);
 /* unused harmony export goAway */
 /* unused harmony export changeText */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toastObject; });
@@ -587,9 +600,11 @@ var toastObject = function toastObject(el) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hammerjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__toast__ = __webpack_require__(1);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 
 
 
@@ -664,6 +679,11 @@ var parseOptions = function parseOptions(options) {
 	options.position && options.containerClass.push(options.position.trim());
 	options.fullWidth && options.containerClass.push('full-width');
 	options.fitToScreen && options.containerClass.push('fit-to-screen');
+
+	// HOOK : options
+	if (__WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].verifyHook(__WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].hook.options)) {
+		options = __WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].hook.options(options, _options);
+	}
 
 	_options = options;
 	return options;
@@ -824,6 +844,11 @@ var createAction = function createAction(action, toastObject) {
 				action.onClick(e, toastObject);
 			}
 		});
+	}
+
+	// HOOK : action
+	if (__WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].verifyHook(__WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].hook.action)) {
+		__WEBPACK_IMPORTED_MODULE_3__toast__["b" /* Extender */].hook.action(el, action, toastObject, _options);
 	}
 
 	return el;
@@ -3628,7 +3653,7 @@ module.exports = __webpack_require__(12);
 "use strict";
 
 
-var encode = __webpack_require__(2);
+var encode = __webpack_require__(3);
 var alphabet = __webpack_require__(0);
 
 // Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
@@ -3708,7 +3733,7 @@ module.exports = decode;
 
 
 var alphabet = __webpack_require__(0);
-var encode = __webpack_require__(2);
+var encode = __webpack_require__(3);
 var decode = __webpack_require__(11);
 var build = __webpack_require__(10);
 var isValid = __webpack_require__(13);
@@ -3867,8 +3892,10 @@ module.exports = 0;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(1);
 
+
+__WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */].extend = __WEBPACK_IMPORTED_MODULE_0__js_toast__["b" /* Extender */];
 
 /* harmony default export */ __webpack_exports__["default"] = __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */];
 

@@ -1,6 +1,7 @@
 import Hammer from 'hammerjs';
 import animations from './animations'
 import {toastObject} from './object'
+import {Extender} from './toast';
 
 
 let _options = {};
@@ -74,6 +75,11 @@ const parseOptions = function (options) {
 	(options.position) && options.containerClass.push(options.position.trim());
 	(options.fullWidth) && options.containerClass.push('full-width');
 	(options.fitToScreen) && options.containerClass.push('fit-to-screen');
+
+	// HOOK : options
+	if (Extender.verifyHook(Extender.hook.options)) {
+		options = Extender.hook.options(options, _options);
+	}
 
 	_options = options;
 	return options;
@@ -246,6 +252,11 @@ const createAction = (action, toastObject) => {
 			}
 
 		})
+	}
+
+	// HOOK : action
+	if (Extender.verifyHook(Extender.hook.action)) {
+		Extender.hook.action(el, action, toastObject, _options);
 	}
 
 	return el;

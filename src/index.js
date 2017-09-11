@@ -1,3 +1,5 @@
-import {Toasted} from './js/toast';
+import {Toasted, Extender} from './js/toast';
+
+Toasted.extend = Extender;
 
 export default Toasted
