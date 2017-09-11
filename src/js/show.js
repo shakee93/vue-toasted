@@ -237,28 +237,6 @@ const createAction = (action, toastObject) => {
 		}
 	}
 
-	// initiate push with ready
-	if(action.push) {
-
-		el.addEventListener('click', (e) => {
-			e.preventDefault();
-
-			// check if vue router passed through global options
-			if(!_options.router && _options.router.constructor.name !== "VueRouter") {
-				console.warn('[vue-toasted] : Vue Router instance is not attached. please check the docs');
-				return;
-			}
-
-			_options.router.push(action.push);
-
-			// fade away toast after action.
-			if(!action.push.dontClose) {
-				toastObject.goAway(0);
-			}
-		})
-
-	}
-
 	if (action.onClick && typeof action.onClick === 'function') {
 		el.addEventListener('click', (e) => {
 

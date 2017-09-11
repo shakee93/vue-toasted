@@ -5,8 +5,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 
 module.exports = {
 	entry: {
-		'vue-toasted' : './src/index.js',
-		'vue-toasted.min' : './src/index.js'
+		'toasted' : './src/index-core.js',
+		'toasted.min' : './src/index-core.js'
 	},
 	output: {
 		path: './dist',

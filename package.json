@@ -14,7 +14,6 @@
     "build-local-watch": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules --watch",
     "release": "npm run build && npm run core && npm run css",
     "css": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.css.js --progress --hide-modules ",
-    "core": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.core.js --progress --hide-modules",
     "es": "babel src --presets babel-preset-es2015 --out-dir dist"
   },
   "keywords": [
@@ -29,7 +28,9 @@
     "vue-toastr",
     "toastr"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "hammerjs": "^2.0.8"
+  },
   "devDependencies": {
     "animejs": "^2.0.2",
     "autoprefixer": "^7.1.3",
@@ -43,7 +44,7 @@
     "es6-object-assign": "^1.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
-    "hammerjs": "^2.0.8",
+
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
     "karma": "^1.5.0",
