@@ -244,7 +244,7 @@ const createAction = (action, toastObject) => {
 			e.preventDefault();
 
 			// check if vue router passed through global options
-			if(!_options.router && _options.router.constructor.name !== "VueRouter") {
+			if(!_options.router) {
 				console.warn('[vue-toasted] : Vue Router instance is not attached. please check the docs');
 				return;
 			}

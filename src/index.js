@@ -3,6 +3,11 @@ import ToastComponent from './toast.vue';
 
 const Toasted = {
     install: (Vue, options) => {
+
+    	if(!options) {
+		    options = {};
+	    }
+
         let Toast = new T(options)
 	    Vue.component('toasted', ToastComponent);
 	    Vue.toasted = Vue.prototype.$toasted = Toast;
