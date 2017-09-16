@@ -186,7 +186,7 @@ module.exports = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_animejs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_animejs__);
 
 
@@ -238,11 +238,38 @@ var duration = 300;
             easing: 'easeOutExpo',
             complete: onComplete
         });
+    },
+    clearAnimation: function clearAnimation(toasts) {
+
+        var timeline = __WEBPACK_IMPORTED_MODULE_0_animejs___default.a.timeline();
+
+        toasts.forEach(function (t) {
+            timeline.add({
+                targets: t.el,
+                opacity: 0,
+                right: '-40px',
+                duration: 300,
+                offset: '-=150',
+                easing: 'easeOutExpo',
+                complete: function complete() {
+                    t.remove();
+                }
+            });
+        });
     }
 };
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+module.exports = __webpack_require__(12);
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -268,40 +295,33 @@ module.exports = encode;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Toasted; });
-/* unused harmony export Toast */
 /* unused harmony export _show */
 /* unused harmony export initiateCustomToasts */
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
-var uuid = __webpack_require__(9);
+
+var uuid = __webpack_require__(2);
 
 // add Object.assign Polyfill
-__webpack_require__(7).polyfill();
-
-/**
- * Initiate the Plugin
- * @param options
- */
-var Toasted = function Toasted(options) {
-	return new Toast(options);
-};
+__webpack_require__(8).polyfill();
 
 /**
  * Toast
  * core instance of toast
  *
  * @param _options
- * @returns {Toast}
+ * @returns {Toasted}
  * @constructor
  */
-var Toast = function Toast(_options) {
+var Toasted = function Toasted(_options) {
 	var _this = this;
 
 	/**
@@ -320,16 +340,41 @@ var Toast = function Toast(_options) {
 	this.global = {};
 
 	/**
+  * All Registered Groups
+  */
+	this.groups = [];
+
+	/**
+  * All Registered Toasts
+  */
+	this.toasts = [];
+
+	/**
   * Initiate custom toasts
   */
 	initiateCustomToasts(this);
 
 	/**
-  * Create New Instance of the Toast
+  * Create New Group of Toasts
+  *
   * @param o
   */
-	this.instance = function (o) {
-		return Toasted(o);
+	this.group = function (o) {
+
+		if (!o) o = {};
+
+		if (!o.globalToasts) {
+			o.globalToasts = {};
+		}
+
+		// share parents global toasts
+		Object.assign(o.globalToasts, _this.global);
+
+		// tell parent about the group
+		var group = new Toasted(o);
+		_this.groups.push(group);
+
+		return group;
 	};
 
 	/**
@@ -394,6 +439,27 @@ var Toast = function Toast(_options) {
 		return _show(_this, message, options);
 	};
 
+	/**
+  * Remove a Toast
+  * @param el
+  */
+	this.remove = function (el) {
+		_this.toasts = _this.toasts.filter(function (t) {
+			return t.el.hash !== el.hash;
+		});
+		if (el.parentNode) el.parentNode.removeChild(el);
+	};
+
+	/**
+  * Clear All Toasts
+  *
+  * @returns {boolean}
+  */
+	this.clear = function () {
+		__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].clearAnimation(_this.toasts);
+		_this.toasts = [];
+	};
+
 	return this;
 };
 
@@ -415,13 +481,14 @@ var _show = function _show(instance, message, options) {
 	}
 
 	// clone the global options
-	var _cachedGlobalOptions = Object.assign({}, instance.options);
+	var _options = Object.assign({}, instance.options);
 
 	// merge the cached global options with options
-	Object.assign(_cachedGlobalOptions, options);
-	options = _cachedGlobalOptions;
+	Object.assign(_options, options);
 
-	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance.id, message, options);
+	var toast = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance, message, _options);
+	instance.toasts.push(toast);
+	return toast;
 };
 
 /**
@@ -477,10 +544,10 @@ var register = function register(instance, name, message, options) {
 	initiateCustomToasts(instance);
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted, Toast: Toast };
+/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -515,7 +582,7 @@ n.speed=1;n.running=q;n.remove=function(a){a=M(a);for(var b=q.length;b--;)for(va
 b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.completed=!0});w(a).forEach(function(a){var c=b.duration,d=a.offset;a.autoplay=!1;a.offset=g.und(d)?c:K(d,c);b.seek(a.offset);a=n(a);a.duration>c&&(b.duration=a.duration);a.began=!0;b.children.push(a)});b.reset();b.seek(0);b.autoplay&&b.restart();return b};return b};n.random=function(a,b){return Math.floor(Math.random()*(b-a+1))+a};return n});
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -530,11 +597,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 // fade the toast away
-var _goAway = function _goAway(el, delay) {
+var _goAway = function _goAway(el, delay, instance) {
     // Animate toast out
     setTimeout(function () {
         __WEBPACK_IMPORTED_MODULE_0__animations_js__["a" /* default */].animateOut(el, function () {
-            if (el.parentNode) el.parentNode.removeChild(el);
+            instance.remove(el);
         });
     }, delay);
 
@@ -553,7 +620,9 @@ var changeText = function changeText(el, text) {
     return _this;
 };
 
-var toastObject = function toastObject(el) {
+var toastObject = function toastObject(el, instance) {
+    var _disposed = false;
+
     return {
         el: el,
         text: function text(_text) {
@@ -563,32 +632,36 @@ var toastObject = function toastObject(el) {
         goAway: function goAway() {
             var delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 800;
 
-            return _goAway(el, delay);
+            _disposed = true;
+            return _goAway(el, delay, instance);
         },
-        addClose: function addClose() {
-            addCloseButton(el);
-            return this;
+        remove: function remove() {
+            instance.remove(el);
+        },
+        disposed: function disposed() {
+            return _disposed;
         }
     };
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hammerjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(6);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
 
 
+var uuid = __webpack_require__(2);
 
 var _options = {};
-
+var _instance = null;
 /**
  * parse Options
  *
@@ -667,6 +740,9 @@ var createToast = function createToast(html, options) {
 	var toast = document.createElement('div');
 	toast.classList.add('toasted');
 
+	// set unique identifier
+	toast.hash = uuid.generate();
+
 	if (options.className) {
 		options.className.forEach(function (className) {
 			toast.classList.add(className);
@@ -730,7 +806,7 @@ var createToast = function createToast(html, options) {
 				}
 
 				if (toast.parentNode) {
-					toast.parentNode.removeChild(toast);
+					_instance.remove(toast);
 				}
 			});
 		} else {
@@ -743,11 +819,11 @@ var createToast = function createToast(html, options) {
 	// create and append actions
 	if (Array.isArray(options.action)) {
 		options.action.forEach(function (action) {
-			var el = createAction(action, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(toast));
+			var el = createAction(action, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(toast, _instance));
 			if (el) toast.appendChild(el);
 		});
 	} else if (_typeof(options.action) === 'object') {
-		var action = createAction(options.action, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(toast));
+		var action = createAction(options.action, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(toast, _instance));
 		if (action) toast.appendChild(action);
 	}
 
@@ -815,7 +891,7 @@ var createAction = function createAction(action, toastObject) {
 			e.preventDefault();
 
 			// check if vue router passed through global options
-			if (!_options.router && _options.router.constructor.name !== "VueRouter") {
+			if (!_options.router) {
 				console.warn('[vue-toasted] : Vue Router instance is not attached. please check the docs');
 				return;
 			}
@@ -845,21 +921,24 @@ var createAction = function createAction(action, toastObject) {
 /**
  * this method will create the toast
  *
- * @param id
+ * @param instance
  * @param message
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-/* harmony default export */ __webpack_exports__["a"] = function (id, message, options) {
+/* harmony default export */ __webpack_exports__["a"] = function (instance, message, options) {
+
+	// share the instance across
+	_instance = instance;
 
 	options = parseOptions(options);
-	var container = document.getElementById(id);
+	var container = document.getElementById(_instance.id);
 
 	// Create toast container if it does not exist
 	if (container === null) {
 		// create notification container
 		container = document.createElement('div');
-		container.id = id;
+		container.id = _instance.id;
 
 		document.body.appendChild(container);
 	}
@@ -890,7 +969,7 @@ var createAction = function createAction(action, toastObject) {
 	// Allows timer to be pause while being panned
 	var timeLeft = options.duration;
 	var counterInterval = void 0;
-	if (timeLeft != null) {
+	if (timeLeft !== null) {
 		counterInterval = setInterval(function () {
 			if (newToast.parentNode === null) window.clearInterval(counterInterval);
 
@@ -907,7 +986,7 @@ var createAction = function createAction(action, toastObject) {
 					if (typeof options.onComplete === "function") options.onComplete();
 					// Remove toast after it times out
 					if (newToast.parentNode) {
-						newToast.parentNode.removeChild(newToast);
+						_instance.remove(newToast);
 					}
 				});
 
@@ -916,11 +995,11 @@ var createAction = function createAction(action, toastObject) {
 		}, 20);
 	}
 
-	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(newToast);
+	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(newToast, _instance);
 };;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -973,7 +1052,7 @@ module.exports = {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -3623,22 +3702,13 @@ if (true) {
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-module.exports = __webpack_require__(12);
-
-
-/***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var encode = __webpack_require__(2);
+var encode = __webpack_require__(3);
 var alphabet = __webpack_require__(0);
 
 // Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
@@ -3718,7 +3788,7 @@ module.exports = decode;
 
 
 var alphabet = __webpack_require__(0);
-var encode = __webpack_require__(2);
+var encode = __webpack_require__(3);
 var decode = __webpack_require__(11);
 var build = __webpack_require__(10);
 var isValid = __webpack_require__(13);
@@ -3877,7 +3947,7 @@ module.exports = 0;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(4);
 
 
 // register plugin if it is used via cdn or directly as a script tag

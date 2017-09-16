@@ -1,4 +1,5 @@
 import show from './show';
+import animations from './animations';
 const uuid = require('shortid');
 
 // add Object.assign Polyfill
@@ -36,6 +37,10 @@ export const Toasted = function (_options) {
 	 */
 	this.groups = [];
 
+	/**
+	 * All Registered Toasts
+	 */
+	this.toasts = [];
 
 	/**
 	 * Initiate custom toasts
@@ -50,9 +55,9 @@ export const Toasted = function (_options) {
 	 */
 	this.group = (o) => {
 
-		if(!o) o = {};
+		if (!o) o = {};
 
-		if(!o.globalToasts) {
+		if (!o.globalToasts) {
 			o.globalToasts = {};
 		}
 
@@ -113,7 +118,7 @@ export const Toasted = function (_options) {
 	 * @param options
 	 * @returns {*}
 	 */
-	this.info =  (message, options) => {
+	this.info = (message, options) => {
 		options = options || {};
 		options.type = "info";
 		return _show(this, message, options);
@@ -127,12 +132,34 @@ export const Toasted = function (_options) {
 	 * @param options
 	 * @returns {*}
 	 */
-	this.error =  (message, options) => {
+	this.error = (message, options) => {
 		options = options || {};
 		options.type = "error";
 		return _show(this, message, options);
 	}
 
+
+	/**
+	 * Remove a Toast
+	 * @param el
+	 */
+	this.remove = (el) => {
+		this.toasts = this.toasts.filter((t) => {
+			return t.el.hash !== el.hash;
+		})
+		if (el.parentNode) el.parentNode.removeChild(el);
+	}
+
+
+	/**
+	 * Clear All Toasts
+	 *
+	 * @returns {boolean}
+	 */
+	this.clear = () => {
+		animations.clearAnimation(this.toasts);
+		this.toasts = [];
+	}
 
 	return this;
 };
@@ -147,20 +174,22 @@ export const Toasted = function (_options) {
  * @private
  */
 export const _show = function (instance, message, options) {
-    options = options || {};
+	options = options || {};
 
-    if (typeof options !== "object") {
-        console.error("Options should be a type of object. given : " + options);
-        return null;
-    }
+	if (typeof options !== "object") {
+		console.error("Options should be a type of object. given : " + options);
+		return null;
+	}
 
-    // clone the global options
-    let _options = Object.assign({}, instance.options);
+	// clone the global options
+	let _options = Object.assign({}, instance.options);
 
 	// merge the cached global options with options
 	Object.assign(_options, options);
 
-    return show(instance, message, _options);
+	let toast = show(instance, message, _options);
+	instance.toasts.push(toast);
+	return toast;
 };
 
 /**
@@ -168,35 +197,35 @@ export const _show = function (instance, message, options) {
  */
 export const initiateCustomToasts = function (instance) {
 
-    let customToasts =  instance.options.globalToasts;
+	let customToasts = instance.options.globalToasts;
 
-    // this will initiate toast for the custom toast.
-    let initiate = (message, options) => {
+	// this will initiate toast for the custom toast.
+	let initiate = (message, options) => {
 
-        // check if passed option is a available method if so call it.
-        if(typeof(options) === 'string' && instance[options]) {
-           return instance[options].apply(instance, [message, {}]);
-        }
+		// check if passed option is a available method if so call it.
+		if (typeof(options) === 'string' && instance[options]) {
+			return instance[options].apply(instance, [message, {}]);
+		}
 
-        // or else create a new toast with passed options.
-        return _show(instance.id, message, options);
-    };
+		// or else create a new toast with passed options.
+		return _show(instance.id, message, options);
+	};
 
-    if(customToasts) {
+	if (customToasts) {
 
-	    instance.global = {};
+		instance.global = {};
 
-        Object.keys(customToasts).forEach( key => {
+		Object.keys(customToasts).forEach(key => {
 
-            // register the custom toast events to the Toast.custom property
-	        instance.global[key] = (payload = {}) => {
+			// register the custom toast events to the Toast.custom property
+			instance.global[key] = (payload = {}) => {
 
-                // return the it in order to expose the Toast methods
-                return customToasts[key].apply(null, [ payload, initiate ]);
-            };
-        });
+				// return the it in order to expose the Toast methods
+				return customToasts[key].apply(null, [payload, initiate]);
+			};
+		});
 
-    }
+	}
 };
 
 const register = function (instance, name, message, options) {
@@ -205,7 +234,7 @@ const register = function (instance, name, message, options) {
 
 	instance.options.globalToasts[name] = function (payload, initiate) {
 
-		if(typeof message === 'function') {
+		if (typeof message === 'function') {
 			message = message(payload);
 		}
 

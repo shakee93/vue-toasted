@@ -48,5 +48,24 @@ export default {
             easing: 'easeOutExpo',
             complete: onComplete
         })
+    },
+    clearAnimation : (toasts) => {
+
+	    let timeline = anime.timeline();
+
+	    toasts.forEach((t) => {
+		    timeline.add({
+			    targets : t.el,
+			    opacity : 0,
+			    right : '-40px',
+			    duration: 300,
+			    offset : '-=150',
+			    easing: 'easeOutExpo',
+			    complete: () => {
+				    t.remove();
+			    }
+            });
+	    })
+
     }
 }

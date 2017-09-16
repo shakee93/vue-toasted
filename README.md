@@ -210,6 +210,7 @@ success|message, options| show a toast with success style
 info|message, options| show a toast with info style
 error|message, options | show a toast with error style
 register | name, message, options | register your own toast with options [explained here](#custom-toast-registration) 
+clear | - | clear all toasts
 
 ### Toast Object
 Each Toast Returns a Toast Object where you can manipulate the toast.

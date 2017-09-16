@@ -1,7 +1,7 @@
 import Hammer from 'hammerjs';
 import animations from './animations'
 import {toastObject} from './object'
-
+const uuid = require('shortid');
 
 let _options = {};
 let _instance = null;
@@ -86,6 +86,9 @@ const createToast = function (html, options) {
 	let toast = document.createElement('div');
 	toast.classList.add('toasted');
 
+	// set unique identifier
+	toast.hash = uuid.generate();
+
 	if (options.className) {
 		options.className.forEach((className) => {
 			toast.classList.add(className);
@@ -155,7 +158,7 @@ const createToast = function (html, options) {
 				}
 
 				if (toast.parentNode) {
-					toast.parentNode.removeChild(toast);
+					_instance.remove(toast);
 				}
 			})
 
@@ -170,12 +173,12 @@ const createToast = function (html, options) {
 	// create and append actions
 	if (Array.isArray(options.action)) {
 		options.action.forEach((action) => {
-			let el = createAction(action, toastObject(toast));
+			let el = createAction(action, toastObject(toast, _instance));
 			if (el) toast.appendChild(el)
 		})
 	}
 	else if (typeof options.action === 'object') {
-		let action = createAction(options.action, toastObject(toast));
+		let action = createAction(options.action, toastObject(toast, _instance));
 		if (action) toast.appendChild(action)
 	}
 
@@ -344,7 +347,7 @@ export default function (instance, message, options) {
 						options.onComplete();
 					// Remove toast after it times out
 					if (newToast.parentNode) {
-						newToast.parentNode.removeChild(newToast);
+						_instance.remove(newToast);
 					}
 
 				})
@@ -354,5 +357,5 @@ export default function (instance, message, options) {
 		}, 20);
 	}
 
-	return toastObject(newToast);
+	return toastObject(newToast, _instance);
 };

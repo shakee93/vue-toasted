@@ -1,16 +1,17 @@
 import animations from './animations.js'
 
 // fade the toast away
-export const goAway = (el, delay) => {
+export const goAway = (el, delay, instance) => {
     // Animate toast out
     setTimeout(function () {
         animations.animateOut(el, () => {
-            if (el.parentNode) el.parentNode.removeChild(el)
+	        instance.remove(el);
         })
     }, delay);
 
     return true;
 };
+
 
 // change the text of toast
 export const changeText = (el, text) => {
@@ -25,13 +26,24 @@ export const changeText = (el, text) => {
     return this;
 };
 
-export const toastObject = (el) => ({
-    el: el,
-    text: function (text) {
-        changeText(el, text);
-        return this;
-    },
-    goAway: function (delay = 800) {
-        return goAway(el, delay);
-    }
-});
+export const toastObject = function (el, instance) {
+    let disposed = false;
+
+    return {
+	    el: el,
+	    text: function (text) {
+		    changeText(el, text);
+		    return this;
+	    },
+	    goAway: function (delay = 800) {
+		    disposed = true;
+		    return goAway(el, delay, instance);
+	    },
+	    remove : function () {
+		    instance.remove(el);
+	    },
+	    disposed : function () {
+            return disposed
+	    }
+    };
+}
