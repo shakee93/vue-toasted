@@ -208,7 +208,7 @@ export const initiateCustomToasts = function (instance) {
 		}
 
 		// or else create a new toast with passed options.
-		return _show(instance.id, message, options);
+		return _show(instance, message, options);
 	};
 
 	if (customToasts) {
