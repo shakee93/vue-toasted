@@ -46,6 +46,8 @@ const parseOptions = function (options) {
 	// check if the toast needs to be fitted in the screen (no margin gap between screen)
 	options.fitToScreen = options.fitToScreen || null;
 
+	// check if closes the toast when the user swipes it
+	options.closeOnSwipe = typeof options.closeOnSwipe !== 'undefined' ? options.closeOnSwipe : true;
 
 	/* transform options */
 
@@ -126,49 +128,51 @@ const createToast = function (html, options) {
 		toast.innerHTML = html;
 	}
 
-	// Bind hammer
-	let hammerHandler = new Hammer(toast, {prevent_default: false});
-	hammerHandler.on('pan', function (e) {
-		let deltaX = e.deltaX;
-		let activationDistance = 80;
+	if (options.closeOnSwipe) {
+		// Bind hammer
+		let hammerHandler = new Hammer(toast, {prevent_default: false});
+		hammerHandler.on('pan', function (e) {
+			let deltaX = e.deltaX;
+			let activationDistance = 80;
 
-		// Change toast state
-		if (!toast.classList.contains('panning')) {
-			toast.classList.add('panning');
-		}
+			// Change toast state
+			if (!toast.classList.contains('panning')) {
+				toast.classList.add('panning');
+			}
 
-		let opacityPercent = 1 - Math.abs(deltaX / activationDistance);
-		if (opacityPercent < 0)
-			opacityPercent = 0;
+			let opacityPercent = 1 - Math.abs(deltaX / activationDistance);
+			if (opacityPercent < 0)
+				opacityPercent = 0;
 
-		animations.animatePanning(toast, deltaX, opacityPercent)
+			animations.animatePanning(toast, deltaX, opacityPercent)
 
-	});
+		});
 
-	hammerHandler.on('panend', function (e) {
-		let deltaX = e.deltaX;
-		let activationDistance = 80;
+		hammerHandler.on('panend', function (e) {
+			let deltaX = e.deltaX;
+			let activationDistance = 80;
 
-		// If toast dragged past activation point
-		if (Math.abs(deltaX) > activationDistance) {
+			// If toast dragged past activation point
+			if (Math.abs(deltaX) > activationDistance) {
 
-			animations.animatePanEnd(toast, function () {
-				if (typeof(options.onComplete) === "function") {
-					options.onComplete();
-				}
+				animations.animatePanEnd(toast, function () {
+					if (typeof(options.onComplete) === "function") {
+						options.onComplete();
+					}
 
-				if (toast.parentNode) {
-					_instance.remove(toast);
-				}
-			})
+					if (toast.parentNode) {
+						_instance.remove(toast);
+					}
+				})
 
-		} else {
-			toast.classList.remove('panning');
-			// Put toast back into original position
-			animations.animateReset(toast)
+			} else {
+				toast.classList.remove('panning');
+				// Put toast back into original position
+				animations.animateReset(toast)
 
-		}
-	});
+			}
+		});
+	}
 
 	// create and append actions
 	if (Array.isArray(options.action)) {
