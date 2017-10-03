@@ -7,7 +7,7 @@ export const goAway = (el, delay, instance) => {
     setTimeout(function () {
 
     	// if the toast is on bottom set it as bottom animation
-    	if(instance.cached_options.position.includes('bottom')) {
+    	if(instance.cached_options.position && instance.cached_options.position.includes('bottom')) {
 		    animations.animateOutBottom(el, () => {
 			    instance.remove(el);
 		    })

@@ -652,7 +652,7 @@ var _goAway = function _goAway(el, delay, instance) {
     setTimeout(function () {
 
         // if the toast is on bottom set it as bottom animation
-        if (instance.cached_options.position.includes('bottom')) {
+        if (instance.cached_options.position && instance.cached_options.position.includes('bottom')) {
             __WEBPACK_IMPORTED_MODULE_0__animations_js__["a" /* default */].animateOutBottom(el, function () {
                 instance.remove(el);
             });
