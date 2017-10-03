@@ -22,6 +22,16 @@ export default {
             complete: onComplete
         })
     },
+     animateOutBottom : (el, onComplete) => {
+        anime({
+            targets : el,
+            opacity : 0,
+            marginBottom : '-40px',
+            duration: duration,
+            easing: 'easeOutExpo',
+            complete: onComplete
+        })
+    },
     animateReset : (el) => {
         anime({
             targets : el,

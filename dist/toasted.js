@@ -212,6 +212,16 @@ var duration = 300;
             complete: onComplete
         });
     },
+    animateOutBottom: function animateOutBottom(el, onComplete) {
+        __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
+            targets: el,
+            opacity: 0,
+            marginBottom: '-40px',
+            duration: duration,
+            easing: 'easeOutExpo',
+            complete: onComplete
+        });
+    },
     animateReset: function animateReset(el) {
         __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
             targets: el,
@@ -335,6 +345,11 @@ var Toasted = function Toasted(_options) {
 	this.options = _options;
 
 	/**
+  * Cached Options of the Toast
+  */
+	this.cached_options = {};
+
+	/**
   * Shared Toasts list
   */
 	this.global = {};
@@ -455,9 +470,13 @@ var Toasted = function Toasted(_options) {
   *
   * @returns {boolean}
   */
-	this.clear = function () {
-		__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].clearAnimation(_this.toasts);
+	this.clear = function (onClear) {
+		__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].clearAnimation(_this.toasts, function () {
+			onClear && onClear();
+		});
 		_this.toasts = [];
+
+		return true;
 	};
 
 	return this;
@@ -474,10 +493,17 @@ var Toasted = function Toasted(_options) {
  */
 var _show = function _show(instance, message, options) {
 	options = options || {};
+	var toast = null;
 
 	if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) !== "object") {
 		console.error("Options should be a type of object. given : " + options);
 		return null;
+	}
+
+	// singleton feature
+	if (instance.options.singleton && instance.toasts.length > 0) {
+		instance.cached_options = options;
+		instance.toasts[instance.toasts.length - 1].goAway(0);
 	}
 
 	// clone the global options
@@ -486,8 +512,9 @@ var _show = function _show(instance, message, options) {
 	// merge the cached global options with options
 	Object.assign(_options, options);
 
-	var toast = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance, message, _options);
+	toast = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__show__["a" /* default */])(instance, message, _options);
 	instance.toasts.push(toast);
+
 	return toast;
 };
 
@@ -598,8 +625,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 // fade the toast away
 var _goAway = function _goAway(el, delay, instance) {
+
     // Animate toast out
     setTimeout(function () {
+
+        // if the toast is on bottom set it as bottom animation
+        if (instance.cached_options.position.includes('bottom')) {
+            __WEBPACK_IMPORTED_MODULE_0__animations_js__["a" /* default */].animateOutBottom(el, function () {
+                instance.remove(el);
+            });
+            return;
+        }
+
         __WEBPACK_IMPORTED_MODULE_0__animations_js__["a" /* default */].animateOut(el, function () {
             instance.remove(el);
         });
@@ -611,7 +648,7 @@ var _goAway = function _goAway(el, delay, instance) {
 // change the text of toast
 
 var changeText = function changeText(el, text) {
-    if ((typeof HTMLElement === "undefined" ? "undefined" : _typeof(HTMLElement)) === "object" ? text instanceof HTMLElement : text && (typeof text === "undefined" ? "undefined" : _typeof(text)) === "object" && text !== null && text.nodeType === 1 && typeof text.nodeName === "string") {
+    if ((typeof HTMLElement === 'undefined' ? 'undefined' : _typeof(HTMLElement)) === "object" ? text instanceof HTMLElement : text && (typeof text === 'undefined' ? 'undefined' : _typeof(text)) === "object" && text !== null && text.nodeType === 1 && typeof text.nodeName === "string") {
         el.appendChild(text);
     } else {
         el.innerHTML = text;
@@ -703,6 +740,9 @@ var parseOptions = function parseOptions(options) {
 	// check if the toast needs to be fitted in the screen (no margin gap between screen)
 	options.fitToScreen = options.fitToScreen || null;
 
+	// check if closes the toast when the user swipes it
+	options.closeOnSwipe = typeof options.closeOnSwipe !== 'undefined' ? options.closeOnSwipe : true;
+
 	/* transform options */
 
 	// toast class
@@ -776,45 +816,47 @@ var createToast = function createToast(html, options) {
 		toast.innerHTML = html;
 	}
 
-	// Bind hammer
-	var hammerHandler = new __WEBPACK_IMPORTED_MODULE_0_hammerjs___default.a(toast, { prevent_default: false });
-	hammerHandler.on('pan', function (e) {
-		var deltaX = e.deltaX;
-		var activationDistance = 80;
+	if (options.closeOnSwipe) {
+		// Bind hammer
+		var hammerHandler = new __WEBPACK_IMPORTED_MODULE_0_hammerjs___default.a(toast, { prevent_default: false });
+		hammerHandler.on('pan', function (e) {
+			var deltaX = e.deltaX;
+			var activationDistance = 80;
 
-		// Change toast state
-		if (!toast.classList.contains('panning')) {
-			toast.classList.add('panning');
-		}
+			// Change toast state
+			if (!toast.classList.contains('panning')) {
+				toast.classList.add('panning');
+			}
 
-		var opacityPercent = 1 - Math.abs(deltaX / activationDistance);
-		if (opacityPercent < 0) opacityPercent = 0;
+			var opacityPercent = 1 - Math.abs(deltaX / activationDistance);
+			if (opacityPercent < 0) opacityPercent = 0;
 
-		__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanning(toast, deltaX, opacityPercent);
-	});
+			__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanning(toast, deltaX, opacityPercent);
+		});
 
-	hammerHandler.on('panend', function (e) {
-		var deltaX = e.deltaX;
-		var activationDistance = 80;
+		hammerHandler.on('panend', function (e) {
+			var deltaX = e.deltaX;
+			var activationDistance = 80;
 
-		// If toast dragged past activation point
-		if (Math.abs(deltaX) > activationDistance) {
+			// If toast dragged past activation point
+			if (Math.abs(deltaX) > activationDistance) {
 
-			__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanEnd(toast, function () {
-				if (typeof options.onComplete === "function") {
-					options.onComplete();
-				}
+				__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animatePanEnd(toast, function () {
+					if (typeof options.onComplete === "function") {
+						options.onComplete();
+					}
 
-				if (toast.parentNode) {
-					_instance.remove(toast);
-				}
-			});
-		} else {
-			toast.classList.remove('panning');
-			// Put toast back into original position
-			__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animateReset(toast);
-		}
-	});
+					if (toast.parentNode) {
+						_instance.remove(toast);
+					}
+				});
+			} else {
+				toast.classList.remove('panning');
+				// Put toast back into original position
+				__WEBPACK_IMPORTED_MODULE_1__animations__["a" /* default */].animateReset(toast);
+			}
+		});
+	}
 
 	// create and append actions
 	if (Array.isArray(options.action)) {

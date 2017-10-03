@@ -193,6 +193,7 @@ type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
 theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
 closeOnSwipe|Boolean|true|Closes the toast when the user swipes it
+singleton|Boolean|false| Only allows one toast at a time.
 
 
 ### Methods

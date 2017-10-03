@@ -2,11 +2,22 @@ import animations from './animations.js'
 
 // fade the toast away
 export const goAway = (el, delay, instance) => {
+
     // Animate toast out
     setTimeout(function () {
+
+    	// if the toast is on bottom set it as bottom animation
+    	if(instance.cached_options.position.includes('bottom')) {
+		    animations.animateOutBottom(el, () => {
+			    instance.remove(el);
+		    })
+    		return;
+	    }
+
         animations.animateOut(el, () => {
 	        instance.remove(el);
         })
+
     }, delay);
 
     return true;

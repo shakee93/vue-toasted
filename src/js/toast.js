@@ -27,6 +27,12 @@ export const Toasted = function (_options) {
 
 
 	/**
+	 * Cached Options of the Toast
+	 */
+	this.cached_options = {};
+
+
+	/**
 	 * Shared Toasts list
 	 */
 	this.global = {};
@@ -156,9 +162,13 @@ export const Toasted = function (_options) {
 	 *
 	 * @returns {boolean}
 	 */
-	this.clear = () => {
-		animations.clearAnimation(this.toasts);
+	this.clear = (onClear) => {
+		animations.clearAnimation(this.toasts, () => {
+			onClear && onClear();
+		});
 		this.toasts = [];
+
+		return true;
 	}
 
 	return this;
@@ -175,10 +185,17 @@ export const Toasted = function (_options) {
  */
 export const _show = function (instance, message, options) {
 	options = options || {};
+	let toast = null;
 
 	if (typeof options !== "object") {
 		console.error("Options should be a type of object. given : " + options);
 		return null;
+	}
+
+	// singleton feature
+	if(instance.options.singleton && instance.toasts.length > 0) {
+		instance.cached_options = options;
+		instance.toasts[instance.toasts.length - 1].goAway(0);
 	}
 
 	// clone the global options
@@ -187,8 +204,11 @@ export const _show = function (instance, message, options) {
 	// merge the cached global options with options
 	Object.assign(_options, options);
 
-	let toast = show(instance, message, _options);
+	toast = show(instance, message, _options);
 	instance.toasts.push(toast);
+
+
+
 	return toast;
 };
 
