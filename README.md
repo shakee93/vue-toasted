@@ -143,7 +143,7 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
     action : {
         text : 'Cancel',
         onClick : (e, toastObject) => {
-            toast.goAway(0);
+            toastObject.goAway(0);
         }
     },
 
@@ -152,7 +152,7 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
         {
             text : 'Cancel',
             onClick : (e, toastObject) => {
-                toast.goAway(0);
+                toastObject.goAway(0);
             }
         },
         {
