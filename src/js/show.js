@@ -231,16 +231,15 @@ const createAction = (action, toastObject) => {
 
 	if (action.class) {
 
-		switch (typeof action.class) {
-			case 'string' :
-				action.class.split(' ').forEach((className) => {
-					el.classList.add(className)
-				})
-				break;
-			case 'array' :
-				action.class.forEach((className) => {
-					el.classList.add(className)
-				})
+		if(typeof action.class === 'string') {
+			action.class.split(' ').forEach((className) => {
+				el.classList.add(className)
+			})
+		}
+		else if(Array.isArray(action.class)) {
+			action.class.forEach((className) => {
+				el.classList.add(className.trim())
+			})
 		}
 	}
 

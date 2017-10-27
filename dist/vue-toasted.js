@@ -935,16 +935,14 @@ var createAction = function createAction(action, toastObject) {
 
 	if (action.class) {
 
-		switch (_typeof(action.class)) {
-			case 'string':
-				action.class.split(' ').forEach(function (className) {
-					el.classList.add(className);
-				});
-				break;
-			case 'array':
-				action.class.forEach(function (className) {
-					el.classList.add(className);
-				});
+		if (typeof action.class === 'string') {
+			action.class.split(' ').forEach(function (className) {
+				el.classList.add(className);
+			});
+		} else if (Array.isArray(action.class)) {
+			action.class.forEach(function (className) {
+				el.classList.add(className.trim());
+			});
 		}
 	}
 
