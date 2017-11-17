@@ -71,12 +71,6 @@ yarn add vue-toasted
 </script>
 ```
 
-<hr>
-
-#### [Nuxt](https://github.com/nuxt/nuxt.js) 💓 Officially uses `vue-toasted` for their toast module.
-
-installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modules/tree/master/modules/toast)
-
 ## Usage
 
 It is simple. couple of lines all what you need.
