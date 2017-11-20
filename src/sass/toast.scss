@@ -78,7 +78,7 @@
     justify-content: space-between;
     box-sizing: inherit;
 
-    .material-icons {
+    .material-icons, .fa {
       margin-right: .5rem;
       margin-left: -.4rem;
 
@@ -106,7 +106,7 @@
         align-items: center;
         justify-content: center;
 
-        .material-icons {
+        .material-icons, .fa {
           margin-right: 0;
           margin-left: 4px;
         }

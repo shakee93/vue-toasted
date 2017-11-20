@@ -75,7 +75,7 @@ yarn add vue-toasted
 
 #### [Nuxt](https://github.com/nuxt/nuxt.js) 💓 Officially uses `vue-toasted` for their toast module.
 
-installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modules/tree/master/modules/toast)
+installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modules/tree/master/packages/toast)
 
 ## Usage
 
@@ -104,7 +104,7 @@ All Good Now you have this cool toast in your project..
 
 
 ### Icons :fire:
-<a href="http://google.github.io/material-design-icons/"> Material Icons</a> are supported. you will have to import the material icons into your project. <a href="/examples/using-icons.js"> example </a>
+[Material Icons](http://google.github.io/material-design-icons/) and [Fontawesome](http://fontawesome.io/cheatsheet/) are supported. you will have to import the icon packs into your project. <a href="/examples/using-icons.js"> example using icons </a>
 
 ```javascript
 {
@@ -169,10 +169,6 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
 }
 ```
 
-### Standalone Usage
-
-Docs coming soon..
-
 
 ## API
 
@@ -195,7 +191,7 @@ theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline'
 onComplete|Function|null|Trigger when toast is completed
 closeOnSwipe|Boolean|true|Closes the toast when the user swipes it
 singleton|Boolean|false| Only allows one toast at a time.
-
+iconPack|String|'material'| Icon pack type to be used <br> **['material', 'fontawesome']**
 
 ### Methods
 
