@@ -548,6 +548,7 @@ var initiateCustomToasts = function initiateCustomToasts(instance) {
 				var payload = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
+				//console.log(payload);
 				// return the it in order to expose the Toast methods
 				return customToasts[key].apply(null, [payload, initiate]);
 			};
@@ -555,14 +556,21 @@ var initiateCustomToasts = function initiateCustomToasts(instance) {
 	}
 };
 
-var register = function register(instance, name, message, options) {
+var register = function register(instance, name, callback, options) {
 
 	!instance.options.globalToasts ? instance.options.globalToasts = {} : null;
 
 	instance.options.globalToasts[name] = function (payload, initiate) {
 
-		if (typeof message === 'function') {
-			message = message(payload);
+		// if call back is string we will keep it that way..
+		var message = null;
+
+		if (typeof callback === 'string') {
+			message = callback;
+		}
+
+		if (typeof callback === 'function') {
+			message = callback(payload);
 		}
 
 		return initiate(message, options);
@@ -743,6 +751,9 @@ var parseOptions = function parseOptions(options) {
 	// check if closes the toast when the user swipes it
 	options.closeOnSwipe = typeof options.closeOnSwipe !== 'undefined' ? options.closeOnSwipe : true;
 
+	// get the icon pack name. defaults to material
+	options.iconPack = options.iconPack || 'material';
+
 	/* transform options */
 
 	// toast class
@@ -789,25 +800,6 @@ var createToast = function createToast(html, options) {
 		});
 	}
 
-	// add material icon if available
-	if (options.icon) {
-
-		var iel = document.createElement('i');
-		iel.classList.add('material-icons');
-
-		if (options.icon.after && options.icon.name) {
-			iel.textContent = options.icon.name;
-			iel.classList.add('after');
-			html += iel.outerHTML;
-		} else if (options.icon.name) {
-			iel.textContent = options.icon.name;
-			html = iel.outerHTML + html;
-		} else {
-			iel.textContent = options.icon;
-			html = iel.outerHTML + html;
-		}
-	}
-
 	// If type of parameter is HTML Element
 	if ((typeof HTMLElement === 'undefined' ? 'undefined' : _typeof(HTMLElement)) === "object" ? html instanceof HTMLElement : html && (typeof html === 'undefined' ? 'undefined' : _typeof(html)) === "object" && html !== null && html.nodeType === 1 && typeof html.nodeName === "string") {
 		toast.appendChild(html);
@@ -815,6 +807,9 @@ var createToast = function createToast(html, options) {
 		// Insert as text;
 		toast.innerHTML = html;
 	}
+
+	// add material icon if available
+	createIcon(options, toast);
 
 	if (options.closeOnSwipe) {
 		// Bind hammer
@@ -872,6 +867,54 @@ var createToast = function createToast(html, options) {
 	return toast;
 };
 
+var createIcon = function createIcon(options, toast) {
+
+	// add material icon if available
+	if (options.icon) {
+
+		var iel = document.createElement('i');
+
+		switch (options.iconPack) {
+			case 'fontawesome':
+
+				iel.classList.add('fa');
+
+				var faName = options.icon.name ? options.icon.name : options.icon;
+
+				if (faName.includes('fa-')) {
+					iel.classList.add(faName.trim());
+				} else {
+					iel.classList.add('fa-' + faName.trim());
+				}
+
+				break;
+			default:
+				iel.classList.add('material-icons');
+				iel.textContent = options.icon.name ? options.icon.name : options.icon;
+		}
+
+		if (options.icon.after) {
+			iel.classList.add('after');
+		}
+
+		appendIcon(options, iel, toast);
+	}
+};
+
+var appendIcon = function appendIcon(options, el, toast) {
+
+	if (options.icon) {
+
+		if (options.icon.after && options.icon.name) {
+			toast.appendChild(el);
+		} else if (options.icon.name) {
+			toast.insertBefore(el, toast.firstChild);
+		} else {
+			toast.insertBefore(el, toast.firstChild);
+		}
+	}
+};
+
 /**
  * Create Action for the toast
  *
@@ -904,8 +947,22 @@ var createAction = function createAction(action, toastObject) {
 
 		// create icon element
 		var iel = document.createElement('i');
-		iel.classList.add('material-icons');
-		iel.textContent = action.icon;
+
+		switch (_options.iconPack) {
+			case 'fontawesome':
+				iel.classList.add('fa');
+
+				if (action.icon.includes('fa-')) {
+					iel.classList.add(action.icon.trim());
+				} else {
+					iel.classList.add('fa-' + action.icon.trim());
+				}
+
+				break;
+			default:
+				iel.classList.add('material-icons');
+				iel.textContent = action.icon;
+		}
 
 		// append it to the button
 		el.appendChild(iel);

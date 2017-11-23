@@ -548,6 +548,7 @@ var initiateCustomToasts = function initiateCustomToasts(instance) {
 				var payload = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 
+				//console.log(payload);
 				// return the it in order to expose the Toast methods
 				return customToasts[key].apply(null, [payload, initiate]);
 			};
@@ -555,14 +556,21 @@ var initiateCustomToasts = function initiateCustomToasts(instance) {
 	}
 };
 
-var register = function register(instance, name, message, options) {
+var register = function register(instance, name, callback, options) {
 
 	!instance.options.globalToasts ? instance.options.globalToasts = {} : null;
 
 	instance.options.globalToasts[name] = function (payload, initiate) {
 
-		if (typeof message === 'function') {
-			message = message(payload);
+		// if call back is string we will keep it that way..
+		var message = null;
+
+		if (typeof callback === 'string') {
+			message = callback;
+		}
+
+		if (typeof callback === 'function') {
+			message = callback(payload);
 		}
 
 		return initiate(message, options);
