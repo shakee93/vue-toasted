@@ -197,7 +197,22 @@ const createIcon = (options, toast) => {
 				}
 
 				break;
-			default :
+			case 'mdi':
+
+				iel.classList.add('mdi');
+
+				let mdiName = (options.icon.name) ? options.icon.name : options.icon;
+
+				if (mdiName.includes('mdi-')) {
+					iel.classList.add(mdiName.trim());
+				}
+				else {
+					iel.classList.add('mdi-' + mdiName.trim());
+				}
+
+				break;
+
+			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
 		}
@@ -276,7 +291,18 @@ const createAction = (action, toastObject) => {
 				}
 
 				break;
-			default :
+			case 'mdi':
+				iel.classList.add('mdi');
+
+				if (action.icon.includes('mdi-')) {
+					iel.classList.add(action.icon.trim());
+				}
+				else {
+					iel.classList.add('mdi-' + action.icon.trim());
+				}
+
+				break;
+			default:
 				iel.classList.add('material-icons');
 				iel.textContent = action.icon;
 		}

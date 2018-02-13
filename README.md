@@ -104,7 +104,7 @@ All Good Now you have this cool toast in your project..
 
 
 ### Icons :fire:
-[Material Icons](http://google.github.io/material-design-icons/) and [Fontawesome](http://fontawesome.io/cheatsheet/) are supported. you will have to import the icon packs into your project. <a href="/examples/using-icons.js"> example using icons </a>
+[Material Icons](http://google.github.io/material-design-icons/), [Fontawesome](http://fontawesome.io/cheatsheet/) and [Material Design Icons](https://materialdesignicons.com/) are supported. you will have to import the icon packs into your project. <a href="/examples/using-icons.js"> example using icons </a>
 
 ```javascript
 {
@@ -191,7 +191,7 @@ theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline'
 onComplete|Function|null|Trigger when toast is completed
 closeOnSwipe|Boolean|true|Closes the toast when the user swipes it
 singleton|Boolean|false| Only allows one toast at a time.
-iconPack|String|'material'| Icon pack type to be used <br> **['material', 'fontawesome']**
+iconPack|String|'material'| Icon pack type to be used <br> **['material', 'fontawesome', 'mdi']**
 
 ### Methods
 

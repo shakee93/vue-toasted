@@ -888,6 +888,20 @@ var createIcon = function createIcon(options, toast) {
 				}
 
 				break;
+			case 'mdi':
+
+				iel.classList.add('mdi');
+
+				var mdiName = options.icon.name ? options.icon.name : options.icon;
+
+				if (mdiName.includes('mdi-')) {
+					iel.classList.add(mdiName.trim());
+				} else {
+					iel.classList.add('mdi-' + mdiName.trim());
+				}
+
+				break;
+
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = options.icon.name ? options.icon.name : options.icon;
@@ -956,6 +970,16 @@ var createAction = function createAction(action, toastObject) {
 					iel.classList.add(action.icon.trim());
 				} else {
 					iel.classList.add('fa-' + action.icon.trim());
+				}
+
+				break;
+			case 'mdi':
+				iel.classList.add('mdi');
+
+				if (action.icon.includes('mdi-')) {
+					iel.classList.add(action.icon.trim());
+				} else {
+					iel.classList.add('mdi-' + action.icon.trim());
 				}
 
 				break;
