@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -83,7 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-var randomFromSeed = __webpack_require__(15);
+var randomFromSeed = __webpack_require__(16);
 
 var ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
 var alphabet;
@@ -192,7 +192,7 @@ module.exports = {
 
 var duration = 300;
 
-/* harmony default export */ __webpack_exports__["a"] = {
+/* harmony default export */ __webpack_exports__["a"] = ({
     animateIn: function animateIn(el) {
         __WEBPACK_IMPORTED_MODULE_0_animejs___default()({
             targets: el,
@@ -267,7 +267,7 @@ var duration = 300;
             });
         });
     }
-};
+});
 
 /***/ }),
 /* 2 */
@@ -275,7 +275,7 @@ var duration = 300;
 
 "use strict";
 
-module.exports = __webpack_require__(12);
+module.exports = __webpack_require__(13);
 
 
 /***/ }),
@@ -285,7 +285,7 @@ module.exports = __webpack_require__(12);
 "use strict";
 
 
-var randomByte = __webpack_require__(14);
+var randomByte = __webpack_require__(15);
 
 function encode(lookup, number) {
     var loopCounter = 0;
@@ -309,11 +309,11 @@ module.exports = encode;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Toasted; });
 /* unused harmony export _show */
 /* unused harmony export initiateCustomToasts */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__show__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -321,7 +321,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var uuid = __webpack_require__(2);
 
 // add Object.assign Polyfill
-__webpack_require__(8).polyfill();
+__webpack_require__(9).polyfill();
 
 /**
  * Toast
@@ -579,7 +579,7 @@ var register = function register(instance, name, callback, options) {
 	initiateCustomToasts(instance);
 };
 
-/* unused harmony default export */ var _unused_webpack_default_export = { Toasted: Toasted };
+/* unused harmony default export */ var _unused_webpack_default_export = ({ Toasted: Toasted });
 
 /***/ }),
 /* 5 */
@@ -621,10 +621,26 @@ b.duration=0;b.add=function(a){b.children.forEach(function(a){a.began=!0;a.compl
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(1);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(4);
+
+
+// register plugin if it is used via cdn or directly as a script tag
+if (typeof window !== 'undefined') {
+	window.Toasted = __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */];
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */]);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export goAway */
 /* unused harmony export changeText */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toastObject; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__animations_js__ = __webpack_require__(1);
 var _this = this;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -690,14 +706,14 @@ var toastObject = function toastObject(el, instance) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_hammerjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_hammerjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__animations__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__object__ = __webpack_require__(7);
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 
@@ -901,7 +917,21 @@ var createIcon = function createIcon(options, toast) {
 				}
 
 				break;
+			case 'custom-class':
 
+				var classes = options.icon.name ? options.icon.name : options.icon;
+
+				if (typeof classes === 'string') {
+					classes.split(' ').forEach(function (className) {
+						iel.classList.add(className);
+					});
+				} else if (Array.isArray(classes)) {
+					classes.forEach(function (className) {
+						iel.classList.add(className.trim());
+					});
+				}
+
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = options.icon.name ? options.icon.name : options.icon;
@@ -983,6 +1013,19 @@ var createAction = function createAction(action, toastObject) {
 				}
 
 				break;
+			case 'custom-class':
+
+				if (typeof action.icon === 'string') {
+					action.icon.split(' ').forEach(function (className) {
+						el.classList.add(className);
+					});
+				} else if (Array.isArray(action.icon)) {
+					action.icon.forEach(function (className) {
+						el.classList.add(className.trim());
+					});
+				}
+
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = action.icon;
@@ -1047,7 +1090,7 @@ var createAction = function createAction(action, toastObject) {
  * @param options
  * @returns {{el: *, text: text, goAway: goAway}}
  */
-/* harmony default export */ __webpack_exports__["a"] = function (instance, message, options) {
+/* harmony default export */ __webpack_exports__["a"] = (function (instance, message, options) {
 
 	// share the instance across
 	_instance = instance;
@@ -1117,10 +1160,10 @@ var createAction = function createAction(action, toastObject) {
 	}
 
 	return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__object__["a" /* toastObject */])(newToast, _instance);
-};;
+});;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1173,7 +1216,7 @@ module.exports = {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -3823,7 +3866,7 @@ if (true) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3878,7 +3921,7 @@ module.exports = build;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3902,7 +3945,7 @@ module.exports = decode;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3910,15 +3953,15 @@ module.exports = decode;
 
 var alphabet = __webpack_require__(0);
 var encode = __webpack_require__(3);
-var decode = __webpack_require__(11);
-var build = __webpack_require__(10);
-var isValid = __webpack_require__(13);
+var decode = __webpack_require__(12);
+var build = __webpack_require__(11);
+var isValid = __webpack_require__(14);
 
 // if you are using cluster or multiple servers use this to make each instance
 // has a unique value for worker
 // Note: I don't know if this is automatically set when using third
 // party cluster solutions such as pm2.
-var clusterWorkerId = __webpack_require__(16) || 0;
+var clusterWorkerId = __webpack_require__(17) || 0;
 
 /**
  * Set the seed.
@@ -3974,7 +4017,7 @@ module.exports.isValid = isValid;
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4000,7 +4043,7 @@ module.exports = isShortId;
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4021,7 +4064,7 @@ module.exports = randomByte;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4053,7 +4096,7 @@ module.exports = {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4061,22 +4104,6 @@ module.exports = {
 
 module.exports = 0;
 
-
-/***/ }),
-/* 17 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_toast__ = __webpack_require__(4);
-
-
-// register plugin if it is used via cdn or directly as a script tag
-if (typeof window !== 'undefined') {
-	window.Toasted = __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */];
-}
-
-/* harmony default export */ __webpack_exports__["default"] = __WEBPACK_IMPORTED_MODULE_0__js_toast__["a" /* Toasted */];
 
 /***/ })
 /******/ ]);

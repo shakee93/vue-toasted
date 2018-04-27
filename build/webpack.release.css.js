@@ -9,7 +9,7 @@ module.exports = {
 		'vue-toasted.min' : './src/sass/toast.scss'
 	},
 	output: {
-		path: './dist',
+		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/dist/',
 		filename: '[name].css',
 		libraryTarget: 'umd'
