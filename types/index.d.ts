@@ -13,7 +13,7 @@ interface ToastObject {
 type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left'
 type ToastType = 'success' | 'info' | 'error' | 'default'
 type ToastTheme = 'primary' | 'outline' | 'bubble'
-type ToastIconPack = 'material' | 'fontawesome'
+type ToastIconPack = 'material' | 'fontawesome' | 'custom-class'
 
 interface ToastAction {
   /**
