@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueToasted from 'vue-toasted';
 
 Vue.use(VueToasted, {
-    iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome
+    iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
 });
 
 /* NOTE : You will have to import material icons in order to work */
@@ -26,3 +26,16 @@ Vue.toasted.show(
             after : true
         }
 });
+
+// Custom Class Icon Pack
+Vue.use(VueToasted, {
+    iconPack: 'custom-class' // set your iconPack, defaults to material. material|fontawesome|custom-class
+});
+
+// append any class to the toaster icon
+Vue.toasted.show(
+    'hello there, i am a toast !!', {
+        icon: {
+            name: 'fal fa-check fa-spin fa-fw',
+        }
+    });

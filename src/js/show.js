@@ -211,7 +211,15 @@ const createIcon = (options, toast) => {
 				}
 
 				break;
+			case 'custom-class':
 
+				let classes = (options.icon.name) ? options.icon.name : options.icon;
+
+				classes.split(' ').forEach((className) => {
+					if (className) iel.classList.add(className.trim());
+				})
+
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
