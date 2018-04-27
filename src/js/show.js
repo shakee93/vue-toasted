@@ -215,7 +215,6 @@ const createIcon = (options, toast) => {
 
 				let classes = (options.icon.name) ? options.icon.name : options.icon;
 
-<<<<<<< HEAD
 				if (typeof classes === 'string') {
 					classes.split(' ').forEach((className) => {
 						iel.classList.add(className)
@@ -226,11 +225,6 @@ const createIcon = (options, toast) => {
 						iel.classList.add(className.trim())
 					})
 				}
-=======
-				classes.split(' ').forEach((className) => {
-					if (className) iel.classList.add(className.trim());
-				})
->>>>>>> 61058b795a2c1ab09f41fce4b6211805b43b62e0
 
 				break;
 			default:
