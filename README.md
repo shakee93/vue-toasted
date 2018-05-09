@@ -132,6 +132,7 @@ All Good Now you have this cool toast in your project..
 -----|-----|-----|-----
 text*|String|-| name of action
 href|String|`null`| url of action
+target|String|`null`| target of url
 icon|String|`null`| name of material for action
 class|String/Array|`null`| custom css class for the action
 push|Object |`null`|  Vue Router push parameters
