@@ -20,8 +20,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="392">
+              <caret line="171" column="6" lean-forward="true" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -57,6 +57,7 @@
       <find>.duration</find>
       <find>full</find>
       <find>vue-toasted</find>
+      <find>added node reel logo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -294,7 +295,7 @@
       <workItem from="1506527057490" duration="2000" />
       <workItem from="1513761814731" duration="720000" />
       <workItem from="1514790838353" duration="269000" />
-      <workItem from="1533326851817" duration="706000" />
+      <workItem from="1533326851817" duration="902000" />
     </task>
     <task id="LOCAL-00001" summary="es6 compiled">
       <created>1488529756683</created>
@@ -485,11 +486,18 @@
       <option name="project" value="LOCAL" />
       <updated>1533326954145</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="updated reel logo">
+      <created>1533327586051</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1533327586051</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100089000" />
+    <option name="totallyTimeSpent" value="100285000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -547,7 +555,8 @@
     <MESSAGE value="added hotjar" />
     <MESSAGE value="removed hotjar" />
     <MESSAGE value="added node reel logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="added node reel logo" />
+    <MESSAGE value="updated reel logo" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated reel logo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -653,8 +662,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="392">
+          <caret line="171" column="6" lean-forward="true" selection-start-line="171" selection-start-column="6" selection-end-line="171" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
