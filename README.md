@@ -293,15 +293,9 @@ this.$toasted.global.my_app_error();
 
 ##### Advanced Example 
 
-You can also pass message as a function. which will give you more power.
-Lets think you need to pass a custom message to the error notification we built above.
+You can also pass message as a function. which will give you more power. 
 
-```javascript
-this.$toasted.global.my_app_error({
-    message : 'Not Authorized to Access'
-});
-```
-you can register a toast with payload like below on the example.
+In the following example we pass a function that accepts an object `payload` and then attempt to access the `message` property on it.
 
 ```javascript
 import Toasted from 'vue-toasted';
@@ -322,11 +316,52 @@ Vue.toasted.register('my_app_error',
     	    return "Oops.. Something Went Wrong.."
         }
 		
-        // if there is a message show it with the message
-        return "Oops.. " + payload.message;
+        // if there is a message, show a toast with the message
+        return `Oops.. ${ payload.message }`;
     },
     options
 )
+```
+
+We can then pass a custom message the custom error notification we built above.
+
+```javascript
+// show custom error by passing an object
+this.$toasted.global.my_app_error({
+    message : 'Not Authorized to Access'
+});
+```
+
+The `payload` is just whatever you pass to your toast, so if you wanted to handle multiple types, you could check for various conditions and properties:
+
+```javascript
+// register the toast to handle different payload types
+Vue.toasted.register('my_app_error',
+  (payload) => {
+    if ( !Object.keys(payload).length ) 
+      return `Error Message`; // Nothing passed, or empty object
+  
+    if ( !!payload.message )
+      return `Message: ${ JSON.stringify(payload) }`; // Custom object with `message` property
+  
+    if ( typeof(payload) === 'string' )
+      return `String Passed: ${ payload }`; // string passed
+  },
+  options
+}
+```
+
+Usage Example:
+
+```javascript
+this.$toasted.global.test( {message: 'Pass an Object'} ); // Object with property `message` passed
+this.$toasted.global.test( 'Just a string' ); // payload === 'Just a string'
+this.$toasted.global.test(); // Nothing passed
+
+// results in the the following toasts:
+'Message: Passs an Object'
+'String Passed: Just a string'
+'Error Message'
 ```
 
 
