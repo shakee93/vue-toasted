@@ -144,12 +144,12 @@ interface Toasted {
    * @param message
    * @param options
    */
-  register (name: string, message: string, options?: ToastOptions): any
+  register (name: string, message: string, options?: ToastOptions): void
 
   /**
    * Clear all toasts
    */
-  clear (): any
+  clear (): boolean
 }
 
 declare class ToastedPlugin {
