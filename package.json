@@ -8,7 +8,7 @@
     "url": "https://github.com/shakee93/vue-toasted.git"
   },
   "main": "./dist/vue-toasted.min.js",
-  "typings": "./types/index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.js --progress --hide-modules",
