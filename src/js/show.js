@@ -211,7 +211,22 @@ const createIcon = (options, toast) => {
 				}
 
 				break;
+			case 'custom-class':
 
+				let classes = (options.icon.name) ? options.icon.name : options.icon;
+
+				if (typeof classes === 'string') {
+					classes.split(' ').forEach((className) => {
+						iel.classList.add(className)
+					})
+				}
+				else if (Array.isArray(classes)) {
+					classes.forEach((className) => {
+						iel.classList.add(className.trim())
+					})
+				}
+
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
@@ -299,6 +314,20 @@ const createAction = (action, toastObject) => {
 				}
 				else {
 					iel.classList.add('mdi-' + action.icon.trim());
+				}
+
+				break;
+			case 'custom-class':
+
+				if (typeof action.icon === 'string') {
+					action.icon.split(' ').forEach((className) => {
+						el.classList.add(className)
+					})
+				}
+				else if (Array.isArray(action.icon)) {
+					action.icon.forEach((className) => {
+						el.classList.add(className.trim())
+					})
 				}
 
 				break;

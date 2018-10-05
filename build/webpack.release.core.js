@@ -9,7 +9,7 @@ module.exports = {
 		'toasted.min' : './src/index-core.js'
 	},
 	output: {
-		path: './dist',
+		path: path.resolve(__dirname, '../dist'),
 		publicPath: '/dist/',
 		filename: '[name].js',
 		libraryTarget: 'umd'
