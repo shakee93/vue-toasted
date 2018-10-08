@@ -1,5 +1,5 @@
-import './vue'
 import { Vue, VueConstructor } from 'vue/types/vue'
+import { PluginFunction } from "vue"
 
 interface ToastObject {
   // html element of the toast
@@ -43,7 +43,7 @@ interface ToastAction {
    * @param {ToastObject} toastObject
    * @returns {any}
    */
-  onClick?: (e, toastObject: ToastObject) => any
+  onClick?: (e: any, toastObject: ToastObject) => any
 }
 
 interface ToastOptions {
@@ -144,12 +144,16 @@ interface Toasted {
    * @param message
    * @param options
    */
-  register (name: string, message: string, options?: ToastOptions)
+  register (name: string, message: string, options?: ToastOptions): void
 
   /**
    * Clear all toasts
    */
-  clear ()
+  clear (): boolean
+}
+
+declare class ToastedPlugin {
+  static install: PluginFunction<never>
 }
 
 declare module 'vue/types/vue' {
@@ -161,3 +165,5 @@ declare module 'vue/types/vue' {
     $toasted: Toasted
   }
 }
+
+export default ToastedPlugin
