@@ -161,7 +161,7 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
             // router navigation
             push : { 
             	name : 'somewhere',
-            	// thise will prevent toast from closing
+            	// this will prevent toast from closing
             	dontClose : true
              }
         }
