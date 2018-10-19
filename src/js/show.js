@@ -227,6 +227,14 @@ const createIcon = (options, toast) => {
 				}
 
 				break;
+			case 'custom':
+
+				var html = options.icon;
+				var template = document.createElement('i');
+				template.innerHTML = html;
+
+				iel = template.firstChild;
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
@@ -330,6 +338,14 @@ const createAction = (action, toastObject) => {
 					})
 				}
 
+				break;
+			case 'custom':
+
+				var html = options.icon;
+				var template = document.createElement('i');
+				template.innerHTML = html;
+
+				iel = template.firstChild;
 				break;
 			default:
 				iel.classList.add('material-icons');
