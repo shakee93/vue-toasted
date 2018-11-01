@@ -180,12 +180,12 @@ below are the options you can pass to create a toast
 -----|-----|-----|-----
 position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
 duration|Number|null|Display time of the toast in millisecond
-action|Object, Array|null|Add single or multiple actions to toast  [explained here](#actions)
+action|Object, Array|null|Add single or multiple actions to toast  [explained here](#actions--fire)
 fullWidth|Boolean|false|Enable Full Width
 fitToScreen|Boolean|false|Fits to Screen on Full Width
 className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
-Icon|String, Object|null|Material icon name as string.  [explained here](#icons)
+Icon|String, Object|null|Material icon name as string.  [explained here](#icons-fire)
 type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
 theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
