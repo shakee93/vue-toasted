@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Vue Toasted is One of the Best Toast plugin available for VueJS. it is responsive, touch compatible, easy to use, attractive and feature rich with icons, actions etc...
+Vue Toasted is One of the Best Toast plugin available for VueJS. it is used by VueJS, Laravel, NuxtJS and trusted by many more organizations. it is responsive, touch compatible, easy to use, attractive and feature rich with icons, actions etc...
 
 #### Interactive Demo
 
@@ -133,6 +133,7 @@ All Good Now you have this cool toast in your project..
 text*|String|-| name of action
 href|String|`null`| url of action
 icon|String|`null`| name of material for action
+target|String|`null`| target of url
 class|String/Array|`null`| custom css class for the action
 push|Object |`null`|  Vue Router push parameters
 onClick|Function(e,toastObject) |`null`|  onClick Function of action

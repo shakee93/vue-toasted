@@ -285,6 +285,10 @@ const createAction = (action, toastObject) => {
 		el.href = action.href
 	}
 
+	if (action.target) {
+		el.target = action.target
+	}
+
 	if (action.icon) {
 
 		// add icon class to style it
