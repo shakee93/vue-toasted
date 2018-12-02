@@ -245,6 +245,14 @@ const createIcon = (options, toast) => {
 				}
 
 				break;
+			case 'callback' :
+				let callback = (options.icon && options.icon instanceof Function) ? options.icon : null;
+
+				if(callback) {
+					iel = callback(iel);
+				}
+
+				break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
