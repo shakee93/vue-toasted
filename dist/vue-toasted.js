@@ -745,6 +745,23 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var uuid = __webpack_require__(2);
 
+// string includes polyfill
+if (!String.prototype.includes) {
+	Object.defineProperty(String.prototype, 'includes', {
+		value: function value(search, start) {
+			if (typeof start !== 'number') {
+				start = 0;
+			}
+
+			if (start + search.length > this.length) {
+				return false;
+			} else {
+				return this.indexOf(search, start) !== -1;
+			}
+		}
+	});
+}
+
 var _options = {};
 var _instance = null;
 /**
