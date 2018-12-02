@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Vue Toasted is One of the Best Toast plugin available for VueJS. it is used by VueJS, Laravel, NuxtJS and trusted by many more organizations. it is responsive, touch compatible, easy to use, attractive and feature rich with icons, actions etc...
+Vue Toasted is One of the Best Toast plugin available for VueJS. it is used by VueJS, Laravel, NuxtJS and trusted by many more organizations it is responsive, touch compatible, easy to use, attractive and feature rich with icons, actions etc...
 
 #### Interactive Demo
 
@@ -188,7 +188,7 @@ className|String, Array|null|Custom css class name of the toast
 containerClass|String, Array|null|Custom css classes for toast container
 Icon|String, Object|null|Material icon name as string.  [explained here](#icons-fire)
 type|String|'default'| Type of the Toast  **['success', 'info', 'error']**
-theme|String|'primary'|Theme of the toast you prefer<br> **['primary', 'outline', 'bubble']**
+theme|String|'toasted-primary'|Theme of the toast you prefer<br> **['toasted-primary', 'outline', 'bubble']**
 onComplete|Function|null|Trigger when toast is completed
 closeOnSwipe|Boolean|true|Closes the toast when the user swipes it
 singleton|Boolean|false| Only allows one toast at a time.

@@ -26,7 +26,7 @@ const parseOptions = function (options) {
 	options.duration = options.duration || null;
 
 	// normal type will allow the basic color
-	options.theme = options.theme || "primary";
+	options.theme = options.theme || "toasted-primary";
 
 	// normal type will allow the basic color
 	options.type = options.type || "default";
