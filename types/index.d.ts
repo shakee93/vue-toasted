@@ -13,7 +13,7 @@ interface ToastObject {
 type ToastPosition = 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left'
 type ToastType = 'success' | 'info' | 'error' | 'default'
 type ToastTheme = 'primary' | 'outline' | 'bubble'
-type ToastIconPack = 'material' | 'fontawesome' | 'custom-class'
+type ToastIconPack = 'material' | 'fontawesome' | 'custom-class' | 'callback'
 
 interface ToastAction {
   /**
@@ -78,7 +78,7 @@ interface ToastOptions {
   /**
    * Material icon name as string
    */
-  icon?: string | { name: string, after: boolean },
+  icon?: (ToastIcon: HTMLElement) => HTMLElement | string | { name: string, after: boolean },
   /**
    * Type of the Toast ['success', 'info', 'error']. (default: 'default')
    */
