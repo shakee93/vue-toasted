@@ -150,6 +150,8 @@ interface Toasted {
    * Clear all toasts
    */
   clear (): boolean
+  
+  global: any
 }
 
 declare class ToastedPlugin {
