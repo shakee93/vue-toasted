@@ -20,12 +20,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="527" column="37" lean-forward="true" selection-start-line="527" selection-start-column="37" selection-end-line="527" selection-end-column="37" />
+            <state relative-caret-position="449">
+              <caret line="338" column="42" lean-forward="true" selection-start-line="338" selection-start-column="42" selection-end-line="338" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#12788#16729#0" expanded="false" />
+                <element signature="e#12819#16760#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -298,7 +298,8 @@
       <workItem from="1514790838353" duration="269000" />
       <workItem from="1533326851817" duration="2238000" />
       <workItem from="1533371039158" duration="14000" />
-      <workItem from="1543737806770" duration="52000" />
+      <workItem from="1543737806770" duration="1094000" />
+      <workItem from="1548161388151" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="es6 compiled">
       <created>1488529756683</created>
@@ -503,17 +504,24 @@
       <option name="project" value="LOCAL" />
       <updated>1533327788187</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="updated primary theme text">
+      <created>1543737865035</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1543737865035</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101687000" />
+    <option name="totallyTimeSpent" value="102751000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15228967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15388711" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -566,7 +574,8 @@
     <MESSAGE value="removed hotjar" />
     <MESSAGE value="added node reel logo" />
     <MESSAGE value="updated reel logo" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated reel logo" />
+    <MESSAGE value="updated primary theme text" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated primary theme text" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -672,12 +681,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="527" column="37" lean-forward="true" selection-start-line="527" selection-start-column="37" selection-end-line="527" selection-end-column="37" />
+        <state relative-caret-position="449">
+          <caret line="338" column="42" lean-forward="true" selection-start-line="338" selection-start-column="42" selection-end-line="338" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#img#0;n#label#0;n#p#3;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#12788#16729#0" expanded="false" />
+            <element signature="e#12819#16760#0" expanded="false" />
           </folding>
         </state>
       </provider>
