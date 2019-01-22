@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueToasted from 'vue-toasted';
 
 Vue.use(VueToasted, {
-    iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class
+    iconPack : 'material' // set your iconPack, defaults to material. material|fontawesome|custom-class|custom
 });
 
 /* NOTE : You will have to import material icons in order to work */

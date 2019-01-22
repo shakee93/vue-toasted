@@ -252,7 +252,11 @@ const createIcon = (options, toast) => {
 					iel = callback(iel);
 				}
 
-				break;
+                break;
+            case 'custom':
+                iel.innerHTML = options.icon;
+                iel = iel.childNodes[0];
+                break;
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
@@ -360,7 +364,13 @@ const createAction = (action, toastObject) => {
 					})
 				}
 
-				break;
+                break;
+
+            case 'custom':
+                iel.innerHTML = options.icon;
+                iel = iel.childNodes[0];
+                break;
+
 			default:
 				iel.classList.add('material-icons');
 				iel.textContent = action.icon;
