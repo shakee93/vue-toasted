@@ -144,7 +144,7 @@ interface Toasted {
    * @param message
    * @param options
    */
-  register (name: string, message: string, options?: ToastOptions): void
+  register (name: string, message: string | ((payload: any) => string), options?: ToastOptions): void
 
   /**
    * Clear all toasts
