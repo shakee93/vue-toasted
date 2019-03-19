@@ -199,6 +199,7 @@ const createIcon = (options, toast) => {
 	if (options.icon) {
 
 		let iel = document.createElement('i');
+		iel.setAttribute('aria-hidden', 'true');
 
 		switch (options.iconPack) {
 			case 'fontawesome' :
