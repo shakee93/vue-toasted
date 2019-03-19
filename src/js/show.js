@@ -435,16 +435,7 @@ export default function (instance, message, options) {
 	_instance = instance;
 
 	options = parseOptions(options);
-	let container = document.getElementById(_instance.id);
-
-	// Create toast container if it does not exist
-	if (container === null) {
-		// create notification container
-		container = document.createElement('div');
-		container.id = _instance.id;
-
-		document.body.appendChild(container);
-	}
+	const container = _instance.container;
 
 	options.containerClass.unshift('toasted-container');
 
