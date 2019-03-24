@@ -46,7 +46,7 @@ interface ToastAction {
   onClick?: (e: any, toastObject: ToastObject) => any
 }
 
-export interface ToastOptions {
+interface ToastOptions {
   /**
    * Position of the toast container (default: 'top-right')
    */
