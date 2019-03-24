@@ -46,7 +46,7 @@ interface ToastAction {
   onClick?: (e: any, toastObject: ToastObject) => any
 }
 
-interface ToastOptions {
+export interface ToastOptions {
   /**
    * Position of the toast container (default: 'top-right')
    */
@@ -155,7 +155,7 @@ interface Toasted {
 }
 
 declare class ToastedPlugin {
-  static install: PluginFunction<never>
+  static install: PluginFunction<ToastOptions>
 }
 
 declare module 'vue/types/vue' {
