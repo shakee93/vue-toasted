@@ -124,7 +124,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  #toasted-container {
+  .toasted-container {
     @include fit-to-screen;
 
     &.top-center, &.bottom-center {
