@@ -43,6 +43,9 @@ const parseOptions = function (options) {
 	// toast duration
 	options.duration = options.duration || null;
 
+	// keep toast open on mouse over
+	options.keepOnHover = options.keepOnHover || false;
+
 	// normal type will allow the basic color
 	options.theme = options.theme || "toasted-primary";
 
@@ -466,7 +469,8 @@ export default function (instance, message, options) {
 	let timeLeft = options.duration;
 	let counterInterval;
 	if (timeLeft !== null) {
-		counterInterval = setInterval(function () {
+
+		const createInterval = () => setInterval(function () {
 			if (newToast.parentNode === null)
 				window.clearInterval(counterInterval);
 
@@ -492,6 +496,18 @@ export default function (instance, message, options) {
 				window.clearInterval(counterInterval);
 			}
 		}, 20);
+
+		counterInterval = createInterval();
+
+		// Toggle interval on hover
+		if (options.keepOnHover) {
+			newToast.addEventListener('mouseover', () => {
+				window.clearInterval(counterInterval);
+			});
+			newToast.addEventListener('mouseout', () => {
+				counterInterval = createInterval();
+			});
+		}
 	}
 
 	return toastObject(newToast, _instance);
