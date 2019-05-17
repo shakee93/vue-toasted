@@ -49,6 +49,16 @@ export const Toasted = function (_options) {
 	this.toasts = [];
 
 	/**
+	 * Element of the Toast Container
+	 */
+	this.container = null;
+
+	/**
+	 * Initiate toast container
+	 */
+	initiateToastContainer(this);
+
+	/**
 	 * Initiate custom toasts
 	 */
 	initiateCustomToasts(this);
@@ -245,6 +255,18 @@ export const initiateCustomToasts = function (instance) {
 		});
 
 	}
+};
+
+const initiateToastContainer = function (instance) {
+	// create notification container
+	const container = document.createElement('div');
+	container.id = instance.id;
+	container.setAttribute('role', 'status');
+	container.setAttribute('aria-live', 'polite');
+	container.setAttribute('aria-atomic', 'false');
+
+	document.body.appendChild(container);
+	instance.container = container;
 };
 
 const register = function (instance, name, callback, options) {
