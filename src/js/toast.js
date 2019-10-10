@@ -2,9 +2,6 @@ import show from './show';
 import animations from './animations';
 const uuid = require('shortid');
 
-// add Object.assign Polyfill
-require('es6-object-assign').polyfill();
-
 /**
  * Toast
  * core instance of toast

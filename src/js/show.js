@@ -3,24 +3,6 @@ import animations from './animations'
 import {toastObject} from './object'
 const uuid = require('shortid');
 
-// string includes polyfill
-if (!String.prototype.includes) {
-	Object.defineProperty(String.prototype, 'includes', {
-		value: function(search, start) {
-			if (typeof start !== 'number') {
-				start = 0
-			}
-
-			if (start + search.length > this.length) {
-				return false
-			} else {
-				return this.indexOf(search, start) !== -1
-			}
-		}
-	})
-}
-
-
 let _options = {};
 let _instance = null;
 /**

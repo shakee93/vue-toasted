@@ -1,7 +1,7 @@
 {
   "name": "vue-toasted",
   "description": "Responsive Touch Compatible Toast plugin for VueJS 2+",
-  "version": "1.1.27",
+  "version": "1.1.28",
   "author": "Shakeeb Sadikeen <shakee.zats@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -42,7 +42,6 @@
     "babel-preset-latest": "^6.24.1",
     "cross-env": "^3.2.4",
     "css-loader": "^0.25.0",
-    "es6-object-assign": "^1.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "hammerjs": "^2.0.8",
