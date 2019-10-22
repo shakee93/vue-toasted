@@ -17,7 +17,7 @@
     "release": "npm run build && npm run core && npm run css",
     "css": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.css.js --progress --hide-modules ",
     "core": "cross-env NODE_ENV=production webpack --config ./build/webpack.release.core.js --progress --hide-modules",
-    "es": "babel src --presets babel-preset-es2015 --out-dir dist"
+    "es": "babel src --presets babel-preset-env --out-dir dist"
   },
   "keywords": [
     "toast",
