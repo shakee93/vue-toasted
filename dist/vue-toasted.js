@@ -1046,7 +1046,13 @@ var createAction = function createAction(action, toastObject) {
 		return null;
 	}
 
-	var el = document.createElement('a');
+	var el = void 0;
+	if (action.href) {
+		el = document.createElement('a');
+	} else {
+		el = document.createElement('button');
+	}
+
 	el.classList.add('action');
 	el.classList.add('ripple');
 
