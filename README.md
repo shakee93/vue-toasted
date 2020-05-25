@@ -2,7 +2,7 @@
     <a href="https://github.com/shakee93/vue-toasted" target="_blank">
     <img width="250"src="https://freshpixl.com/vue-toasted.png?new">
     </a>
-</p> 
+</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/vue-toasted"><img src="https://img.shields.io/npm/v/vue-toasted.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toasted.svg?style=flat-square"/></a>
@@ -14,7 +14,7 @@
 
 ## Introduction
 
-Vue Toasted is One of the Best Toast plugin available for VueJS. it is used by VueJS, Laravel, NuxtJS and trusted by many more organizations it is responsive, touch compatible, easy to use, attractive and feature rich with icons, actions etc...
+Vue Toasted is one of the best toast plugins available for VueJS. It's used by VueJS, Laravel, NuxtJS and trusted by many more organizations. It's responsive, touch compatible, easy to use, attractive and feature rich with icons, actions, and more!
 
 #### Interactive Demo
 
@@ -79,7 +79,7 @@ installation guide 👉  [@nuxtjs/toast](https://github.com/nuxt-community/modul
 
 ## Usage
 
-It is simple. couple of lines all what you need.
+It's simple. A couple of lines is all you need.
 
 ```javascript
 // register the plugin on vue
@@ -110,7 +110,7 @@ All Good Now you have this cool toast in your project..
 {
     // pass the icon name as string
     icon : 'check'
-    
+
     // or you can pass an object
     icon : {
         name : 'watch',
@@ -124,7 +124,7 @@ All Good Now you have this cool toast in your project..
     <a href="https://github.com/shakee93/vue-toasted" target="_blank">
     <img width="300" src="https://shakee93.github.io/vue-toasted/assets/images/action-preview.jpg">
     </a>
-</p> 
+</p>
 <p>You can have single or multiple actions in the toast. take a look at the example below</p>
 <p>Check below Vue Router section for router integration</p>
 
@@ -160,7 +160,7 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
         {
             text : 'Undo',
             // router navigation
-            push : { 
+            push : {
             	name : 'somewhere',
             	// this will prevent toast from closing
             	dontClose : true
@@ -210,7 +210,7 @@ show|message, options| show a toast with default style
 success|message, options| show a toast with success style
 info|message, options| show a toast with info style
 error|message, options | show a toast with error style
-register | name, message, options | register your own toast with options [explained here](#custom-toast-registration) 
+register | name, message, options | register your own toast with options [explained here](#custom-toast-registration)
 clear | - | clear all toasts
 
 ### Toast Object
@@ -273,7 +273,7 @@ options|String/Object| {} | Toast Options as Object or either of these strings *
 
 Take a look at the below examples
 
-##### Simple Example 
+##### Simple Example
 ```javascript
 import Toasted from 'vue-toasted';
 Vue.use(Toasted);
@@ -293,7 +293,7 @@ After Registering your toast you can easily access it in the vue component like 
 this.$toasted.global.my_app_error();
 ```
 
-##### Advanced Example 
+##### Advanced Example
 
 You can also pass message as a function. which will give you more power.
 Lets think you need to pass a custom message to the error notification we built above.
@@ -318,12 +318,12 @@ let options = {
 // register the toast with the custom message
 Vue.toasted.register('my_app_error',
     (payload) => {
-		
+
         // if there is no message passed show default message
         if(! payload.message) {
     	    return "Oops.. Something Went Wrong.."
         }
-		
+
         // if there is a message show it with the message
         return "Oops.. " + payload.message;
     },
