@@ -10,6 +10,8 @@
   <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
   <a href="https://github.com/shakee93/vue-toasted/"><img src="http://img.badgesize.io/shakee93/vue-toasted/master/dist/vue-toasted.min.js?compression=gzip&style=flat-square"/></a>
   <a href="http://packagequality.com/#?package=vue-toasted"><img src="http://npm.packagequality.com/shield/vue-toasted.svg?style=flat-square"/></a>
+  <a href="https://gitpod.io/from-referrer/"><img src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod" alt="Gitpod Ready-to-Code">
+  </a>
  </p>
 
 ## Introduction
@@ -344,6 +346,11 @@ Please Report If You have Found any Issues.
 
 On Mobile Toasts will be on full width. according to the position the toast will either be on top or bottom.
 
+### Contribute using the one-click online setup.
+
+Contribute to Vue Toasted using a fully featured online development environment that will automatically: clone the repo, install the dependencies and start the webserver.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 ### Credits
 

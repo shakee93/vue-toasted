@@ -50,7 +50,10 @@ module.exports = {
 	performance: {
 		hints: false
 	},
-	devtool: '#source-map'
+    devtool: '#source-map',
+    devServer: {
+        disableHostCheck: true
+    }
 }
 
 if (process.env.NODE_ENV === 'production') {
