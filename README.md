@@ -51,21 +51,25 @@ Checkout the <a target="_blank" href="https://shakee93.github.io/vue-toasted/"> 
 
 ## Installation
 
+This plugin now requires [animejs](http://animejs.com/) and [hammerjs](http://hammerjs.github.io/) as peer dependencies for a lower bundle size.
+
 #### Install using npm
 ```bash
 # install it via npm
-npm install vue-toasted --save
+npm install vue-toasted hammerjs animejs --save
 ```
 
 #### Install using yarn
 ```bash
 # install it via yarn
-yarn add vue-toasted
+yarn add vue-toasted hammerjs animejs
 ```
 
 #### Direct usage with html
 ```html
 <!-- Insert the vue core before vue-toasted -->
+<script src="https://unpkg.com/hammerjs@^2.0.8"></script>
+<script src="https://unpkg.com/animejs@^2.2.0"></script>
 <script src="https://unpkg.com/vue-toasted"></script>
 
 <script>
