@@ -14,6 +14,10 @@ module.exports = {
 		filename: '[name].css',
 		libraryTarget: 'umd'
 	},
+	externals: {
+		hammerjs: 'hammerjs',
+		animejs: 'animejs'
+	},
 	module: {
 		rules: [
 			{
