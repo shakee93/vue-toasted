@@ -87,7 +87,6 @@ It's simple. A couple of lines is all you need.
 // register the plugin on vue
 import Toasted from 'vue-toasted';
 
-```javascript
 // or you can use it with require
 var Toasted = require('vue-toasted').default
 
