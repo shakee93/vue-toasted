@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 var autoprefixer = require('autoprefixer')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { VueLoaderPlugin } = require('vue-loader')
+
 
 module.exports = {
 	entry: './src/index.js',
@@ -16,17 +18,22 @@ module.exports = {
 			{
 				test: /\.vue$/,
 				loader: 'vue-loader',
-				options: {
-					loaders: {
-						'scss': 'vue-style-loader!css-loader!postcss-loader!sass-loader',
-						'sass': 'vue-style-loader!css-loader!postcss-loader!sass-loader?indentedSyntax'
-					}
-					// other vue-loader options go here
-				}
+			},
+			{
+				test: /\.scss$/,
+				use: [
+				  'vue-style-loader',
+				  'css-loader',
+				  'postcss-loader',
+				  'sass-loader'
+				]
 			},
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
+				options: {
+					presets: ['@babel/preset-env']
+				},
 				exclude: /node_modules/
 			},
 			{
@@ -38,9 +45,12 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [
+		new VueLoaderPlugin()
+	],
 	resolve: {
 		alias: {
-			'vue$': 'vue/dist/vue.esm.js'
+			'vue': '@vue/runtime-dom'
 		}
 	},
 	devServer: {
@@ -57,18 +67,14 @@ module.exports = {
 }
 
 if (process.env.NODE_ENV === 'production') {
-	module.exports.devtool = '#source-map'
+	module.exports.devtool = '#source-map',
+	module.exports.optimization.minimize.true;
 	// http://vue-loader.vuejs.org/en/workflow/production.html
 	module.exports.plugins = (module.exports.plugins || []).concat([
 		new webpack.DefinePlugin({
 			'process.env': {
 				NODE_ENV: '"production"'
 			}
-		}),
-		new webpack.optimize.UglifyJsPlugin({
-			sourceMap: false,
-			compress: { warnings: false },
-			comments: false,
 		}),
 		new webpack.ProvidePlugin({}),
 		// new BundleAnalyzerPlugin(),
