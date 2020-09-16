@@ -135,7 +135,7 @@ All Good Now you have this cool toast in your project..
 <p>You can have single or multiple actions in the toast. take a look at the example below</p>
 <p>Check below Vue Router section for router integration</p>
 
-**Parameters**|**Type's**|**Default**|**Description**
+**Parameter**|**Type**|**Default**|**Description**
 -----|-----|-----|-----
 text*|String|-| name of action
 href|String|`null`| url of action
@@ -184,7 +184,7 @@ onClick|Function(e,toastObject) |`null`|  onClick Function of action
 
 below are the options you can pass to create a toast
 
-**Option**|**Type's**|**Default**|**Description**
+**Option**|**Type**|**Default**|**Description**
 -----|-----|-----|-----
 position|String|'top-right'|Position of the toast container <br> **['top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left']**
 duration|Number|null|Display time of the toast in millisecond
@@ -211,7 +211,7 @@ Methods available on Toasted...
 Vue.toasted.show( 'my message', { /* some option */ })
 ```
 
-**Method**|**Parameter's**|**Description**
+**Method**|**Parameters**|**Description**
 -----|-----|-----
 show|message, options| show a toast with default style
 success|message, options| show a toast with success style
@@ -272,7 +272,7 @@ You can register your own toasts like below and it will be available all over th
 
 `Toasted.register` methods api details...
 
-**Parameters**|**Type's**|**Default**|**Description**
+**Parameter**|**Type**|**Default**|**Description**
 -----|-----|-----|-----
 name*|String|-| name of your toast
 message*|String/Function(payload) |-|  Toast Body Content
