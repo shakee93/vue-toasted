@@ -32,8 +32,11 @@
     "toastr"
   ],
   "dependencies": {},
-  "devDependencies": {
+  "peerDependencies": {
     "animejs": "^2.2.0",
+    "hammerjs": "^2.0.8"
+  },
+  "devDependencies": {
     "autoprefixer": "^7.2.6",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -45,7 +48,6 @@
     "es6-object-assign": "^1.1.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
-    "hammerjs": "^2.0.8",
     "node-sass": "^4.13.1",
     "postcss-loader": "^2.1.6",
     "requirejs": "^2.3.6",

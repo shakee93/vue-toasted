@@ -14,7 +14,11 @@ module.exports = {
 		filename: '[name].js',
 		libraryTarget: 'umd'
 	},
-	module: {
+	externals: {
+		hammerjs: 'hammerjs',
+		animejs: 'animejs'
+	},
+  module: {
 		rules: [
 			{
 				test: /\.vue$/,
