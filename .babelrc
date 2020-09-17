@@ -1,7 +1,8 @@
 {
   "presets": [
-    ["latest", {
-      "es2015": { "modules": false }
+    ["babel-preset-env", {
+      "useBuiltins": "usage",
+      "modules": false
     }]
   ]
 }
