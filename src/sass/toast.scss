@@ -100,6 +100,15 @@
       font-weight: 600;
       cursor: pointer;
 
+      // Reset button style
+      @at-root #{selector-unify(&, button)} {
+        background: none;
+        color: inherit;
+        border: none;
+        font: inherit;
+        line-height: normal;
+      }
+
       &.icon {
         padding: 4px;
         display: flex;

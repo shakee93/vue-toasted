@@ -303,7 +303,13 @@ const createAction = (action, toastObject) => {
 		return null;
 	}
 
-	let el = document.createElement('a');
+	let el;
+	if (action.href) {
+		el = document.createElement('a');
+	} else {
+		el = document.createElement('button');
+	}
+
 	el.classList.add('action');
 	el.classList.add('ripple');
 
