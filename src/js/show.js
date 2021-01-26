@@ -314,7 +314,11 @@ const createAction = (action, toastObject) => {
 	el.classList.add('ripple');
 
 	if (action.text) {
-		el.text = action.text
+		if (el.tagName === 'A') {
+			el.text = action.text
+		} else {
+			el.innerText = action.text;
+		}
 	}
 
 	if (action.href) {
@@ -370,6 +374,14 @@ const createAction = (action, toastObject) => {
 					})
 				}
 
+				break;
+			case 'callback':
+				let callback = (action.icon && action.icon instanceof Function) ? action.icon : null;
+
+				if(callback) {
+					iel = callback(iel);
+				}
+				
 				break;
 			default:
 				iel.classList.add('material-icons');
