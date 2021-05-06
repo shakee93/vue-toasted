@@ -263,6 +263,18 @@ const createIcon = (options, toast) => {
 		}
 	}
 
+	if (typeof options.iconPack === 'object') {
+		const iconClasses = options.iconPack.classes ? options.iconPack.classes : ['material-icons'];
+
+		iconClasses.forEach(iconClass => {
+			iel.classList.add(iconClass);
+		})
+
+		if (options.iconPack.textContent) {
+			iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
+		}
+	}
+
 	if (options.icon.after) {
 		iel.classList.add('after');
 	}
