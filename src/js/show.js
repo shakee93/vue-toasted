@@ -197,13 +197,13 @@ const createToast = function (html, options) {
 };
 
 const createIcon = (options, toast) => {
-
 	// add material icon if available
-	if (options.icon) {
-
-		let iel = document.createElement('i');
-		iel.setAttribute('aria-hidden', 'true');
-
+	if (!options.icon) return
+	
+	let iel = document.createElement('i');
+	iel.setAttribute('aria-hidden', 'true');
+	
+	if(typeof options.iconPack === 'string') {
 		switch (options.iconPack) {
 			case 'fontawesome' :
 
@@ -261,14 +261,13 @@ const createIcon = (options, toast) => {
 				iel.classList.add('material-icons');
 				iel.textContent = (options.icon.name) ? options.icon.name : options.icon;
 		}
-
-		if (options.icon.after) {
-			iel.classList.add('after');
-		}
-
-		appendIcon(options, iel, toast);
 	}
 
+	if (options.icon.after) {
+		iel.classList.add('after');
+	}
+
+	appendIcon(options, iel, toast);
 }
 
 const appendIcon = (options, el, toast) => {
