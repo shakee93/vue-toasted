@@ -343,50 +343,62 @@ const createAction = (action, toastObject) => {
 
 		// create icon element
 		let iel = document.createElement('i');
+		
+		if(typeof _options.iconPack === 'string') {
+			switch (_options.iconPack) {
+				case 'fontawesome' :
+					iel.classList.add('fa');
 
+					if(action.icon.includes('fa-')) {
+						iel.classList.add(action.icon.trim());
+					}
+					else {
+						iel.classList.add('fa-' + action.icon.trim());
+					}
 
-		switch (_options.iconPack) {
-			case 'fontawesome' :
-				iel.classList.add('fa');
+					break;
+				case 'mdi':
+					iel.classList.add('mdi');
 
-				if(action.icon.includes('fa-')) {
-					iel.classList.add(action.icon.trim());
-				}
-				else {
-					iel.classList.add('fa-' + action.icon.trim());
-				}
+					if (action.icon.includes('mdi-')) {
+						iel.classList.add(action.icon.trim());
+					}
+					else {
+						iel.classList.add('mdi-' + action.icon.trim());
+					}
 
-				break;
-			case 'mdi':
-				iel.classList.add('mdi');
+					break;
+				case 'custom-class':
 
-				if (action.icon.includes('mdi-')) {
-					iel.classList.add(action.icon.trim());
-				}
-				else {
-					iel.classList.add('mdi-' + action.icon.trim());
-				}
+					if (typeof action.icon === 'string') {
+						action.icon.split(' ').forEach((className) => {
+							el.classList.add(className)
+						})
+					}
+					else if (Array.isArray(action.icon)) {
+						action.icon.forEach((className) => {
+							el.classList.add(className.trim())
+						})
+					}
 
-				break;
-			case 'custom-class':
-
-				if (typeof action.icon === 'string') {
-					action.icon.split(' ').forEach((className) => {
-						el.classList.add(className)
-					})
-				}
-				else if (Array.isArray(action.icon)) {
-					action.icon.forEach((className) => {
-						el.classList.add(className.trim())
-					})
-				}
-
-				break;
-			default:
-				iel.classList.add('material-icons');
-				iel.textContent = action.icon;
+					break;
+				default:
+					iel.classList.add('material-icons');
+					iel.textContent = action.icon;
+			}
 		}
 
+		if (typeof _options.iconPack === 'object') {
+			const iconClasses = _options.iconPack.classes ? _options.iconPack.classes : ['material-icons'];
+
+			iconClasses.forEach(iconClass => {
+				iel.classList.add(iconClass);
+			})
+
+			if (options.iconPack.textContent) {
+				iel.textContent = action.icon;
+			}
+		}
 
 		// append it to the button
 		el.appendChild(iel);
