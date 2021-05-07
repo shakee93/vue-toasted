@@ -395,7 +395,7 @@ const createAction = (action, toastObject) => {
 				iel.classList.add(iconClass);
 			})
 
-			if (options.iconPack.textContent) {
+			if (_options.iconPack.textContent) {
 				iel.textContent = action.icon;
 			}
 		}
