@@ -8,8 +8,8 @@ const Toasted = {
         }
 
         const Toast = new T(options);
-        Vue.component('toasted', ToastComponent);
-        Vue.toasted = Vue.prototype.$toasted = Toast;
+        app.component('toasted', ToastComponent);
+        app.config.globalProperties.$toasted = Toast;
     }
 };
 
