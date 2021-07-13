@@ -1,5 +1,4 @@
-import { Vue, VueConstructor } from 'vue/types/vue'
-import { PluginFunction } from "vue"
+import { App, PluginFunction } from 'vue';
 
 export interface ToastObject {
   // html element of the toast
@@ -158,12 +157,8 @@ declare class ToastedPlugin {
   static install: PluginFunction<ToastOptions>
 }
 
-declare module 'vue/types/vue' {
-  interface VueConstructor {
-    toasted: Toasted
-  }
-
-  interface Vue {
+declare module '@vue/runtime-core' {
+  interface ComponentCustomProperties {
     $toasted: Toasted
   }
 }
