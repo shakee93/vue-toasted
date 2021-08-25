@@ -95,8 +95,6 @@ Vue.use(Toasted)
 // you can also pass options, check options reference below
 Vue.use(Toasted, Options)
 
-;
-
 ```
 
 ```javascript
