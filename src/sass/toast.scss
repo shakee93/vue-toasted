@@ -25,33 +25,39 @@
   &.top-right {
     top: 10%;
     right: 7%;
+    align-items: flex-end;
   }
 
   &.top-left {
     top: 10%;
     left: 7%;
+    align-items: flex-start;
   }
 
   &.top-center {
     top: 10%;
     left: 50%;
     transform: translateX(-50%);
+    align-items: center;
   }
 
   &.bottom-right {
     right: 5%;
     bottom: 7%;
+    align-items: flex-end;
   }
 
   &.bottom-left {
     left: 5%;
     bottom: 7%;
+    align-items: flex-start;
   }
 
   &.bottom-center {
     left: 50%;
     transform: translateX(-50%);
     bottom: 7%;
+    align-items: center;
   }
 
   // fix positioning floating
