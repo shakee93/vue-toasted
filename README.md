@@ -123,6 +123,15 @@ All Good Now you have this cool toast in your project..
         name : 'watch',
         after : true // this will append the icon to the end of content
     }
+
+    // or you can return dom element
+    iconPack: 'callBack',
+    icon: element => { // element is tag <i> by default,
+        // so you can use the element or create your own one
+        const icon = document.createElement("img");
+        icon.setAttribute("src", 'path-to-the-image');
+        return icon;
+    },
 }
 ```
 
