@@ -46,7 +46,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.9.0",
     "hammerjs": "^2.0.8",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^2.1.6",
     "requirejs": "^2.3.6",
     "sass-loader": "^6.0.7",
