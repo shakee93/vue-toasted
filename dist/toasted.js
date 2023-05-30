@@ -94,7 +94,9 @@ var shuffled;
 function reset() {
     shuffled = false;
 }
-
+function test(){
+    //noting done here just for checking
+}
 function setCharacters(_alphabet_) {
     if (!_alphabet_) {
         if (alphabet !== ORIGINAL) {
